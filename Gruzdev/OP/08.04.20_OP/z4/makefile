@@ -1,0 +1,2 @@
+all:
+	gcc -Wall -Wextra -g -o test4 z4.c -lm

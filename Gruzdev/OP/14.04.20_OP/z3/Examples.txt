@@ -1,0 +1,17 @@
+Example 1:
+
+Input:
+2
+
+Output:
+28
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Example 2:
+
+Input:
+0
+
+Output:
+wrong month number
+
