@@ -1,21 +1,24 @@
-/** Text4°. Дан текстовый файл. Вывести количество содержащихся в нем символов
-и строк (маркеры концов строк EOLN и конца файла EOF при подсчете количества символов не учитывать)..*/
-# include <string>
-# include <fstream>
-# include <iostream>
+ /** Text4В°. Р”Р°РЅ С‚РµРєСЃС‚РѕРІС‹Р№ С„Р°Р№Р». Р’С‹РІРµСЃС‚Рё РєРѕР»РёС‡РµСЃС‚РІРѕ СЃРѕРґРµСЂР¶Р°С‰РёС…СЃСЏ РІ РЅРµРј СЃРёРјРІРѕР»РѕРІ
+Рё СЃС‚СЂРѕРє (РјР°СЂРєРµСЂС‹ РєРѕРЅС†РѕРІ СЃС‚СЂРѕРє EOLN Рё РєРѕРЅС†Р° С„Р°Р№Р»Р° EOF РїСЂРё РїРѕРґСЃС‡РµС‚Рµ РєРѕР»РёС‡РµСЃС‚РІР° СЃРёРјРІРѕР»РѕРІ РЅРµ СѓС‡РёС‚С‹РІР°С‚СЊ)..*/
+#include <string>
+#include <fstream>
+#include <iostream>
 using namespace std;
 int main () {
     string name ;
     char n;
-    int i,j = 0;
+    int i = 1,j = 0;
     ifstream input ("input.txt");
     input >> n;
     while(!input.eof())
     {
         j++;
-        for(i=0;n != '\0' ;i++)
-            input >> n;
+        while (input >> noskipws >> n) {
+            if (n == '\n')
+                break;
+            i++;
+        }
     }
-    cout << j << " - " << n << endl;
+    cout << j << " - " << i << endl;
     return 0;
 }
