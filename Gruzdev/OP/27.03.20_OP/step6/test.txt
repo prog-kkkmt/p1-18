@@ -1,0 +1,23 @@
+Example 1:
+
+Object! px: 0x7ffc17f86140 coord.x: 7
+Object! py: 0x7ffc17f86144 coord.y: 5
+Direct! px: 0x7ffc17f86140 coord.x: 7
+Direct! py: 0x7ffc17f86144 coord.y: 5
+3
+9
+scanf! coord.x: 3
+scanf! coord.y: 9
+
+Example 2:
+
+Object! px: 0x7ffdd35c2330 coord.x: 7
+Object! py: 0x7ffdd35c2334 coord.y: 5
+Direct! px: 0x7ffdd35c2330 coord.x: 7
+Direct! py: 0x7ffdd35c2334 coord.y: 5
+98
+14
+scanf! coord.x: 98
+scanf! coord.y: 14
+
+
