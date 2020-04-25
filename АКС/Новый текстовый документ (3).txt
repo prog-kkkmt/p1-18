@@ -1,0 +1,140 @@
+1)a=input()
+b,d=map(int,input().split())
+a=a[::-1]
+n=len(a)
+s=0
+o=0
+c=''
+for i in range(0,n):
+if a[i]=='A':
+s=s+10*(b**i)
+elif a[i]=='B':
+s=s+11*(b**i)
+elif a[i]=='C':
+s=s+12*(b**i)
+elif a[i]=='D':
+s=s+13*(b**i)
+elif a[i]=='E':
+s=s+14*(b**i)
+elif a[i]=='F':
+s=s+15*(b**i)
+elif a[i]=='G':
+s=s+16*(b**i)
+elif a[i]=='H':
+s=s+17*(b**i)
+elif a[i]=='I':
+s=s+18*(b**i)
+elif a[i]=='J':
+s=s+19*(b**i)
+elif a[i]=='K':
+s=s+20*(b**i)
+elif a[i]=='L':
+s=s+21*(b**i)
+elif a[i]=='M':
+s=s+22*(b**i)
+elif a[i]=='N':
+s=s+23*(b**i)
+elif a[i]=='O':
+s=s+24*(b**i)
+elif a[i]=='P':
+s=s+25*(b**i)
+elif a[i]=='Q':
+s=s+26*(b**i)
+elif a[i]=='R':
+s=s+27*(b**i)
+elif a[i]=='S':
+s=s+28*(b**i)
+elif a[i]=='T':
+s=s+29*(b**i)
+elif a[i]=='U':
+s=s+30*(b**i)
+elif a[i]=='V':
+s=s+31*(b**i)
+elif a[i]=='W':
+s=s+32*(b**i)
+elif a[i]=='X':
+s=s+33*(b**i)
+elif a[i]=='Y':
+s=s+34*(b**i)
+elif a[i]=='Z':
+s=s+35*(b**i)
+elif a[i]=='-':
+o=1
+break
+else:
+s=s+int(a[i])*(b**i)
+while s!=0:
+v=s%d
+s=s//d
+if v==10:
+c='A'+c
+elif v==11:
+c='B'+c
+elif v==12:
+c='C'+c
+elif v==13:
+c='D'+c
+elif v==14:
+c='E'+c
+elif v==15:
+c='F'+c
+elif v==16:
+c='G'+c
+elif v==17:
+c='H'+c
+elif v==18:
+c='I'+c
+elif v==19:
+c='J'+c
+elif v==20:
+c='K'+c
+elif v==21:
+c='L'+c
+elif v==22:
+c='M'+c
+elif v==23:
+c='N'+c
+elif v==24:
+c='O'+c
+elif v==25:
+c='P'+c
+elif v==26:
+c='Q'+c
+elif v==27:
+c='R'+c
+elif v==28:
+c='S'+c
+elif v==29:
+c='T'+c
+elif v==30:
+c='U'+c
+elif v==31:
+c='V'+c
+elif v==32:
+c='W'+c
+elif v==33:
+c='X'+c
+elif v==34:
+c='Y'+c
+elif v==35:
+c='Z'+c
+else:
+c=str(v)+c
+if o==0:
+print(c)
+else:
+print('-',c,sep='')
+2)import math
+number = 123.256
+s = str(number)
+#print(abs(s.find('.') - len(s)) - 1)
+f = s.index('.') + 1
+print(f)
+m = ''
+for i in range(f,len(s)):
+m += str(s[f])
+f += 1
+print(m)
+#print('llll ', hex(1050)/10000)
+f = hex(654899)
+print(type(f),int(f[2:]))
