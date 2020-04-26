@@ -1,2 +1,0 @@
-âñå!:
- g++ - Wall-Wextra-G-o test3 z3.ÑÐÐ
