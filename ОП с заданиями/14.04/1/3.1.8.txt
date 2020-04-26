@@ -1,0 +1,32 @@
+#include <stdio.h>
+# include < математика.h>
+#include <stdlib.h>
+
+typedef struct ClockFace{
+	чар мин;
+	char h;
+	int * день;
+} Ctime;
+
+int main(){
+ Ctime timer_1, timer_2;
+	int date = 8;
+
+ timer_1.h = 11;
+ timer_1.мин = 23;
+ timer_1.день = &дата;
+
+ timer_2.h = 22;
+ timer_2.мин = 34;
+ timer_2.день = &дата;
+
+	printf ("таймер 1: %02d  %02hhd : %02hhd \n", *(timer_1.день), timer_1.h, timer_1.мин);
+        printf ("таймер 2: %02d  %02hhd : %02hhd \n\n", *(timer_2.день), timer_2.h, timer_2.мин);
+
+ дата++;
+
+	printf ("таймер 1: %02d  %02hhd : %02hhd \n", *(timer_1.день), timer_1.h, timer_1.мин);
+	printf ("timer 2: %02d  %02hhd : %02hhd \n", *(timer_2.день), timer_2.h, timer_2.мин);
+
+	возврат  0;
+}
