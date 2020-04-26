@@ -1,0 +1,2 @@
+âñå!:
+ G++ -Wall-Wextra-G-o test2 2.ÑÐÐ

@@ -1,0 +1,20 @@
+/ * * Текст5. Дана строка S и текстовый файл. Добавить строку S в конец файла.*/
+#include <iostream>
+# include < строка>
+#include <fstream>
+
+использование  пространства  имен std;
+
+int main(){
+ ofstream file ("текст.txt", ios:: приложение);
+
+ строка s;
+
+	/ * while (getline (file, s))
+ файл < < s < < endl;*/
+	getline(cin, s);
+ file << s <;
+
+ файл.закрыть();
+	возврат  0;
+}

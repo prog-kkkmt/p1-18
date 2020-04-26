@@ -1,0 +1,2 @@
+âñå!:
+ G++ -Wall-Wextra-G-o Test4 String29.ÑÐÐ
