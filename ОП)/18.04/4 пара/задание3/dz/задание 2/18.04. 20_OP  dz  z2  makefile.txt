@@ -1,2 +1,0 @@
-âñå!:
- G++ -Wall-Wextra-G-o test2 String58.ÑÐÐ
