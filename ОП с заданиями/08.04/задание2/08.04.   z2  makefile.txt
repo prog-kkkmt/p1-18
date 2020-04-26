@@ -1,0 +1,2 @@
+все!:
+ gcc-Wall-Wextra-G-o test2 z2.c-lm

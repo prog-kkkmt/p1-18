@@ -1,0 +1,45 @@
+#include <stdio.h>
+
+typedef struct Time
+{
+    неподписанный  символ часа; / / часы
+    unsigned char min; // минуты
+    unsigned char sec; // секунды
+} Таймер;
+
+int  time2usec (таймер t){
+	int res = t.hour * 60 + t.min;
+ res = (res * 60 + t.sec);
+	возврат res;
+}
+
+Таймер usec2time ( int sec){
+ Таймер Т;
+ t. sec = сек % 60;
+ sec = sec / 60;
+ t.min = sec % 60;
+ sec = sec / 60;
+ t. час = сек % 60;
+	возврат t;
+}
+
+void  printTime (таймер a)
+{
+    printf ("%02hhu : %02hhu: %02hhu \n", a. hour, a. min, a. sec);
+}
+
+int main(){
+int res;
+Таймер t1, t2;
+
+
+    scanf ("%hhu : %hhu : %hhu", &(t1.час), &(t1.мин), &(t1.sec));
+    scanf ("%hhu : %hhu : %hhu", &(t2.час), &(t2.мин), &(t2.sec));
+
+ res = time2usec ( t2) - time2usec (t1);
+    если (res < 0)
+ res += (24 * 60 * 60);
+	
+    printTime ((usec2time (res)));
+возврат  0;
+}
