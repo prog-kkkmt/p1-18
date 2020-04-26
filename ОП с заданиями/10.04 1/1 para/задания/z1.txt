@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+int main() 
+{
+    FILE * fin = fopen("data_r.txt", "r"); // открыть файл data.txt на чтение - поток fin
+    FILE * fout = fopen("out_r.txt", "w"); // открыть файл out.txt на запись - поток fout
+
+    int n;
+    fscanf(fin, "%d", &n); // читаем количество чисел из потока fin
+
+    int i, sum;
+    для (сумма = 0, i = 0; i) {
+        int x;
+        fscanf(fin, "%d", &x); // читаем очередное число из потока fin
+ сумма += x;
+        printf("i=%d x=%d sum=%d\n", i, x, sum); // отладочная печать в поток stdout
+    }
+
+    fprintf(fout, "%d\n", sum); // результат пишем в поток fout
+
+    fclose(fin); // закрываем открытые нами потоки
+    fclose(fout);
+
+    возврат  0;
+}
