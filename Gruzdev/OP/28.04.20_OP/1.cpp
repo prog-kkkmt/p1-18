@@ -34,20 +34,13 @@ int main(){
 		mas[i] = n;
 	}
 	int k;
-	for(int i = 0;i < quantity;i++)
-                cout << " |" << mas[i];
-
-	cout << endl;
 	for(int i = 0;i < quantity;++i)
 		for(int j = 0;j < quantity-i;++j)
 			if(mas[j] > mas[j + 1]){
 				k = mas[j];
-				cout << k << endl;
 				mas[j] = mas[j + 1];
-				cout << "*" << mas[j] << "*" << endl;
 				mas[j + 1] = k;
 			}	
-	cout << mas[5] << "kk" << endl;
 	for(int i = 0;i < quantity;i++)
 		cout << " |" << mas[i];
 
