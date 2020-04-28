@@ -34,8 +34,8 @@ int main(){
 		mas[i] = n;
 	}
 	int k;
-	for(int i = 0;i < quantity;++i)
-		for(int j = 0;j < quantity-i;++j)
+	for(int i = 0;i < quantity-1;++i)
+		for(int j = 0;j < quantity-1;++j)
 			if(mas[j] > mas[j + 1]){
 				k = mas[j];
 				mas[j] = mas[j + 1];
