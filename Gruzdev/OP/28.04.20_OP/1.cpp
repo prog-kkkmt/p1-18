@@ -5,7 +5,7 @@
 #include <iostream>
 using namespace std;
 
-bool pidaras;
+
 
 int Bin_Search(int mas[], int key, int n){
    int mid, r = n - 1, l = 0;
