@@ -1,0 +1,26 @@
+Mult_Array.cpp
+
+output
+1 2 3
+4 5 6
+
+Mult_Array3.cpp
+input
+5 5
+
+output
+0x191750
+
+Mult_Array4.cpp
+
+output
+0x1035bd0 0x1035be0 0x1035bf0 0x1035c00
+
+
+Mult_Array5.cpp
+input
+4 5
+
+output
+0xd91750
+0xd95c20
