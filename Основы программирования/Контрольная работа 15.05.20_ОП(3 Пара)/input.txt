@@ -1,0 +1,6 @@
+01 Lada Granta 100
+02 Lada Kalina 200
+02 Aston Martin 400
+02 Alfa Romeo 432
+06 Hyunday_Solaris 30000
+04 Audi 1222
