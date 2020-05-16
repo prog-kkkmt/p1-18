@@ -1,0 +1,160 @@
+﻿8.1 Перенаправление в командной строке
+
+В русском языке словом поток часто переводят два разных термина.
+thread - поток (нить) исполнения
+stream — абстракция, производит или потребляет информацию
+
+ С каждой программой при старте связаны потоки
+– stdio.h OC kernel
+– stdin (standard input) file descriptor = 0
+– stdout (standard output) file descriptor = 1
+– stderr (standard error) file descriptor = 2
+– scanf, printf, fread, fwrite read, write
+
+	Перенаправление потоков
+ Командная строка (shell)
+ stdout перенаправить в файл out.txt (перезаписать)
+hello.exe > out.txt
+ stdout перенаправить в файл out.txt
+(добавить в конец)
+hello.exe >> out.txt
+ на stdin подать содержимое файла data.txt
+hello.exe < data.txt
+ Конвейер (pipe) - перенаправить выход stdout
+программы hello.exe на stdin программы convert.exe
+hello.exe | convert.exe
+
+	С указанием file descriptor
+● FileDescriptor>
+● Вывести содержимое файла foo.txt на экран
+cat foo.txt
+● Перенаправить содержимое в файл out.txt,
+stdout — в файл
+cat foo.txt 1> out.txt
+● Перенаправить сообщения об ошибках в файл
+out.txt, stderr — в файл
+cat nop.txt 2> error.txt
+cat error.txt
+cat: nop.txt: No such file or directory
+
+	2 потока в один файл
+● &FileDescritor
+● Перенаправь stderr на stdout, и stdout
+перенаправить
+cat foo.txt > output.txt 2>&1
+● cat output.txt
+foo
+bar
+● cat nofile.txt > output.txt 2>&1
+● cat output.txt
+cat: nofile.txt: No such file or directory
+● hello.exe 1>&2
+
+	Полезные утилиты
+В UNIX есть много полезных утилит, которые облегчают тестирование и отладку. Перечислим некоторые из них.
+
+Команда	Что делает
+gcc hello.c 2>&1 | 	less	вывести сообщения об ошибках постранично
+hello.exe | grep ERROR	отфильтровать только строки, содержащие ERROR
+hello.exe | sort	отсортировать вывод
+hello.exe | wc		подсчитать количество строк, слов и символов в выводе
+Эти команды имеют много полезных ключей и опций. Для справки по любой команде используйте man. Например, man wc
+									 8.2 fopen - открытие файла
+В файле data.txt дано n, далее n целых чисел через пробел. Записать сумму этих чисел в файл out.txt
+
+#include <stdio.h>
+
+int main() 
+{
+    FILE * fin  = fopen("data.txt", "r");   // открыть файл data.txt на чтение - поток fin
+    FILE * fout = fopen("out.txt", "w");    // открыть файл out.txt на запись - поток fout
+
+    int n;
+    fscanf(fin, "%d", &n);                  // читаем количество чисел из потока fin
+
+    int i, sum;
+    for(sum = 0, i = 0; i < n; i++) {
+        int x;
+        fscanf(fin, "%d", &x);              // читаем очередное число из потока fin
+        sum += x;
+        printf("i=%d x=%d sum=%d\n", i, x, sum);    // отладочная печать в поток stdout
+    }
+
+    fprintf(fout, "%d\n", sum);             // результат пишем в поток fout
+
+    fclose(fin);                            // закрываем открытые нами потоки
+    fclose(fout);
+
+    return 0;
+}
+Открытие и закрытие потока
+С потоками работают стандартные функции языка С fopen, fclose, scanf, printf, fread, fwrite и другие. Это предмет нашего урока.
+
+С файловыми дескрипторами работают системные вызовы ОС open, close, read, write и прочие. Системные вызовы изучаются в другом курсе.
+
+Не смешивайте в одном коде стандартные функции по работе с вводом/выводом и системные вызовы.
+
+Стандартные функции языка С для открытия потока:
+● FILE * fopen (const char * path, const char * mode); 			открывает новый поток для файла path
+● FILE * freopen (const char * path, const char * mode,FILE * stream);  закрывает stream (если открыт) и открывает новый
+● FILE * fdopen (int fd, const char * mode);
+●int fclose (FILE * stream); закрывает stream
+●int feof (FILE * stream); 						поверяет, что в потоке stream достигнут состояние EOF
+● EOF — End Of File (конец файла) 
+
+Все функции возвращают указатель на открытый поток или NULL, если открыть не удалось.
+
+path - 	путь к файлу
+mode - 	как этот файл открываем (режим открытия файла)
+Функция	Что делает
+fopen	Открывает файл path способом mode
+fdopen	Дооткрывает файловый дескриптор fd до потока способом mode
+freopen	Закрывает поток stream. Открывает файл path способом mode
+
+path — путь к файлу
+● Абсолютный
+"/home/gr978/st97801/hello.c"
+● Относительный
+"../work/t1.c"
+"data.txt"
+● Если у вас Windows:
+– пишем в cmd.exe
+"C:\Users\natasha\hello.c"
+– пишем строковую константу в С (экранируем \)
+"C:\\Users\\natasha\\hello.c"
+
+	mode - режим открытия файла
+	mode - строка, может принимать одно из следующих значений (другие нельзя):
+Основные режимы:
+mode	сокращение от	значение
+"r"	read	чтение
+"w"	write	запись (обрезать файл до 0 длины)
+"a"	append	запись (в конец файла)
+Дополнительные режимы:
+mode	сокращение от	значение
+"r+"	rw	чтение и запись (длина файла обрезается до 0)
+"w+"	rw	то же самое
+"a+"	ra	чтение из файла и запись (в конец файла)
+
+Связь режима адресации функции fopen и флагов системного вызова open`
+Таблица быть может понадобится вам в следующем курсе по IPC. Сейчас вам эта информация не нужна.
+
+fopen() mode	open flag
+"r"	O_RDONLY
+"w"	O_WRONLY | O_CREAT | O_TRUNC
+"a"	O_WRONLY | O_CREAT | O_APPEND
+"r+"	O_RDWR
+"w+"	O_RDWR | O_CREAT | O_TRUNC
+"a+"	O_RDWR | O_CREAT | O_APPEND
+
+Открыл? Закрой!
+После того, как файл нам не нужен, его надо закрыть функцией fclose
+int fclose(FILE *stream);
+В случае успеха функция возвращает 0. Иначе - EOF. Попытка чтения или записи в закрытый поток приводит к неопределенному поведению.
+
+EOF - достигнут конец файла
+Когда в файле, открытом на чтение, закончились данные, то поток переходит в состояние EOF (End Of File, конец файла).
+
+Функция feof проверяет, находится ли поток stream в состоянии EOF или нет. Возвращает 1, если достигнуто состояние EOF, иначе возвращает 0.
+
+int feof(FILE * stream);
