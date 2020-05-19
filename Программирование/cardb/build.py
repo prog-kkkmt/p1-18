@@ -1,8 +1,9 @@
-#!/usr/bin/python3
+# ===== CONFIG =====
 COMPILER = 'g++'
 SRC_DIR = 'src'
 MODULE_FILES = ['main.cpp', 'lib.cpp']
 BIN_NAME = 'cardb'
+# === END CONFIG ===
 
 
 import subprocess
