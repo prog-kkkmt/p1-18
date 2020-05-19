@@ -1,7 +1,8 @@
+#!/usr/bin/python3
 # ===== CONFIG =====
 COMPILER = 'g++'
 SRC_DIR = 'src'
-MODULE_FILES = ['main.cpp', 'lib.cpp']
+SRC_FILES = ['main.cpp', 'lib.cpp']
 BIN_NAME = 'cardb'
 # === END CONFIG ===
 
@@ -50,7 +51,7 @@ if os.path.isfile('build/bin'):
 os.chdir('build/obj')
 #print(os.getcwd())
 comp_procs = dict()
-for m in MODULE_FILES:
+for m in SRC_FILES:
     command_object = [COMPILER, debug, '-c', '../../'+SRC_DIR+'/'+m]
     print("Object file compilation: "+' '.join(command_object))
     comp_procs[subprocess.Popen(' '.join(command_object), shell=True)] = False
