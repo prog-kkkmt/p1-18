@@ -1,0 +1,2 @@
+all:
+	g++ -Wall -Wextra -g -o test3 3.cpp
