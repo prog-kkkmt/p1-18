@@ -14,7 +14,7 @@ int main(){
     	 for(size_t i = 0; i != m; i++)
 		mtrx[i] = new int [n];
 
-	cout << "Введите все элементы матрцы: " << endl;
+	cout << "Введите все элементы матрицы: " << endl;
 	for(size_t i = 0; i != m; i++)
 		for(size_t j = 0; j != n; j++)
 			cin >> mtrx[i][j];
