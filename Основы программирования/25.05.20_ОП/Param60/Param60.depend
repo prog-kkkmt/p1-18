@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1590425314 source:c:\users\peter\desktop\param60\main.cpp
+	<iostream>
+	"tdate.h"
+	<cmath>
+
+1590422529 c:\users\peter\desktop\param60\tdate.h
+
