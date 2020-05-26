@@ -1,7 +1,7 @@
 #include <vector>
 #include <string>
 
-
+namespace orders_db {
 struct Date { // дата
     int year; // год
     int month; // месяц
@@ -29,8 +29,10 @@ void edit(vOrders &v, int orderid, Date new_date);
 
 void save(vOrders v, std::ofstream out);
 
-void append();
+void append(vOrders & v, Order o);
 
 void del();
 
-void vsort();
+void sort();
+
+}

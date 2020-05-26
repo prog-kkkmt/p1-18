@@ -3,38 +3,41 @@
 #include "db.h"
 
 // Редактировать сумму заказа
-void edit(vOrders &v, int orderid, Date new_date) {
+void orders_db::edit(vOrders &v, int orderid, Date new_date) {
 }
 
 // Загрузить из файла
-void load(std::vector<Order> & v, std::string fname) {
+void orders_db::load(std::vector<Order> & v, std::string fname) {
     Order order;
     std::ifstream in("orders.txt");
 
     char delim;
     v.clear();
     while (in >> order.order_id >> order.saler >> order.customer >>
-        order.date.year >> delim >> order.date.month >> delim >> order.date.day >> delim >> order.cost)
+        order.date.day >> delim >> order.date.month >> delim >> order.date.year >> delim >> order.cost)
     {
         v.push_back(order);
     }
 }
 
 // Выгрузить в файл
-void save(vOrders v, std::ofstream out) {
+void orders_db::save(vOrders v, std::ofstream out) {
+
 }
 
 // Добавить новый заказ
-void append() {
+void orders_db::append(vOrders & v, Order o) {
+    v.push_back(o);
 }
 
 // Удалить заказ
-void del() {
+void orders_db::del(vOrders & v, int id) {
 }
 
 // Компаратор для сортировки по убыванию суммы
 bool comp_sum (const Saler& a, const Saler& b) { return (a.sum > b.sum); }
 
 // Сортировать по дате
-void vsort() {
+void orders_db::sort(vOrders & v) {
+
 }
