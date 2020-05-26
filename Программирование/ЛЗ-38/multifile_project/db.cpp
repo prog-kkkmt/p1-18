@@ -34,8 +34,8 @@ void orders_db::append(vOrders & v, Order o) {
 void orders_db::del(vOrders & v, int id) {
 }
 
-// Компаратор для сортировки по убыванию суммы
-bool comp_sum (const Saler& a, const Saler& b) { return (a.sum > b.sum); }
+// // Компаратор для сортировки по убыванию суммы
+// bool comp_sum (const orders_db::Saler& a, const orders_db::Saler& b) { return (a.sum > b.sum); }
 
 // Сортировать по дате
 void orders_db::sort(vOrders & v) {

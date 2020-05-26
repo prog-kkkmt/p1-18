@@ -31,8 +31,8 @@ void save(vOrders v, std::ofstream out);
 
 void append(vOrders & v, Order o);
 
-void del();
+void del(vOrders & v, int id);
 
-void sort();
+void sort(vOrders & v);
 
 }

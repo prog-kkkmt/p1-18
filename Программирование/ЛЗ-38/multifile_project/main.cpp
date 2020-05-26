@@ -32,7 +32,7 @@ void print_salers(vOrders v) {
             salers.push_back(s);
         }
     }
-    // sort(salers.begin(), salers.end(), comp_sum);
+    //sort(salers.begin(), salers.end(), comp_sum);
     for (size_t i = 0; i < salers.size(); i++)
         cout << salers[i].name << "\t" << salers[i].sum << endl;
     cin.get();
