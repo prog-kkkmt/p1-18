@@ -1,7 +1,9 @@
 #include <iostream>
 #include <vector>
+#include <sstream>
 #include "orders_db.h"
 using namespace std;
+using namespace orders_db;
 
 vector<string> split_whitespace(string s)
 {
