@@ -30,27 +30,27 @@ void menu() {
     cout << "8. Выдать общий список\n";
 }
 
-// Выдать свод по каждому Продавцу (по убыванию общей суммы)
-void print_salers(vOrders v) {
-    vector <Saler> salers;
-    for (size_t i = 0; i < v.size(); i++) {
-        size_t j;
-        for (j = 0; j < salers.size() && salers[j].name != v[i].saler; j++)
-            ;
-        if (j < salers.size())
-            salers[j].sum += v[i].cost;
-        else {
-            Saler s;
-            s.name = v[i].saler;
-            s.sum = v[i].cost;
-            salers.push_back(s);
-        }
-    }
-    //sort(salers.begin(), salers.end(), comp_sum);
-    for (size_t i = 0; i < salers.size(); i++)
-        cout << salers[i].name << "\t" << salers[i].sum << endl;
-    cin.get();
-}
+// // Выдать свод по каждому Продавцу (по убыванию общей суммы)
+// void print_salers(vOrders v) {
+//     vector <Saler> salers;
+//     for (size_t i = 0; i < v.size(); i++) {
+//         size_t j;
+//         for (j = 0; j < salers.size() && salers[j].name != v[i].saler; j++)
+//             ;
+//         if (j < salers.size())
+//             salers[j].sum += v[i].cost;
+//         else {
+//             Saler s;
+//             s.name = v[i].saler;
+//             s.sum = v[i].cost;
+//             salers.push_back(s);
+//         }
+//     }
+//     //sort(salers.begin(), salers.end(), comp_sum);
+//     for (size_t i = 0; i < salers.size(); i++)
+//         cout << salers[i].name << "\t" << salers[i].sum << endl;
+//     cin.get();
+// }
 
 // Выдать общий список
 void print_all(vOrders v) {

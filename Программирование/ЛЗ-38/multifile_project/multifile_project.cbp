@@ -13,6 +13,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add option="-std=c++17" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -22,6 +23,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add option="-std=c++17" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -34,12 +36,14 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add option="-std=c++17" />
 				</Compiler>
 			</Target>
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
+			<Add option="-std=c++17" />
 		</Compiler>
 		<Unit filename="main.cpp" />
 		<Unit filename="orders_db.cpp" />

@@ -23,14 +23,14 @@ void load(vOrders & v, std::string fname);
 
 void save(vOrders & v, std::string fname);
 
-void orders_db::append(vOrders & v,
+void append(vOrders & v,
     std::optional<int>         order_id = std::nullopt,
     std::optional<std::string> saler = std::nullopt,
     std::optional<std::string> customer = std::nullopt,
     std::optional<Date>        date = std::nullopt,
     std::optional<double>      cost = std::nullopt);
 
-void orders_db::edit(vOrders & v,
+void edit(vOrders & v,
     std::optional<int>         order_id = std::nullopt,
     std::optional<std::string> saler = std::nullopt,
     std::optional<std::string> customer = std::nullopt,
