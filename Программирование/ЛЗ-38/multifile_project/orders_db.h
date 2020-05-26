@@ -1,5 +1,6 @@
 #include <vector>
 #include <string>
+#include <optional>
 
 namespace orders_db {
 struct Date { // дата
@@ -16,20 +17,25 @@ struct Order { // Заказ
     double cost; // Сумма заказа
 };
 
-struct Saler {
-    std::string name;
-    double sum;
-};
-
 using vOrders = std::vector <Order>;
 
 void load(vOrders & v, std::string fname);
 
-void edit(vOrders &v, int orderid, Date new_date);
+void save(vOrders & v, std::string fname);
 
-void save(vOrders v, std::ofstream out);
+void orders_db::append(vOrders & v,
+    std::optional<int>         order_id = std::nullopt,
+    std::optional<std::string> saler = std::nullopt,
+    std::optional<std::string> customer = std::nullopt,
+    std::optional<Date>        date = std::nullopt,
+    std::optional<double>      cost = std::nullopt);
 
-void append(vOrders & v, Order o);
+void orders_db::edit(vOrders & v,
+    std::optional<int>         order_id = std::nullopt,
+    std::optional<std::string> saler = std::nullopt,
+    std::optional<std::string> customer = std::nullopt,
+    std::optional<Date>        date = std::nullopt,
+    std::optional<double>      cost = std::nullopt);
 
 void del(vOrders & v, int id);
 
