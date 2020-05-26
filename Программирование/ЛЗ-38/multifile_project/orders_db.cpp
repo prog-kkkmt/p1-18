@@ -24,7 +24,7 @@ void orders_db::load(std::vector<Order> & v, std::string fname)
 void orders_db::save(vOrders & v, std::string fname) 
 {
     std::ofstream out(fname);
-    
+
     for (orders_db::Order o : v)
     {
         out << o.order_id << '\t' << o.saler << '\t' << o.customer << '\t' << o.date.day << "." << o.date.month << "." << o.date.year << '\t' << o.cost << std::endl;
@@ -35,11 +35,11 @@ void orders_db::save(vOrders & v, std::string fname)
 
 // Добавить новый заказ
 void orders_db::append(vOrders & v,
-    std::optional<int>         order_id = std::nullopt,
-    std::optional<std::string> saler = std::nullopt,
-    std::optional<std::string> customer = std::nullopt,
-    std::optional<Date>        date = std::nullopt,
-    std::optional<double>      cost = std::nullopt)
+    std::optional<int>         order_id,
+    std::optional<std::string> saler,
+    std::optional<std::string> customer,
+    std::optional<Date>        date,
+    std::optional<double>      cost)
 {
     Order o;
 
@@ -64,11 +64,11 @@ void orders_db::append(vOrders & v,
 
 // Редактировать заказ
 void orders_db::edit(vOrders & v,
-    std::optional<int>         order_id = std::nullopt,
-    std::optional<std::string> saler = std::nullopt,
-    std::optional<std::string> customer = std::nullopt,
-    std::optional<Date>        date = std::nullopt,
-    std::optional<double>      cost = std::nullopt)
+    std::optional<int>         order_id,
+    std::optional<std::string> saler,
+    std::optional<std::string> customer,
+    std::optional<Date>        date,
+    std::optional<double>      cost)
 {
     auto res = std::find_if(v.begin(), v.end(),
                             [order_id](const Order & item) -> bool {return item.order_id == order_id;});

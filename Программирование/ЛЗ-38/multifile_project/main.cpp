@@ -63,7 +63,7 @@ int main() {
     system("chcp 1251>nul");
     vOrders v;
     string fname = "orders.txt";
-    while (choice != 1) {
+    while (true) {
         menu();
         string command;
         cin >> command;
@@ -85,7 +85,7 @@ int main() {
 
         }
         else if (words[0] == "delete") { // Удалить
-            print("delete");
+            printf("delete");
         }
         else if (words[0] == "sort") { // Сортировать
 
