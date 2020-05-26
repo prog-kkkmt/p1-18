@@ -1,7 +1,19 @@
 #include <iostream>
 #include <vector>
-#include "db.h"
+#include "orders_db.h"
 using namespace std;
+
+vector<string> split_whitespace(string s)
+{
+    istringstream strs;
+    vector<string> splited_string;
+
+    strs.str(s);
+    splited_string.resize(1);
+    for (int i=1; strs >> splited_string[i-1]; splited_string.resize(++i));
+    splited_string.pop_back();
+    return splited_string;
+}
 
 // Меню
 void menu() {
@@ -49,51 +61,39 @@ int main() {
     system("chcp 1251>nul");
     vOrders v;
     string fname = "orders.txt";
-    int choice = -1;
-    while (choice != 0) {
+    while (choice != 1) {
         menu();
-        cin >> choice;
-        switch (choice) {
-        case 0:
-            // 0. Выход
-            break;
-        case 1:
-            // 1. Загрузить из файла
-            load(v, fname);
-            break;
-        case 2:
-            // 2. Выгрузить в файл
-            // save();
-            break;
-        case 3:
-            // 3. Добавить новый заказ
-            append();
-            break;
-        case 4:
-            // 4. Редактировать сумму заказа
-            // edit();
-            break;
-        case 5:
-            // 5. Удалить заказ
-            del();
-            break;
-        case 6:
-            // 6. Сортировать по дате
-            vsort();
-            break;
-        case 7:
-            // 7. Выдать свод по каждому Продавцу (по убыванию общей суммы)
-            print_salers(v);
-            break;
-        case 8:
-            // 8. Выдать общий список
-            print_all(v);
-            break;
-        default:
-            cout << "Неверный ввод. От 0 до 8" << endl;
-            break;
+        string command;
+        cin >> command;
+        vector<string> words = split_whitespace(command);
+        cout << words[0];
+        if (words[0] == "exit") { // Выход
+
+        }
+        else if (words[0] == "load") { // Загрузить
+
+        }
+        else if (words[0] == "save") {  // Выгрузить
+
+        }
+        else if (words[0] == "add") { // Добавить
+
+        }
+        else if (words[0] == "edit") { // Редактировать
+
+        }
+        else if (words[0] == "delete") { // Удалить
+            print("delete");
+        }
+        else if (words[0] == "sort") { // Сортировать
+
+        }
+        else if (words[0] == "report") { // Отчет
+
+        }
+        else if (words[0] == "all") { // общий список
+
         }
     }
-
     return 0;
 }

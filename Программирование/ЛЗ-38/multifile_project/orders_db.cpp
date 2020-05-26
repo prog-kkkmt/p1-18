@@ -1,6 +1,6 @@
 #include <algorithm>
 #include <fstream>
-#include "db.h"
+#include "orders_db.h"
 
 // Редактировать сумму заказа
 void orders_db::edit(vOrders &v, int orderid, Date new_date) {
