@@ -35,7 +35,7 @@ void orders_db::save(vOrders & v, std::string fname)
 
 // Добавить новый заказ
 void orders_db::append(vOrders & v,
-    std::optional<int>         order_id,
+    int                        order_id,
     std::optional<std::string> saler,
     std::optional<std::string> customer,
     std::optional<Date>        date,
@@ -43,8 +43,7 @@ void orders_db::append(vOrders & v,
 {
     Order o;
 
-    if (order_id.has_value())
-        o.order_id = order_id.value();
+    o.order_id = order_id;
 
     if (saler.has_value())
         o.saler = saler.value();
@@ -64,18 +63,15 @@ void orders_db::append(vOrders & v,
 
 // Редактировать заказ
 void orders_db::edit(vOrders & v,
-    std::optional<int>         order_id,
+    int                        order_id,
     std::optional<std::string> saler,
     std::optional<std::string> customer,
     std::optional<Date>        date,
     std::optional<double>      cost)
 {
-    auto res = std::find_if(v.begin(), v.end(),
-                            [order_id](const Order & item) -> bool {return item.order_id == order_id;});
+    auto res = get_iter(v, order_id);
     if (res == v.end())
         std::runtime_error("order_id not found!");
-
-
 
     if (saler.has_value())
         res->saler = saler.value();
@@ -91,15 +87,18 @@ void orders_db::edit(vOrders & v,
 }
 
 // Удалить заказ
-void orders_db::del(vOrders & v, int id) {
-    v.erase(v.begin()+id);
+void orders_db::del(vOrders & v, int order_id) {
+    v.erase(get_iter(v, order_id));
 }
-
-// // Компаратор для сортировки по убыванию суммы
-// bool comp_sum (const orders_db::Saler& a, const orders_db::Saler& b) { return (a.sum > b.sum); }
 
 // Сортировать по дате
 void orders_db::sort(vOrders & v) {
     std::sort(v.begin(), v.end(),
         [](const orders_db::Order & a, const orders_db::Order & b) -> bool { return (a.cost > b.cost); });
+}
+
+std::vector<orders_db::Order>::iterator orders_db::get_iter(vOrders & v, int order_id)
+{
+    return std::find_if(v.begin(), v.end(),
+                        [order_id](const Order & item) -> bool {return item.order_id == order_id;});
 }

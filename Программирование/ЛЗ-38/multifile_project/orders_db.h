@@ -24,21 +24,22 @@ void load(vOrders & v, std::string fname);
 void save(vOrders & v, std::string fname);
 
 void append(vOrders & v,
-    std::optional<int>         order_id = std::nullopt,
+    int                        order_id,
     std::optional<std::string> saler = std::nullopt,
     std::optional<std::string> customer = std::nullopt,
     std::optional<Date>        date = std::nullopt,
     std::optional<double>      cost = std::nullopt);
 
 void edit(vOrders & v,
-    std::optional<int>         order_id = std::nullopt,
+    int                        order_id,
     std::optional<std::string> saler = std::nullopt,
     std::optional<std::string> customer = std::nullopt,
     std::optional<Date>        date = std::nullopt,
     std::optional<double>      cost = std::nullopt);
 
-void del(vOrders & v, int id);
+void del(vOrders & v, int order_id);
 
 void sort(vOrders & v);
 
+std::vector<Order>::iterator get_iter(vOrders & v, int order_id);
 }
