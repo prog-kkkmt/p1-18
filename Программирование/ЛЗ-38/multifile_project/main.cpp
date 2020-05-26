@@ -78,7 +78,7 @@ int main() {
         else if (words[0] == "save") {  // Выгрузить
             save(v, fname);
         }
-       else if (words[0] == "add") { // Добавить
+        else if (words[0] == "add") { // Добавить
             if (words.size() < 6){
                 cout << "Too few arguments" << endl;
                 continue;
@@ -136,7 +136,6 @@ int main() {
             print_all(v);
         }
         else if (words[0] == "help") {
-<<<<<<< Updated upstream
             cout << "load - load file" << endl;
             cout << "save - save file" << endl;
             cout << "add - add info (d.m.Y)" << endl;
@@ -147,9 +146,6 @@ int main() {
             cout << "help - call command's info" << endl;
             cout << "report - make report for period" << endl;
             cout << "delete - delete info" << endl;
-=======
-            cout << "available commands: load, save, add, edit, delete, sort, report, all\n";
->>>>>>> Stashed changes
         }
     }
     return 0;
