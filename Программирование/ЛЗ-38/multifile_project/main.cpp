@@ -84,8 +84,8 @@ int main() {
             cout << "Too few arguments" << endl;
             continue;
            }
-  //         struct Date sock;
-
+           Date d;
+//            sscanf(words[4].c_str(), "%d.%d.%d", &d.day, &d.month, &d.year)
  //           append();
         }
         else if (words[0] == "edit") { // Редактировать
@@ -110,7 +110,16 @@ int main() {
             print_all(v);
         }
         else if (words[0] == "help") {
-            cout << "available command's: load, save, add, edit, delete, sort, report, all\n";
+            cout << "load - load file" << endl;
+            cout << "save - save file" << endl;
+            cout << "add - add info (d.m.Y)" << endl;
+            cout << "exit" << endl;
+            cout << "edit - edit info for id (d.m.Y)" << endl;
+            cout << "sort - sort information" << endl;
+            cout << "all - checkout all info" << endl;
+            cout << "help - call command's info" << endl;
+            cout << "report - make report for period" << endl;
+            cout << "delete - delete info" << endl;
         }
     }
     return 0;
