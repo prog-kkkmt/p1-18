@@ -21,21 +21,6 @@ vector<string> split_whitespace(string s)
     return splited_string;
 }
 
-// Меню
-/*
-void menu() {
-    cout << "0. Выход\n";
-    cout << "1. Загрузить из файла\n";
-    cout << "2. Выгрузить в файл\n";
-    cout << "3. Добавить новый заказ\n";
-    cout << "4. Редактировать сумму заказа\n";
-    cout << "5. Удалить заказ\n";
-    cout << "6. Сортировать по дате\n";
-    cout << "7. Выдать свод по каждому Продавцу (по убыванию общей суммы)\n";
-    cout << "8. Выдать общий список\n";
-}
-*/
-
 // Выдать свод по каждому Продавцу (по убыванию общей суммы)
 void print_sellers(vOrders & v) {
     vector<pair<string, double>> sellers;

@@ -1,6 +1,7 @@
 #include <algorithm>
 #include <fstream>
 #include <optional>
+#include <ctime>
 #include "orders_db.h"
 
 // Загрузить из файла
@@ -101,11 +102,16 @@ void orders_db::del(vOrders & v, int order_id) {
 // Сортировать по дате
 void orders_db::sort(vOrders & v) {
     std::sort(v.begin(), v.end(),
-        [](const orders_db::Order & a, const orders_db::Order & b) -> bool { return (a.cost > b.cost); });
+        [](const orders_db::Order & a, const orders_db::Order & b) -> bool { 
+            tm a_tm = {0}, b_tm = {0};
+            a_tm.tm_year = a.date.year; a_tm.tm_mon = a.date.month; a_tm.tm_mday = a.date.day;
+            b_tm.tm_year = b.date.year; b_tm.tm_mon = b.date.month; b_tm.tm_mday = b.date.day;
+            return mktime(&a_tm) > mktime(&b_tm); 
+        });
 }
 
 orders_db::vOrders::iterator orders_db::find_iter(vOrders & v, int order_id)
 {
     return std::find_if(v.begin(), v.end(),
-                        [order_id](const Order & item) -> bool {return item.order_id == order_id;});
+                        [order_id](const Order & item) -> bool { return item.order_id == order_id; });
 }
