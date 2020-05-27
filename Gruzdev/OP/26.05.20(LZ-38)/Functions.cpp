@@ -22,7 +22,7 @@ void load(vector<Order> *v, string fname) {
     {
         v->push_back(order);
     }
-
+	in.close();
    cout << endl;
 }
 
@@ -33,7 +33,7 @@ void save(vOrders &v, string fname_o){
 
 	for(size_t i = 0; i != v.size(); i++)
 		out << v[i].order_id << "  \t" << v[i].saler << "  \t" << v[i].customer << "   \t" << v[i].date.year << "." << v[i].date.month << "." << v[i].date.day << "  \t" << v[i].cost << endl;
-
+	out.close();
 }
 
 // Добавить новый заказ
