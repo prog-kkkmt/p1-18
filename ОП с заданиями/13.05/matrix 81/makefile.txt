@@ -1,0 +1,2 @@
+âñå!:
+ G++ -Wall-Wextra-g-o out Matrix81.ÑÐÐ

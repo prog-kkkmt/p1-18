@@ -1,0 +1,37 @@
+/ * * Matrix48. Дана матрица размера M ? N и целые числа K1 и K2 (1 ? K1 < K2 ? N). Поменять местами столбцы матрицы с номерами K1 и K2.*/
+//Решение. Попов А.А, 13.05.2020
+
+#include <iostream>
+использование  пространства  имен std;
+int main(){
+	const size_t MAXN = 100;
+	size_t m, n;
+	size_t k1, k2;
+ cout < < " входные данные M и N: ";
+ cin > > > m > > > > > > > > n;
+	int mtrx[MAXN][MAXN];
+ cout < < " Input mtrx MxN: <;
+	для ( size_t i = 0; i < m; ++i) //-----------
+		для ( size_t j = 0; j < n; ++j) / / Input mtrx
+ cin > > > mtrx[i][j]; > > //-----------
+ cout < < входные сигналы k1 и k2: ";
+ cin > > > k1 > > > > > > > > k2;
+	
+	если (k1 != k2) {//колонка замены k1 и k2
+		int temp = 0;
+		для ( size_t i = 0; i){
+ temp = mtrx[i][k1 - 1];
+ mtrx[i][k1 - 1] = mtrx[i][k2 - 1];
+ mtrx[i][k2-1] = temp;
+		}
+	}
+
+ cout < < endl < < вывод: <;
+	для ( size_t i = 0; i){
+		для ( size_t j = 0; j)
+ cout < < mtrx[i][j]<< '  ';
+ cout <;
+	}
+
+	возврат  0;
+}

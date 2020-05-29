@@ -1,0 +1,33 @@
+/ * * Матрикс 18. Дана матрица размера M ? N и целое число K (1 ? K ? N). Найти сумму и произведение элементов K-го столбца данной матрицы. */
+// Попов А.А. 13.05.2020
+
+#include <iostream>
+использование  пространства  имен std;
+
+
+int main(){
+   int sum = 0, prois = 1;
+   size_t m, n, k;
+ cout < < " Input M x N: ";
+ cin > > > m > > > > > > > > n;
+   int mtrx[m][n];
+ cout < < " Input mtrix M x N: <;
+
+   для ( size_t i = 0; i != m; i++)
+	для ( size_t j = 0; j != n; j++)
+ cin >>> mtrx[i][j];
+
+ cout < < " Input k: ";
+ cin >>> k;
+
+ cout <;
+	
+   для ( size_t i = 0; i){
+ sum += mtrx[i][k - 1];
+ prois *= mtrx[i][k - 1];
+}
+
+ cout < < "Sum =" < < sum < < endl < < Prois = " < < prois <;
+
+    возврат  0;
+}

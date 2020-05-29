@@ -1,0 +1,27 @@
+/ * * Матрикс 8. Дана матрица размера M ? N и целое число K (1 ? K ? N). Вывести элементы K-го столбца данной матрицы. */
+// Попов А.А. 13.05.2020
+
+#include <iostream>
+использование  пространства  имен std;
+
+int main(){
+    size_t m, n, k;
+ cout < < " Input M x N: ";
+ cin > > > m > > > > > > > > n;
+    int mtrx[m][n];
+ cout < < " Input mtrx M x N: <;
+
+	для ( size_t i = 0; i)
+		для ( size_t j = 0; j)
+ cin >>> mtrx[i][j];
+
+ cout < < " Input k: ";
+ cin >>> k;
+
+ cout <;
+	для ( size_t i = 0; i)
+ cout < < mtrx[i][k-1]<< '  ';
+ cout <;
+
+	возврат  0;
+}

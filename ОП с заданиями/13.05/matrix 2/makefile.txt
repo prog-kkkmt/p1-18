@@ -1,0 +1,2 @@
+âñå!:
+ G++ -Wall-Wextra-G-o test1 Matrix2.ÑÐÐ

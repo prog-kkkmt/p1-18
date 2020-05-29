@@ -1,0 +1,2 @@
+âñå!:
+ G++ -Wall-Wextra-G-o test2 Matrix8.ÑÐÐ
