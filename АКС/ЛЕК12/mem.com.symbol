@@ -1,0 +1,16 @@
+< THE SYMBOL TABLE >  mem.com  --  emu8086 assembler version: 4.08 
+===================================================================================================
+Name                     	Offset    	Size      	Type      	Segment   
+===================================================================================================
+COUNTER                  	00100     	2         	VAR       	(NOSEG)   
+FILENAME                 	00102     	1         	VAR       	(NOSEG)   
+SETBIT                   	0010F     	1         	VAR       	(NOSEG)   
+RAWDATA                  	00110     	2         	VAR       	(NOSEG)   
+STRING                   	00368     	1         	VAR       	(NOSEG)   
+PAGES                    	003B8     	1         	VAR       	(NOSEG)   
+NUMBERS                  	003C2     	1         	VAR       	(NOSEG)   
+PAGE_ADDR                	003C7     	2         	VAR       	(NOSEG)   
+===================================================================================================
+[ 01.06.2020  --  23:54:05 ] 
+< END >
+ 

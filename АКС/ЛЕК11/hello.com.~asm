@@ -1,0 +1,10 @@
+ORG 100h
+MOV AH, 02h
+MOV DL, 41h
+INT 21h
+INT 20h
+RET
+
+
+
+; [SOURCE]: Z:\home\lanode\storage\Development\p1-18\¿ —\À≈ 11\hello.asm
