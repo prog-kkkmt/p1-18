@@ -1,6 +1,6 @@
-/**
-Êîìàíäíûé ïðîýêò ïî Îñíîâàì Ïðîãðàìèðîâàíèÿ
-Ï1-18 Ðîãîëåâ Â. Áðóñíèê Â. Íèêîëàé Ì.
+ï»¿/**
+ÐšÐ¾Ð¼Ð°Ð½Ð´Ð½Ñ‹Ð¹ Ð¿Ñ€Ð¾ÑÐºÑ‚ Ð¿Ð¾ ÐžÑÐ½Ð¾Ð²Ð°Ð¼ ÐŸÑ€Ð¾Ð³Ñ€Ð°Ð¼Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ñ
+ÐŸ1-18 Ð Ð¾Ð³Ð¾Ð»ÐµÐ² Ð’. Ð‘Ñ€ÑƒÑÐ½Ð¸Ðº Ð’. ÐÐ¸ÐºÐ¾Ð»Ð°Ð¹ Ðœ.
 06.06.2020
 */
 
@@ -32,47 +32,47 @@ int main()
     struct Stats tomo; ///struct
     int f;
     /// cin >> tomo.joyN >> tomo.hungN >> tomo.thirstN;
-    tomo.hungN = tomo.thirstN = tomo.joyN = MAX; /// Óñòàíîâêà âñåõ ïàðàìåòðîâ íà ìàêñèìóì
-    tomo.days = 0; /// ñ÷åò÷èê äíåé
-    while (1)  /// Äåíü
+    tomo.hungN = tomo.thirstN = tomo.joyN = MAX; /// Ð£ÑÑ‚Ð°Ð½Ð¾Ð²ÐºÐ° Ð²ÑÐµÑ… Ð¿Ð°Ñ€Ð°Ð¼ÐµÑ‚Ñ€Ð¾Ð² Ð½Ð° Ð¼Ð°ÐºÑÐ¸Ð¼ÑƒÐ¼
+    tomo.days = 0; /// ÑÑ‡ÐµÑ‚Ñ‡Ð¸Ðº Ð´Ð½ÐµÐ¹
+    while (1)  /// Ð”ÐµÐ½ÑŒ
     {
-        /// Sleep(1000) ///Çàäåðæêà
-        tomo.days++; /// Ïîäñ÷åò êîë-âà äíåé
-        if (tomo.hungN == 0 || tomo.thirstN == 0) /// Åñëè "Òîìî" ãîëîäåí èëè õî÷åò ïèòü ,
-            tomo.joyN--;                           ///Êîë-âî ñ÷àñòüÿ óìåíüøàåòüñÿ
+        /// Sleep(1000) ///Ð—Ð°Ð´ÐµÑ€Ð¶ÐºÐ°
+        tomo.days++; /// ÐŸÐ¾Ð´ÑÑ‡ÐµÑ‚ ÐºÐ¾Ð»-Ð²Ð° Ð´Ð½ÐµÐ¹
+        if (tomo.hungN == 0 || tomo.thirstN == 0) /// Ð•ÑÐ»Ð¸ "Ð¢Ð¾Ð¼Ð¾" Ð³Ð¾Ð»Ð¾Ð´ÐµÐ½ Ð¸Ð»Ð¸ Ñ…Ð¾Ñ‡ÐµÑ‚ Ð¿Ð¸Ñ‚ÑŒ ,
+            tomo.joyN--;                           ///ÐšÐ¾Ð»-Ð²Ð¾ ÑÑ‡Ð°ÑÑ‚ÑŒÑ ÑƒÐ¼ÐµÐ½ÑŒÑˆÐ°ÐµÑ‚ÑŒÑÑ
         if (tomo.hungN != 0)
             tomo.hungN--;
         if (tomo.thirstN != 0)
             tomo.thirstN--;
 
 
-        system("cls"); ///Î÷èñòêà êîíñîëè
-        if (tomo.joyN == 0) /// Åñëè êîë-âî ñ÷àñòüÿ óìåíüøàåòüñÿ äî íóëÿ öûêë çàêàí÷èâàåòüñÿ
+        system("cls"); ///ÐžÑ‡Ð¸ÑÑ‚ÐºÐ° ÐºÐ¾Ð½ÑÐ¾Ð»Ð¸
+        if (tomo.joyN == 0) /// Ð•ÑÐ»Ð¸ ÐºÐ¾Ð»-Ð²Ð¾ ÑÑ‡Ð°ÑÑ‚ÑŒÑ ÑƒÐ¼ÐµÐ½ÑŒÑˆÐ°ÐµÑ‚ÑŒÑÑ Ð´Ð¾ Ð½ÑƒÐ»Ñ Ñ†Ñ‹ÐºÐ» Ð·Ð°ÐºÐ°Ð½Ñ‡Ð¸Ð²Ð°ÐµÑ‚ÑŒÑÑ
             break;
         else
             printstate(tomo);
-        printImage("1.txt"); /// Âûâîä êàðòèíêè â ôîðìàòå .txt
-        printMenu();    /// Âûâîä ìåíþ äåéñòâèé
+        printImage("1.txt"); /// Ð’Ñ‹Ð²Ð¾Ð´ ÐºÐ°Ñ€Ñ‚Ð¸Ð½ÐºÐ¸ Ð² Ñ„Ð¾Ñ€Ð¼Ð°Ñ‚Ðµ .txt
+        printMenu();    /// Ð’Ñ‹Ð²Ð¾Ð´ Ð¼ÐµÐ½ÑŽ Ð´ÐµÐ¹ÑÑ‚Ð²Ð¸Ð¹
         cin >> f;
-        switch(f)  /// Äåéñòâèÿ
+        switch(f)  /// Ð”ÐµÐ¹ÑÑ‚Ð²Ð¸Ñ
         {
         case 1:
         {
-            tomo.hungN += 5; /// +ãîëîä
+            tomo.hungN += 5; /// +Ð³Ð¾Ð»Ð¾Ð´
             if (tomo.hungN >= MAX)
                 tomo.hungN = MAX;
             break;
         }
         case 2:
         {
-            tomo.thirstN += 5; /// +æàæäà
+            tomo.thirstN += 5; /// +Ð¶Ð°Ð¶Ð´Ð°
             if (tomo.thirstN >= MAX)
                 tomo.thirstN = MAX;
             break;
         }
         case 3:
         {
-            tomo.joyN += 5; /// +ñ÷àñòüå
+            tomo.joyN += 5; /// +ÑÑ‡Ð°ÑÑ‚ÑŒÐµ
             if (tomo.joyN >= MAX)
                 tomo.joyN = MAX;
             break;
@@ -81,40 +81,40 @@ int main()
             break;
         }
     }
-    cout << "\t  Ñ÷åò: " << tomo.days << " Äíåé(ÿ)" << endl; /// Êîíöîâêà ïðè îêîí÷àíèè öèêëà
-    printImage("2.txt"); /// Ãðóñòíûé  "Òîìî"
+    cout << "\t  Ð¡Ñ‡ÐµÑ‚: " << tomo.days << " Ð”Ð½ÐµÐ¹(Ñ)" << endl; /// ÐšÐ¾Ð½Ñ†Ð¾Ð²ÐºÐ° Ð¿Ñ€Ð¸ Ð¾ÐºÐ¾Ð½Ñ‡Ð°Ð½Ð¸Ð¸ Ñ†Ð¸ÐºÐ»Ð°
+    printImage("2.txt"); /// Ð“Ñ€ÑƒÑÑ‚Ð½Ñ‹Ð¹  "Ð¢Ð¾Ð¼Ð¾"
     cout << "***************GAME OVER*************" << endl;
     return 0;
 }
 
-void printstate(struct Stats tomo)  /// Âûâîä õàð-èê "Òîìî"
+void printstate(struct Stats tomo)  /// Ð’Ñ‹Ð²Ð¾Ð´ Ñ…Ð°Ñ€-Ð¸Ðº "Ð¢Ð¾Ð¼Ð¾"
 {
     string joy(tomo.joyN,'Q');
     string hung(tomo.hungN,'Q');
     string thirst(tomo.thirstN,'Q');
 
-    cout << "\t\t\t\t\t\t\t\t\t Äåíü:" << tomo.days << endl; /// Ñ÷åò÷èê äíåé
+    cout << "\t\t\t\t\t\t\t\t\t Ð”ÐµÐ½ÑŒ:" << tomo.days << endl; /// Ð¡Ñ‡ÐµÑ‚Ñ‡Ð¸Ðº Ð´Ð½ÐµÐ¹
     cout << "**************************************" << endl;
-    cout << "* Ñ÷àñòüå: " << joy << endl;
-    cout << "* Ãîëîä: " << hung << endl;
-    cout << "* Æàæäà: " << thirst <<endl;
+    cout << "* Ð¡Ñ‡Ð°ÑÑ‚ÑŒÐµ: " << joy << endl;
+    cout << "* Ð“Ð¾Ð»Ð¾Ð´: " << hung << endl;
+    cout << "* Ð–Ð°Ð¶Ð´Ð°: " << thirst <<endl;
 }
 
-void printImage(string path) /// Ïðè¸ì èçîáðàæåíèÿ è âûâîä åãî â êîíñîëü
+void printImage(string path) /// ÐŸÑ€Ð¸Ñ‘Ð¼ Ð¸Ð·Ð¾Ð±Ñ€Ð°Ð¶ÐµÐ½Ð¸Ñ Ð¸ Ð²Ñ‹Ð²Ð¾Ð´ ÐµÐ³Ð¾ Ð² ÐºÐ¾Ð½ÑÐ¾Ð»ÑŒ
 {
     vector <string> strFile;
     string file;
     ifstream fin(path);
-    while(fin >> file) /// Ïðè¸ì
+    while(fin >> file) /// ÐŸÑ€Ð¸Ñ‘Ð¼
         strFile.push_back(file);
-    for(size_t i = 0; i < strFile.size(); i++) /// Âûâîä
+    for(size_t i = 0; i < strFile.size(); i++) /// Ð’Ñ‹Ð²Ð¾Ð´
         cout << strFile[i] << endl;
 }
-void printMenu()    /// Ìåíþ
+void printMenu()    /// ÐœÐµÐ½ÑŽ
 {
     cout << "*------------------------------------*" << endl;
-    cout << "*---1.--------êîðìèòü----------------*" << endl;
-    cout << "*---2.---------ïîèòü-----------------*" << endl;
-    cout << "*---3.-------âåñåëèòü----------------*" << endl;
+    cout << "*---1.--------ÐºÐ¾Ñ€Ð¼Ð¸Ñ‚ÑŒ----------------*" << endl;
+    cout << "*---2.---------Ð¿Ð¾Ð¸Ñ‚ÑŒ-----------------*" << endl;
+    cout << "*---3.-------Ð²ÐµÑÐµÐ»Ð¸Ñ‚ÑŒ----------------*" << endl;
     cout << "**************************************" << endl;
 }
