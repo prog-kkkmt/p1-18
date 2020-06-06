@@ -1,7 +1,0 @@
-304	Table		Italia	 	03.10.2006	18.69		1
-3056	Chair		Kanada		03.10.2006	767.19		0
-33	Shelf		USA		03.10.2006	1900.10		1
-329	Door		Africa		04.10.2006	1713.23		0
-843	Cupboard	Russia		06.10.2006	1309.95		1
-392	Armchair	Kanada		06.10.2006	9891.88		0
-
