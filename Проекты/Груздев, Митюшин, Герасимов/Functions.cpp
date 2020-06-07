@@ -1,4 +1,4 @@
-/** Команда состоит из 3-х человек: Груздев Роман, Герасимов Дмитрий, Петр Митюшин.
+/** Команда состоит из 3-х человек: Груздев Роман, Герасимов Дмитрий, Пётр Митюшин.
 П1-18, 05.06.2020 г.
 */
 #include <iostream>
@@ -15,13 +15,20 @@ void load(vector<Nomination> *v, string fname) {
     Nomination nom;
     ifstream in(fname);
 
-    char delim;
-    v->clear();
-    while (in >> nom.nom_id >> nom.name >> nom.pr >> nom.date.day >> delim >> nom.date.month >> delim >> nom.date.year >> nom.cost >> nom.t >> nom.number){
-	v->push_back(nom);
-    }
+	if(!(in.is_open()))
+		cout << "Файла с таким именем или расширением - нет :(" << endl << endl;
+	else{	
+    	char delim;
+    	v->clear();
+    	while (in >> nom.nom_id >> nom.name >> nom.pr >> nom.date.day >> delim >> nom.date.month
+		 		>> delim >> nom.date.year >> nom.cost >> nom.t >> nom.number){
+			v->push_back(nom);
+    	}
+		cout << "Файл успешно загружен!" << endl << endl;
+	}
+
 	in.close();
-   cout << endl;
+	
 }
 
 // 2.Выгрузить в файл
@@ -57,11 +64,11 @@ void save(vNom &v, string fname_o){
 	out << endl;	
 }
 
-// 3.Добавить новый заказ
+// 3.Добавить новую строку (наименование)
 void append(vNom *v){
 	Nomination nom;
 	char delim;
-        while(cin >> nom.nom_id >> nom.name >> nom.pr >> nom.date.day >> delim >> nom.date.month >> delim >> nom.date.year >> nom.cost >> nom.t){
+        while(cin >> nom.nom_id >> nom.name >> nom.pr >> nom.date.day >> delim >> nom.date.month >> 		delim >> nom.date.year >> nom.cost >> nom.t){
 
         v->push_back(nom);
 	break;
@@ -69,22 +76,74 @@ void append(vNom *v){
 	cout << endl;
 }
 
-// 4.Редактировать сумму заказа
-void edit(vNom &v, size_t idx){
-	std::cout << "Введите новую сумму: ";
-	double ed_cost;
-	std::cin >> ed_cost;
-	v[--idx].cost = ed_cost;
+// 4.Редактировать строку (наименование)
+void edit(vNom &v, size_t ix){
+	int i_x = -1;
+
+    while(i_x){
+	cout << "0. Выход" << endl
+	<< "1. Редактировать номер наименования" << endl
+	<< "2. Редактировать название наименования" << endl
+	<< "3. Редактировать производителя" << endl
+	<< "4. Редактировать дату производства" << endl
+	<< "5. Редактировать стоимость наименования" << endl
+	<< "6. Редактировать наличие наименования на складе" << endl 
+	<< "7. Редактировать количество наименования" << endl;
+	cout << "Введите нужный пункт подменю: ";
+	cin >> i_x;
 	cout << endl;
+	if (i_x > 7 || i_x < 0)
+			cout << "Error. Диапазон меню: 0..7" << endl;
+	else if(i_x == 1){
+		int ed_id;
+		cin >> ed_id;
+		v[ix - 1].nom_id = ed_id;
+		cout << endl; }
+	else if(i_x == 2){
+		string ed_name;
+		cin >> ed_name;
+		v[ix - 1].name = ed_name;
+		cout << endl; }
+	else if(i_x == 3){
+		string ed_pr;
+		cin >> ed_pr;
+		v[ix - 1].pr = ed_pr;
+		cout << endl; }
+	else if(i_x == 4){
+		Date data;
+		char sign;
+		cin >> data.day >> sign >> data.month >> sign >> data.year;
+			v[ix - 1].date = data;
+		cout << endl; }
+	else if(i_x == 5){
+		double ed_cost;
+		cin >> ed_cost;
+		v[ix - 1].cost = ed_cost;
+		cout << endl; }
+	else if(i_x == 6){
+		bool ed_t;
+		cin >> ed_t;
+		v[ix - 1].t = ed_t;
+		cout << endl; }
+	else if(i_x == 7){
+		int ed_number;
+		cin >> ed_number;
+		v[ix - 1].number = ed_number;
+		cout << endl; }
+	
+	}
+
+
+	
 }
 
-// 5.Удалить заказ
+// 5.Удалить строку (наименование)
 void del(vNom *v, size_t idx){
 	v->erase(v->begin() + (--idx));
-	cout << endl << "Изделие удалено!" << endl;
+	cout << endl << "Строка удалена!" << endl;
 }
 
-// 6.Сортировать по дате 
+// 6.Сортировать по дате производства
 bool comp_year (const Nomination& a, const Nomination& b) { return (a.date.year < b.date.year); }
 
 bool comp_month (const Nomination& a, const Nomination& b) { return (a.date.month < b.date.month); }
@@ -93,20 +152,19 @@ bool comp_day (const Nomination& a, const Nomination& b) { return (a.date.day < 
 
 void sort(vNom &v){
 
-	sort(v.begin(), v.end(), comp_year);
-	sort(v.begin(), v.end(), comp_month);
 	sort(v.begin(), v.end(), comp_day);
+	sort(v.begin(), v.end(), comp_month);
+	sort(v.begin(), v.end(), comp_year);
 	cout << endl;
 }
 
-
 // 7.Выдать общий список
 void print_all(vNom v){
-	cout << "ID\tНаименование\tПроизводитель\tДата\t\tСумма\tЕсть ли на складе\tКоличество\n";
+	cout << "№ str\tID\tНаименование\tПроизводитель\tДата\t\tСтоимость\tЕсть ли на складе\tКоличество\n";
 	string t1, t2;
 	for(size_t i = 0; i != v.size(); i++){
 		numCh(v[i].name, t1, v[i].pr, t2);
-		cout << v[i].nom_id << "  \t"
+		cout << i + 1 << " \t" << v[i].nom_id << "  \t"
 			<< v[i].name << "  " << t1
 			<< v[i].pr << "   " << t2
 			<< v[i].date.day << "." << v[i].date.month << "." << v[i].date.year << "  \t"
@@ -117,7 +175,7 @@ void print_all(vNom v){
 	cout << endl;		
 }
 
-// 8. Выдать товар по максимуму или по сумме
+// 8. Выдать максимум и минимум по количеству или стоимости
 
 //Макс для количества
 void maxx1(vNom v, size_t &index){
@@ -130,7 +188,7 @@ void maxx1(vNom v, size_t &index){
         }
     }
 }
-//Макс для суммы
+//Макс для стоимости
 void maxx2(vNom v, size_t &index){
 	size_t num_v = v.size();
 	int elem_max = v[0].cost;
@@ -153,7 +211,7 @@ void minn1(vNom v, size_t &index){
         }
     }
 }
-//Мин для суммы
+//Мин для стоимости
 void minn2(vNom v, size_t &index){
 	size_t num_v = v.size();
 	int elem_min = v[0].cost;
@@ -196,9 +254,9 @@ void maxxMinn(vNom v){
 	while(k){
 		cout << "0. Выход" << endl
 				<< "1. Максимум по количеству" << endl
-				<< "2. Максимум по сумме" << endl
+				<< "2. Максимум по стоимости" << endl
 				<< "3. Минимум по количеству" << endl
-				<< "4. Минимум по сумме" << endl
+				<< "4. Минимум по стоимости" << endl
 				<< endl;
 		cin >> k;
 		if (k > 4 || k < 0)
