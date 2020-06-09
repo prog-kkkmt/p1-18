@@ -11,7 +11,7 @@
 using namespace std;
 
 // 1.Загрузить из файла
-void load(vector<Nomination> *v, string fname) {
+void load(vNom *v, string fname) {
     Nomination nom;
     ifstream in(fname);
 
