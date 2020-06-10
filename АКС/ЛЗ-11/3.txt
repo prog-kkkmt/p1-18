@@ -1,0 +1,8 @@
+A dw 1020h
+B dd 10203040h
+int(A)
+A dw 2040h
+int(B)
+B dd 20403040h
+int(B)
+B dd 20403040h
