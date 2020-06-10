@@ -1,0 +1,8 @@
+а) a db 0Ah; a db -10d; 
+б) b db 0A5h; b db -165d;
+в) v db 7Fh; v db 127d;
+г) g db 80h; g db 128d
+д) d db 101b; d db 5d 
+е) e dw 0FFFEh; e dw 65534d
+ж) j dw 7Fh; j dw 127d
+з) z dw 80h; z dw 128d
