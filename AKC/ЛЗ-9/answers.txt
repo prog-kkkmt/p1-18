@@ -1,5 +1,4 @@
 Задача 1
-
 push  $hello
 call  puts
 add $4, %esp
