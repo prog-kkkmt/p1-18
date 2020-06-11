@@ -1,7 +1,8 @@
+template<typename T>
 class Vector {
   public:
     Vector(int s);
-    Vector(std::initializer_list<double>);
+    Vector(std::initializer_list<T>);
 
     Vector(const Vector& a);            //copy constructor
     Vector& operator=(const Vector& a); //copy assignment
@@ -11,10 +12,16 @@ class Vector {
 
     ~Vector();
 
-    double& operator[](int i);
+    T* begin() { return &elem[0]; }
+    T* end() { return begin() + size(); }
+
+    const T* begin() const { return &elem[0]; }
+    const T* end() const { return begin() + size(); }
+
+    T& operator[](int i);
+    const T& operator[](int i) const;
     int size() const;
-    void print_elems() const;
   private:
-    double * elem;
+    T* elem;
     int sz;
 };
