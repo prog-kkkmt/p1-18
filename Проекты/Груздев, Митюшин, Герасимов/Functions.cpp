@@ -11,7 +11,11 @@
 using namespace std;
 
 // 1.Загрузить из файла
-void load(vNom *v, string fname) {
+void load(vNom &v) {
+    string fname;
+    cout << "Введите название файла (с его расширением): ";
+    cin >> fname; 
+    cout << endl;
     Nomination nom;
     ifstream in(fname);
 
@@ -19,10 +23,16 @@ void load(vNom *v, string fname) {
 		cout << "Файла с таким именем или расширением - нет :(" << endl << endl;
 	else{	
     	char delim;
-    	v->clear();
+	short outb;
+	cout << "0. Добавить файл с данными в вектор" << endl 
+		<< "1. Опустошить вектор с данными " << endl;
+	cin >> outb;
+
+	if(outb)	
+    		v.clear();
     	while (in >> nom.nom_id >> nom.name >> nom.pr >> nom.date.day >> delim >> nom.date.month
 		 		>> delim >> nom.date.year >> nom.cost >> nom.t >> nom.number){
-			v->push_back(nom);
+			v.push_back(nom);
     	}
 		cout << "Файл успешно загружен!" << endl << endl;
 	}
@@ -47,7 +57,10 @@ void numCh(string s1, string &t1, string s2, string &t2){
 		t2 = "\t\t";	
 }
 //input.txt
-void save(vNom &v, string fname_o){
+void save(vNom &v){
+	string fname_o;
+	cout << "Введите название файла(с его расширением) в которой будет выгружен вектор: ";
+	cin >> fname_o;
 	ofstream out(fname_o, ios::app);
 
 	string t1, t2;
@@ -65,19 +78,24 @@ void save(vNom &v, string fname_o){
 }
 
 // 3.Добавить новую строку (наименование)
-void append(vNom *v){
+void append(vNom &v){
+	cout << "Добавить новое изделие(пример: ID\\Наименование изделия\\Производитель\\Дата\\Стоимость\\Есть ли на складе\\Количество):" << endl;
 	Nomination nom;
 	char delim;
-        while(cin >> nom.nom_id >> nom.name >> nom.pr >> nom.date.day >> delim >> nom.date.month >> 		delim >> nom.date.year >> nom.cost >> nom.t){
+        while(cin >> nom.nom_id >> nom.name >> nom.pr >> nom.date.day >> delim >> nom.date.month >> 		delim >> nom.date.year >> nom.cost >> nom.t >> nom.number){
 
-        v->push_back(nom);
+        v.push_back(nom);
 	break;
 	}
 	cout << endl;
 }
 
 // 4.Редактировать строку (наименование)
-void edit(vNom &v, size_t ix){
+void edit(vNom &v){
+	cout << "Какую строку надо отредактировать? - ";
+	size_t ix;
+	cin >> ix;
+	cout << endl;
 	int i_x = -1;
 
     while(i_x){
@@ -138,8 +156,11 @@ void edit(vNom &v, size_t ix){
 }
 
 // 5.Удалить строку (наименование)
-void del(vNom *v, size_t idx){
-	v->erase(v->begin() + (--idx));
+void del(vNom &v){
+	cout << "Какую строку хотелось бы удалить? - ";
+	size_t idx;
+	cin >> idx;
+	v.erase(v.begin() + (--idx));
 	cout << endl << "Строка удалена!" << endl;
 }
 
@@ -155,7 +176,8 @@ void sort(vNom &v){
 	sort(v.begin(), v.end(), comp_day);
 	sort(v.begin(), v.end(), comp_month);
 	sort(v.begin(), v.end(), comp_year);
-	cout << endl;
+	cout << "Сортировка была произведена!" << endl << endl;
+	
 }
 
 // 7.Выдать общий список

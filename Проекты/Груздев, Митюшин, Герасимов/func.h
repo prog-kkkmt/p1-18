@@ -22,15 +22,15 @@ struct Nomination { // Заказ
 
 typedef std::vector <Nomination> vNom;
 
-void load(vNom *v, std::string fname); // 1.Загрузка файла из фнейм
+void load(vNom &v); // 1.Загрузка файла из фнейм
 
-void save(vNom &v, std::string fname_o); // 2.Выгрузка файла в фнейм_о
+void save(vNom &v); // 2.Выгрузка файла в фнейм_о
 
-void append(vNom *v); // 3.Добавление нового изделия в вектор
+void append(vNom &v); // 3.Добавление нового изделия в вектор
 
-void edit(vNom &v, size_t idx); // 4.Редактирование стоимости изделия
+void edit(vNom &v); // 4.Редактирование стоимости изделия
 
-void del(vNom *v, size_t idx); // 5.Удаление заказа
+void del(vNom &v); // 5.Удаление заказа
 
 void sort(vNom &v); // 6.Сортировка изделий по дате
 
