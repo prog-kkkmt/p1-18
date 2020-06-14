@@ -190,8 +190,8 @@ void print_all(vNom v){
 			<< v[i].name << "  " << t1
 			<< v[i].pr << "   " << t2
 			<< v[i].date.day << "." << v[i].date.month << "." << v[i].date.year << "  \t"
-			<< v[i].cost << "\t\t"
-			<< v[i].t << "\t\t"
+			<< v[i].cost << "\t\t\t"
+			<< v[i].t << "	\t\t"
 			<< v[i].number << endl;
 	}
 	cout << endl;		
