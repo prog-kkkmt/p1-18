@@ -1,0 +1,44 @@
+.infosite {
+	text-align: center;
+	background-color: #fff;
+}
+
+.lectures{
+	text-align: center;
+}
+
+.practical_work{
+	text-align: center;
+}
+
+.rest_work{
+	text-align: center;
+}
+
+body { 
+	background: #188CE7 
+}
+
+
+button {
+  background: #E77318;
+  font-size: 18px;
+  display: inline-block;
+  color: black;
+  font-weight: 700;
+  text-decoration: none;
+  user-select: none;
+  padding: .5em 2em;
+  outline: none;
+  border: 2px solid;	/*2px solid*/
+  border-radius: 1px; /*1px*/
+  transition: 0.2s;
+  animation: radial-pulse 1s infinite;
+  transition: background-color 1s linear;
+}
+
+button:hover {
+    background-color: #FFD500
+
+/*#3F51B5;*/
+}
