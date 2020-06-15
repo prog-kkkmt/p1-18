@@ -1,0 +1,16 @@
+ptr_st
+2 9 10
+oneDay: 0002.09.10
+дней с начала отсчета: 1000
+
+direct
+Object! px: 0x7ffe2c520d10 coord.x: 7
+Object! py: 0x7ffe2c520d14 coord.y: 5
+Direct! px: 0x7ffe2c520d10 coord.x: 7
+Direct! py: 0x7ffe2c520d14 coord.y: 5
+12 56
+scanf! coord.x: 12
+scanf! coord.y: 56
+
+line
+lin: a(0, 0) b(3, 4), 5.00
