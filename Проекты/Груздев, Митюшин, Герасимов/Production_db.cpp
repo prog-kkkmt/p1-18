@@ -2,10 +2,7 @@
 П1-18, 05.06.2020 г.
 */
 #include <iostream>
-#include <fstream>
 #include <vector>
-#include <algorithm>
-#include <cstdlib>
 #include "func.h"
 
 using namespace std;
