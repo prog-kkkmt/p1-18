@@ -191,10 +191,10 @@ void print_all(vNom v){
 			<< v[i].pr << "   " << t2
 			<< v[i].date.day << "." << v[i].date.month << "." << v[i].date.year << "  \t"
 			<< v[i].cost << "\t\t\t"
-			<< v[i].t << "	\t\t"
+			<< v[i].t << "	\t"
 			<< v[i].number << endl;
 	}
-	cout << endl;		
+	cout << endl;	
 }
 
 // 8. Выдать максимум и минимум по количеству или стоимости
