@@ -1,0 +1,2 @@
+Release:
+	gcc -o "07-04-20-ОП Урок 3.1(Makefile).c"

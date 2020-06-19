@@ -1,0 +1,100 @@
+1 тест
+Дана структура и фрагмент кода:
+
+struct Vector
+{
+    float x;
+    float y;
+};
+
+int main()
+{
+    struct Vector vec;
+    int x, y;
+    //..... 
+    vec.x = y;
+    vec.y = y;
+}
+При таком написании 
+синтаксической ошибки нет
+
+2 тест
+Дана структура и код программы:
+
+typedef struct Vec
+{
+    float x;
+    float y;
+} Vector;
+
+int main()
+{
+    Vector vec;
+    Vector * pvec
+    int x, y;
+    pvec = &vec;
+    pvec.x = x;
+    vec.y = y;
+}
+При таком написании
+компилятор выдаст ошибку, так как для доступа к атрибуту через pvec нужно использовать ->
+
+3 тест
+Дана структура и код программы:
+
+typedef struct Vec
+{
+    float x;
+    float y;
+} Vector;
+
+int main()
+{
+    Vector vec;
+    Vector * pvec
+    int x, y;
+    pvec->x = x;
+    vec.y = y;
+    printf("x: %f y: %f\n", pvec->x, vec.y);
+}
+При таком написании
+результат работы программы не определён, так как pvec не получает адреса переменной-структуры
+
+4 тест
+typedef struct Vec
+{
+    int x;
+    int y;
+} Vector;
+
+int main()
+{
+    Vector vec;
+    Vector * pvec
+    int x, y;
+    int *px;
+    pvec = &vec;
+    // необходимо получить адрес атрибута x
+    // ...
+}
+Адрес атрибута x
+можно получить:
+  px = &(pvec->x);
+
+5 тест
+Дана структура и код программы:
+
+typedef struct Vec
+{
+    int x;
+    int y;
+} Vector;
+
+// реализация функции
+int funct(Vector *a, Vector b)
+{
+ // здесь должен быть код
+};
+
+При копировании из b в a правильным написанием будет
+a->x = b.x;
