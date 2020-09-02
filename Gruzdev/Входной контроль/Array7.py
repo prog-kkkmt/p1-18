@@ -4,9 +4,7 @@ a = []
 s = int(input())
 
 for i in range (s):
-    
     d = int(input())
     a.append(d)
-
-
+    
 print(*a[::-1])
