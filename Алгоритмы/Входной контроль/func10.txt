@@ -1,0 +1,9 @@
+#ƒано целое число N и набор из N целых чисел. 
+#Ќайти номер первого экстремального (т. е. минимального или максимального) элемента из данного набора.
+import math
+def isSquare(k):
+  if(int(math.sqrt(k)) * int(math.sqrt(k)) == k):
+    return True
+  else:
+    return False
+print(isSquare(int(input())))

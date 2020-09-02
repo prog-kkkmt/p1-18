@@ -1,0 +1,22 @@
+#ƒано целое число N и набор из N целых чисел. 
+#Ќайти номер первого экстремального (т. е. минимального или максимального) элемента из данного набора.
+min = 0
+max = 0
+mink = 0
+maxk = 0
+n = int(input())
+for i in range(n):
+  if i == 0:
+    min = max = int(input())
+  else:
+    a = int(input())
+    if a > max:
+      max = a
+      maxk = i
+    if a < min:
+      min = a
+      mink = i
+if(mink > maxk):
+  print(max)
+else:
+  print(min)

@@ -1,0 +1,12 @@
+#ƒано целое число N и набор из N целых чисел. 
+#≈сли в наборе имеютс€ положительные числа, то вывести True; в противном случае вывести False.
+
+n = int(input())
+answer = 0
+for i in range(n):
+  if (int(input()) > 0):
+    answer = 1
+if (answer):
+  print("True")
+else:
+  print("False")
