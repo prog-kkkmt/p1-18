@@ -8,4 +8,4 @@ for i in range(len(string)):
     lst[index] += 1
 
 for i in range(26):
-    print(chr(97 + i), lst[i])
+    print(chr(97 + i), ":" ,lst[i], end=" ")
