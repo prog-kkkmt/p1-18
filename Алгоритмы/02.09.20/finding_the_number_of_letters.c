@@ -20,7 +20,7 @@ int main()
     }
     for (i = 0; i < LENALFAVIT; i++)
     {
-        printf("%c %d\n", 'a' + i, arr[i]);
+        printf("%c: %d ", 'a' + i, arr[i]);
     }
     return 0;
 }
