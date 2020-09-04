@@ -1,3 +1,4 @@
+// Задание 13.2
 #include <stdio.h>
 #include "card_struct.h"
 int main() {
