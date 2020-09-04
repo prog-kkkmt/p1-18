@@ -8,7 +8,7 @@ int main(){
 
     while (command != 5) {
         FILE *f;
-        printf("\nMain menu.\n1. Add.\n2. Read.\n3. Delete.\n4. Save.\n5. Exit & Save.\n");
+        printf("\nMain menu.\n1. Add.\n2. Read.\n3. Delete.\n4. Exit & Save.\n");
         printf("<-< ");
         scanf("%d", &command);
         if (command == 1) {
@@ -29,11 +29,6 @@ int main(){
         else if (command == 3) {
             f = fopen("file.txt", "w");
            continue;
-        }
-        else if (command == 4) {
-            f = fopen("file.txt", "a");
-            fclose(f);
-            continue;
         }
         return 0;
     }
