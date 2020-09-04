@@ -6,7 +6,7 @@ int main(){
     int command;
     char m[128];
 
-    while (command != 5) {
+    while (command != 4) {
         FILE *f;
         printf("\nMain menu.\n1. Add.\n2. Read.\n3. Delete.\n4. Exit & Save.\n");
         printf("<-< ");
