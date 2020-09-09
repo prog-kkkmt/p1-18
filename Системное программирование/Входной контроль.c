@@ -60,8 +60,8 @@ void RemoveElem(struct string_and_higth str, int * index)
 void printString(struct string_and_higth str)
 {
     int i;
-    scanf("%d", &i);
     printf("1. print string", "2. print Higth");
+    scanf("%d", &i);
     switch (i)
     {
         case 1: printf("%s", str.string);
