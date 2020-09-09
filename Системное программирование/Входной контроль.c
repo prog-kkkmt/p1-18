@@ -2,20 +2,20 @@
 #define LEN 30
 
 /**
-type строка=packed array[1..15] of char;
-вершина=record название:строка
-высота: 1000...9999 end,
-список=array[1..30] of вершина
-описать процедуру СамаяВысокая(C), печатающую название самой высокой вершины из вписка С.
+type Г±ГІГ°Г®ГЄГ =packed array[1..15] of char;
+ГўГҐГ°ГёГЁГ­Г =record Г­Г Г§ГўГ Г­ГЁГҐ:Г±ГІГ°Г®ГЄГ 
+ГўГ»Г±Г®ГІГ : 1000...9999 end,
+Г±ГЇГЁГ±Г®ГЄ=array[1..30] of ГўГҐГ°ГёГЁГ­Г 
+Г®ГЇГЁГ±Г ГІГј ГЇГ°Г®Г¶ГҐГ¤ГіГ°Гі Г‘Г Г¬Г ГїГ‚Г»Г±Г®ГЄГ Гї(C), ГЇГҐГ·Г ГІГ ГѕГ№ГіГѕ Г­Г Г§ГўГ Г­ГЁГҐ Г±Г Г¬Г®Г© ГўГ»Г±Г®ГЄГ®Г© ГўГҐГ°ГёГЁГ­Г» ГЁГ§ ГўГЇГЁГ±ГЄГ  Г‘.
 */
 
 /**
-Список:
-добавить
-удалить
-печатать
-загрузить
-сохранить
+Г‘ГЇГЁГ±Г®ГЄ:
+Г¤Г®ГЎГ ГўГЁГІГј
+ГіГ¤Г Г«ГЁГІГј
+ГЇГҐГ·Г ГІГ ГІГј
+Г§Г ГЈГ°ГіГ§ГЁГІГј
+Г±Г®ГµГ°Г Г­ГЁГІГј
 exit
 */
 
@@ -70,29 +70,34 @@ void printString(struct string_and_higth str)
     printf("%s", str.string);
 }
 
-void menu()
+void menu(FILE *file, FILE *fs)
 {
-    printf("1. Download");
-    printf("2. SaveOnFile");
-    printf("3. Remove");
-    printf("4. Print");
-    printf("5. exit");
+    printf("1. Download\n");
+    printf("2. SaveOnFile\n");
+    printf("3. Remove\n");
+    printf("4. Print\n");
+    printf("5. exit\n");
     int numbe_function, index;
-    scanf("%d", &numbe_function);
     struct string_and_higth str;
-    switch (numbe_function)
+    while (1)
     {
-        case 1: downloadString(str); break;
-        case 2: saveStringOnFile(str, &find_vershin); break;
-        case 3: RemoveElem(str, &index); break;
-        case 4: printString(str); break;
-        case 5: break;
+        scanf("%d", &numbe_function);
+        switch (numbe_function)
+        {
+            case 1: downloadString(str); break;
+            case 2: saveStringOnFile(str, &find_vershin); break;
+            case 3: scanf("%d", &index); RemoveElem(str, &index); break;
+            case 4: printString(str); break;
+            case 5: fclose(file); fclose(fs); break;
+        }
     }
 }
 
 int main()
 {
-    menu();
+    FILE *file = fopen("text.txt", "r");
+    FILE *fs = fopen("fs.txt", "w");
+    menu(file, fs);
     //struct string_and_higth str;
     //downloadString(str);
     return 0;
