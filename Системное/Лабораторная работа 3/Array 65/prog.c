@@ -10,9 +10,6 @@ Array65. Дан массив A размера N и целое число K (1 �
 #include <stdlib.h>
 
 void scanfArray(int mas[], int n);
-void sort(int mas[], int n);
-void swap(int *a, int *b);
-void printArray(int mas[], int n);
 
 int main(){
 	
