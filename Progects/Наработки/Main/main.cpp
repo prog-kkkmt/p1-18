@@ -1,7 +1,5 @@
 #include <ncurses.h>
 #include <iostream>
-#include <string.h>
-
 #include "func.h"
 
 /**
@@ -16,17 +14,7 @@ void menu();
 	const int width = 50;	// Ширина окна меню
 	const int height = 20;	// Длина окна меню
 	
-	const int num_block_menu = 4;	//Колличество блоков в меню
-	//Меню
-	char text_menu[num_block_menu][10]= {
-		"Run",
-		"Save",
-		"Setting",
-		"Exit"
-	};
-
-void printBlock(int pos_cursor);
-void select(int pos_cursor);
+	const int num_block_menu = 5;	//Колличество блоков в меню
 
 int main()
 {
@@ -44,6 +32,8 @@ int main()
 	
 	//Анимация в начале и черчение границ
 	borderMenu();
+	
+	nameGame();
 	
      //Выписывает все меню (Без какого-либо выделения)
 	for (size_t i = 0; i != num_block_menu; ++i){
@@ -70,32 +60,20 @@ int main()
 				pos_cursor = num_block_menu - 1;
 		}
 		
-		select(pos_cursor);	//Выделение текста
+		select(pos_cursor);	//Выделение блока
 		
 		if (ch == KEY_RIGHT || ch == '\n'){
+			if (pos_cursor == 1){}
+			//2. Нарисовать поле для змейки
+			if (pos_cursor == 2){
+				//drawField();
+			}
+			if (pos_cursor == 3){}
+			if (pos_cursor == 4){}
 			if (pos_cursor == num_block_menu - 1)
 				break;
 		}
 	}
 	
 	endwin();
-}
-
-//Печать блока
-void printBlock(int pos_cursor){
-	mvaddstr(LINES/2 - (num_block_menu/2) + pos_cursor, ( COLS - strlen(text_menu[pos_cursor]) )/2, text_menu[pos_cursor]);
-}
-
-//Выделение блока (строки)
-void select(int pos_cursor){
-	size_t len_str_i = strlen(text_menu[pos_cursor]);	//Длина строки
-	for (size_t j = 0; j != width-2; ++j){
-		//Определение позиции блока
-		move(LINES/2 + pos_cursor - (num_block_menu/2), (COLS - width) / 2 + j + 1);
-		
-		if (j >= len_str_i)
-			addch(' ' | A_STANDOUT);
-		else
-			addch(text_menu[pos_cursor][j] | A_STANDOUT);
-	}
 }
