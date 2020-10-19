@@ -1,0 +1,1 @@
+fdfdf<_io.TextIOWrapper name='write.txt' mode='w' encoding='cp1251'>
