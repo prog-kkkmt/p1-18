@@ -15,37 +15,18 @@ int main()
     int flag_for_exit = 0;
     char question;
     data_authorizat data;
-    std::fstream file("C:\\passwords.txt", std::ios::binary | std::ios::app);
+    std::fstream file("passwords.txt");
     while (1)
     {
-        if (file.is_open())
+        std::cout << "do you want to enter more data: ";
+        std::cin >> question;
+        if (question == 'y' || question == 'Y')
         {
-            while (1)
-            {
-                std::cout << "do you want to enter more data: ";
-                std::cin >> question;
-                if (question == 'y' || question == 'Y')
-                {
-                    std::cin >> data.login >> data.mail >> data.password;
-                    file << data.login << '\n' << data.mail << '\n' << data.password << "\n\n";
-                }
-                else
-                {
-                    ++flag_for_exit;
-                    break;
-                }
-            }
-            if (flag_for_exit > 0)
-            {
-                break;
-            }
+            std::cin >> data.login >> data.mail >> data.password;
+            file << data.login << '\n' << data.mail << '\n' << data.password << "\n\n";
         }
         else
-        {
-            std::cout << "File is not open\n";
-            std::fstream file("D:\\password.txt", std::ios::binary | std::ios::app);
-            continue;
-        }
+            break;
     }
     return 0;
 }
