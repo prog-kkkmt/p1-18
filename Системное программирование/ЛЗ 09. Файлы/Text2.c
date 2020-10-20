@@ -18,7 +18,7 @@ int main()
     for (i = 0; i < n; ++i)
     {
         string[ind] = symbol;
-        fprintf(file, "%s\n", string);
+        fprintf(file, "%s\0\n", string);
         symbol += 1;
         ++ind;
     }
