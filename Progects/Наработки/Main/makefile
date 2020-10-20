@@ -1,2 +1,2 @@
 all:
-	g++ -Wall -Wextra -g -o out main.cpp function.cpp -lncurses
+	g++ -Wall -Wextra -g -o out main.cpp mainFunc.cpp -lncurses

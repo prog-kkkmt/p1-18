@@ -3,6 +3,8 @@
 #include <string.h>
 #include <unistd.h>
 
+#include "mainFunc.h"
+
 extern const int width = 50;	// Ширина окна меню
 extern const int height = 20;	// Длина окна меню
 	
@@ -15,6 +17,7 @@ char text_menu[num_block_menu][15]= {
 	"Setting",
 	"Exit"
 };
+const int LEN = 20;
 
 //Первоначальная анимация и создание границ
 void borderMenu(){
@@ -24,9 +27,14 @@ void borderMenu(){
 
 	WINDOW *win = newwin(height, width, offsety, offsetx);
 
-/*
+	//Ввод никнейма
+	char* username;
+	mvprintw(LINES / 2 - 2, COLS / 2 - LEN + 2, "Enter name :  ");
+	scanw("%s", &username);
+
 	//Анимация перед чертением
 	int s_win = COLS  * LINES;	// Площадь консоли
+	//animation(s_win);
 	int sleep_step = 1000;
 	if (s_win / 1680){
 		int step = s_win / 1680;
@@ -43,7 +51,6 @@ void borderMenu(){
 		refresh();
 		usleep(sleep_step);	//1 second = 1.000.000
 	}
-*/
 
 	//Чертим границы
 	box(win, 0, 0);
@@ -52,6 +59,7 @@ void borderMenu(){
 	delwin(win);
 }
 
+//Вывод имени игры
 void nameGame(){
 	char name[] = "Snake";
 	size_t len_str = strlen(name);
@@ -60,6 +68,29 @@ void nameGame(){
 	for (size_t i = 0; i != len_str; ++i)
 		mvaddch(y, x + i, name[i] | A_BOLD);
 }
+
+/*
+//Анимация
+//	Передаём площадь экрана
+void animation(int s_win){
+	int sleep_step = 1000;
+	if (s_win / 1680){
+		int step = s_win / 1680;
+		for (int i = 0; i != step; ++i)
+			sleep_step -= 150;
+		if (sleep_step < 100)
+			sleep_step = 100;
+	}
+	char zero_or_one = 0;
+	while (s_win--){
+		zero_or_one = s_win % 2 + '0';
+		mvaddch(rand() % LINES, rand() % COLS, zero_or_one);
+		//mvaddch(rand() % LINES, rand() % COLS, 'o');
+		refresh();
+		usleep(sleep_step);	//1 second = 1.000.000
+	}
+}
+*/
 
 //Блок = строка. Например, если pos_cursor = 0, то блок = "Run"
 //Печать блока

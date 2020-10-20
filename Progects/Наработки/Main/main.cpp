@@ -1,6 +1,8 @@
 #include <ncurses.h>
 #include <iostream>
-#include "func.h"
+
+//Главные функции
+#include "mainFunc.h"
 
 /**
 	1. Закончить с выделением
@@ -25,14 +27,16 @@ int main()
 	}
 
 	initscr();
-	curs_set(0);
-	refresh();
-	noecho();	//Чтобы при записи буквы, буква не повторялась
-	keypad(stdscr, TRUE);	//Включает возможности клавиатуры
 	
+	refresh();
+
 	//Анимация в начале и черчение границ
 	borderMenu();
 	
+	curs_set(0);
+	noecho();	//Чтобы при записи буквы, буква не повторялась
+	keypad(stdscr, TRUE);	//Включает возможности клавиатуры
+
 	nameGame();
 	
      //Выписывает все меню (Без какого-либо выделения)
