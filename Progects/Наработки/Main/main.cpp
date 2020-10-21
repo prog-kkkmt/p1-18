@@ -1,22 +1,13 @@
 #include <ncurses.h>
 #include <iostream>
 
-//Главные функции
-#include "mainFunc.h"
+#include "mainFunc.h"	//Главные функции
+#include "helpFunc.h"	//Вспомогательные функции
 
-/**
-	1. Закончить с выделением
-	2. Переместить все функции в function.cpp
-	3. Решить вопрос с окном где находится меню(50х20)
-	4. Можно побробовать сделать все функции локальными
+/*
+	Задачи:
+	1. while(true){} перевести в функцию
 */
-
-void menu();
-
-	const int width = 50;	// Ширина окна меню
-	const int height = 20;	// Длина окна меню
-	
-	const int num_block_menu = 5;	//Колличество блоков в меню
 
 int main()
 {
@@ -26,55 +17,60 @@ int main()
 		exit(1);
 	}
 
+	//Объявление переменных
+
+	const int WIDTH_WIN = 50;	// Ширина окна меню
+	const int HEIGHT_WIN = 20;	// Длина окна меню
+	
+	const int NUM_BLOCK_MENU = 4;	//Колличество блоков в меню
+	const int LEN = 20;	//Длина
+
+	//Меню
+	char text_menu[NUM_BLOCK_MENU][LEN]= {
+		"Game selection",
+		"Setting",
+		"Help",
+		"Exit"
+	};
+
 	initscr();
 	
 	refresh();
 
 	//Анимация в начале и черчение границ
-	borderMenu();
+	borderMenu(WIDTH_WIN, HEIGHT_WIN, LEN);
 	
 	curs_set(0);
 	noecho();	//Чтобы при записи буквы, буква не повторялась
 	keypad(stdscr, TRUE);	//Включает возможности клавиатуры
 
-	nameGame();
+	//Вывод имени платформы
+	char name_app[] = "Cucumber";
+	nameGame(HEIGHT_WIN, name_app);
 	
      //Выписывает все меню (Без какого-либо выделения)
-	for (size_t i = 0; i != num_block_menu; ++i){
-		printBlock(i);	//Печать блока
+	for (size_t i = 0; i != NUM_BLOCK_MENU; ++i){
+		printBlock(i, WIDTH_WIN, NUM_BLOCK_MENU, text_menu[i]);	//Печать блока
 	}
 		
 	int pos_cursor = 0;	//Позиция курсора
 	int ch = 0;	//Символ навигации
 	
-	select(pos_cursor);	//Выделение текста
+	selectBlock(pos_cursor, WIDTH_WIN, NUM_BLOCK_MENU, text_menu[pos_cursor]);	//Выделение блока
 	while(true){
 		ch = getch();
-		//Навигация
-		if (ch == KEY_DOWN){
-			printBlock(pos_cursor);	//Печать блока
-			++pos_cursor;
-			if (pos_cursor == num_block_menu)
-				pos_cursor = 0;
-		}
-		else if (ch == KEY_UP){
-			printBlock(pos_cursor);	//Печать блока
-			--pos_cursor;
-			if (pos_cursor == -1)
-				pos_cursor = num_block_menu - 1;
-		}
-		
-		select(pos_cursor);	//Выделение блока
+
+		printBlock(pos_cursor, WIDTH_WIN, NUM_BLOCK_MENU, text_menu[pos_cursor]);	//Печать блока
+		navigation(ch, pos_cursor, NUM_BLOCK_MENU);	//Навигация
+		selectBlock(pos_cursor, WIDTH_WIN, NUM_BLOCK_MENU, text_menu[pos_cursor]);	//Выделение блока
 		
 		if (ch == KEY_RIGHT || ch == '\n'){
-			if (pos_cursor == 1){}
-			//2. Нарисовать поле для змейки
-			if (pos_cursor == 2){
-				//drawField();
+			//Выбор игры
+			if (pos_cursor == 1){
 			}
+			if (pos_cursor == 2){}
 			if (pos_cursor == 3){}
-			if (pos_cursor == 4){}
-			if (pos_cursor == num_block_menu - 1)
+			if (pos_cursor == NUM_BLOCK_MENU - 1)
 				break;
 		}
 	}
