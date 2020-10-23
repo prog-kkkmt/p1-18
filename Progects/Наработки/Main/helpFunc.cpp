@@ -7,6 +7,7 @@
 //	Передаём площадь экрана
 void animation(int s_win){
 	int sleep_step = 1000;
+	//Адаптация скорости для экранов
 	if (s_win / 1680){
 		int step = s_win / 1680;
 		for (int i = 0; i != step; ++i)
@@ -26,10 +27,10 @@ void animation(int s_win){
 
 //Блок = строка. Например, если pos_cursor = 0, то блок = "Run"
 //Печать блока
-void printBlock(int pos_cursor, const int WIDTH_WIN, const int NUM_BLOCK_MENU, char text_menu[]){
-	size_t len_str = strlen(text_menu);	//Длина блока
+void printBlock(int pos_cursor, const int WIDTH_WIN, const int NUM_BLOCK, char text[]){
+	size_t len_str = strlen(text);	//Длина блока
 
-	size_t y = LINES/2 - (NUM_BLOCK_MENU / 2) + pos_cursor;	//Номер строки блока
+	size_t y = LINES/2 - (NUM_BLOCK / 2) + pos_cursor;	//Номер строки блока
 	size_t x = (COLS - len_str)/2;	//Номер столбца начала блока
 	
 	size_t win_start = (COLS - WIDTH_WIN) / 2;	//Позиция начала win
@@ -40,7 +41,7 @@ void printBlock(int pos_cursor, const int WIDTH_WIN, const int NUM_BLOCK_MENU, c
 		mvaddch(y, i, ' ');
 		
 	//Печать блока
-	mvaddstr(y, x, text_menu);
+	mvaddstr(y, x, text);
 	
 	//Печать пробелов после блока
 	for (size_t i = x + len_str; i != win_end - 1; ++i)
@@ -48,10 +49,10 @@ void printBlock(int pos_cursor, const int WIDTH_WIN, const int NUM_BLOCK_MENU, c
 }
 
 //Выделение блока (строки)
-void selectBlock(int pos_cursor, const int WIDTH_WIN, const int NUM_BLOCK_MENU, char text_menu[]){
-	size_t len_str = strlen(text_menu);	//Длина блока
+void selectBlock(int pos_cursor, const int WIDTH_WIN, const int NUM_BLOCK, char text[]){
+	size_t len_str = strlen(text);	//Длина блока
 
-	size_t y = LINES/2 - (NUM_BLOCK_MENU / 2) + pos_cursor;	//Номер строки блока
+	size_t y = LINES/2 - (NUM_BLOCK / 2) + pos_cursor;	//Номер строки блока
 	size_t x = (COLS - len_str)/2;	//Номер столбца начала блока
 	
 	size_t win_start = (COLS - WIDTH_WIN) / 2;	//Позиция начала win
@@ -64,7 +65,7 @@ void selectBlock(int pos_cursor, const int WIDTH_WIN, const int NUM_BLOCK_MENU, 
 	//Печать блока	
 	size_t index = 0;
 	for (size_t i = x; i != x + len_str; ++i){
-		mvaddch(y, i, text_menu[index]| A_STANDOUT);
+		mvaddch(y, i, text[index]| A_STANDOUT);
 		++index;
 	}
 	
@@ -74,15 +75,15 @@ void selectBlock(int pos_cursor, const int WIDTH_WIN, const int NUM_BLOCK_MENU, 
 }
 
 //Навигация
-void navigation(int ch, int &pos_cursor, const int NUM_BLOCK_MENU){
+void navigation(int ch, int &pos_cursor, const int NUM_BLOCK){
 	if (ch == KEY_DOWN){
 		++pos_cursor;
-		if (pos_cursor == NUM_BLOCK_MENU)
+		if (pos_cursor == NUM_BLOCK)
 			pos_cursor = 0;
 	}
 	else if (ch == KEY_UP){
 		--pos_cursor;
 		if (pos_cursor == -1)
-			pos_cursor = NUM_BLOCK_MENU - 1;
+			pos_cursor = NUM_BLOCK - 1;
 	}
 }

@@ -33,6 +33,15 @@ int main()
 		"Exit"
 	};
 
+	// Menu/Game section
+	const int NUM_BLOCK_GAMES = 4;	//Колличество блоков в меню
+	char game_section[NUM_BLOCK_GAMES][LEN]= {
+		"Snake",
+		"Pacman",
+		"War of Countries",
+		"Exit"
+	};
+
 	initscr();
 	
 	refresh();
@@ -45,17 +54,17 @@ int main()
 	keypad(stdscr, TRUE);	//Включает возможности клавиатуры
 
 	//Вывод имени платформы
-	char name_app[] = "Cucumber";
+	char name_app[] = "Zavod";
 	nameGame(HEIGHT_WIN, name_app);
 	
-     //Выписывает все меню (Без какого-либо выделения)
-	for (size_t i = 0; i != NUM_BLOCK_MENU; ++i){
+	//Выписывает все меню
+	for (size_t i = 0; i != NUM_BLOCK_MENU; ++i)
 		printBlock(i, WIDTH_WIN, NUM_BLOCK_MENU, text_menu[i]);	//Печать блока
-	}
 		
 	int pos_cursor = 0;	//Позиция курсора
 	int ch = 0;	//Символ навигации
-	
+	int is_exit = 0;	//Выход из цикла
+
 	selectBlock(pos_cursor, WIDTH_WIN, NUM_BLOCK_MENU, text_menu[pos_cursor]);	//Выделение блока
 	while(true){
 		ch = getch();
@@ -64,14 +73,58 @@ int main()
 		navigation(ch, pos_cursor, NUM_BLOCK_MENU);	//Навигация
 		selectBlock(pos_cursor, WIDTH_WIN, NUM_BLOCK_MENU, text_menu[pos_cursor]);	//Выделение блока
 		
-		if (ch == KEY_RIGHT || ch == '\n'){
-			//Выбор игры
-			if (pos_cursor == 1){
+		
+		if (ch == KEY_RIGHT || ch == '\n')
+		{
+
+			//1. Выбор игры
+			if (pos_cursor == 0)
+			{
+				is_exit = 0;
+				//Выписывает выбор игры (Без какого-либо выделения)
+				for (size_t i = 0; i != NUM_BLOCK_GAMES; ++i)
+					printBlock(i, WIDTH_WIN, NUM_BLOCK_GAMES, game_section[i]);	//Печать блока
+				pos_cursor = 0;
+				selectBlock(pos_cursor, WIDTH_WIN, NUM_BLOCK_GAMES, game_section[pos_cursor]);	//Выделение блока
+				while(is_exit != 1)
+				{
+					ch = getch();
+
+					printBlock(pos_cursor, WIDTH_WIN, NUM_BLOCK_GAMES, game_section[pos_cursor]);	//Печать блока
+					navigation(ch, pos_cursor, NUM_BLOCK_GAMES);	//Навигация
+					selectBlock(pos_cursor, WIDTH_WIN, NUM_BLOCK_GAMES, game_section[pos_cursor]);	//Выделение блока
+					
+					if (ch == KEY_RIGHT || ch == '\n')
+					{
+						//Snake
+						if (pos_cursor == 1){
+							
+						}
+						//Pacman
+						else if (pos_cursor == 1){}
+						//War of Countries
+						else if (pos_cursor == 2){}
+						//Exit
+						else if (pos_cursor == NUM_BLOCK_GAMES - 1)
+						{
+							pos_cursor = 0;
+							is_exit = 1;
+						}
+					}
+				}	//while
+
 			}
-			if (pos_cursor == 2){}
-			if (pos_cursor == 3){}
-			if (pos_cursor == NUM_BLOCK_MENU - 1)
+
+			else if (pos_cursor == 1){}
+
+			else if (pos_cursor == 2){}
+
+			else if (pos_cursor == NUM_BLOCK_MENU - 1)
 				break;
+			for (size_t i = 0; i != NUM_BLOCK_MENU; ++i)
+				printBlock(i, WIDTH_WIN, NUM_BLOCK_MENU, text_menu[i]);	//Печать блока
+			selectBlock(pos_cursor, WIDTH_WIN, NUM_BLOCK_MENU, text_menu[pos_cursor]);	//Выделение блока
+
 		}
 	}
 	
