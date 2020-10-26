@@ -1,14 +1,8 @@
 #include <stdio.h>
 
-int main()
+void sortBubble(int *array, int n)
 {
-    int i, j, n, temp;
-    scanf("%d", &n);
-    int array[n];
-    for (i = 0; i < n; ++i)
-    {
-        scanf("%d", &array[i]);
-    }
+    int i, j, temp;
     for (i = 0; i < n; ++i)
     {
         for (j = 0; j < n; ++j)
@@ -21,6 +15,18 @@ int main()
             }
         }
     }
+}
+
+int main()
+{
+    int i, j, n;
+    scanf("%d", &n);
+    int array[n];
+    for (i = 0; i < n; ++i)
+    {
+        scanf("%d", &array[i]);
+    }
+    sortBubble(array, n);
     for (i = 0; i < n; ++i)
     {
         printf("%d ", array[i]);
