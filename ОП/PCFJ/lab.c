@@ -5,11 +5,11 @@ int main(){
     char *fname = "lab.txt";
     FILE *f = fopen(fname, "r");
 
-    char k;
+    char k, c;
     int sowp = 0;
     scanf("%c", &k);
-    for (int i = 0; i != EOF; ++i){
-            if (i == k)
+    while ((c = fgetc(f)) != EOF){
+            if (c == k)
                 ++sowp;
     }
 
