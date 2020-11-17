@@ -1,0 +1,1 @@
+Изучаю Array, способы инициализации массива в C#, методы Array, String, методы String . Прошёл If, For, While .
