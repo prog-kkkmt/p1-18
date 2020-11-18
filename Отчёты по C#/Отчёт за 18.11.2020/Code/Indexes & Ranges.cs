@@ -24,7 +24,7 @@ class Program
             Console.Write(i);
         }
 
-        //  If u wrote [0..] - it mean from first to last elem.
+        //  If u wrote [0..], or [..^1], or [..] - it mean from first to last elem.
         //  Like u wrote [0..^1]. It mean that if u forgot,
         //  or intentionally (специально) didn't write something before, or after dots -
         //  - it take extreme indexes (крайние индексы) / extreme elems.
