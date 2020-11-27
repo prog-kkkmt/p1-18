@@ -11,7 +11,6 @@ struct Stack
 };
 
 void push(struct Stack *stack, float elem);
-void pushStackNumbers(struct Stack *stack, int 
-		elem);
+void pushStackNumbers(struct Stack *stack, int elem);
 
 #endif
