@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <stack>
 #include <fstream>
 #include <stdio.h>
@@ -231,11 +231,11 @@ int main()
 
 				if (ch >= 48 && ch <= 57)
 				{
-					number += (ch - '0') / 10;
+					number += float(ch - '0') / 10;
 
 					fin.get(ch);
 
-					ch >= 48 && ch <= 57 ? number += (ch - '0') / 100 : number = number;
+					ch >= 48 && ch <= 57 ? number += float(ch - '0') / 100 : number = number;
 				}
 			}
 			/*if (ch == '.')
@@ -263,7 +263,7 @@ int main()
 			else continue;
 		}*/
 
-			std::cout << number << std::endl;
+			std::cout << number << " ";
 
 			/*patronsBox1.push(number);
 			++count;
