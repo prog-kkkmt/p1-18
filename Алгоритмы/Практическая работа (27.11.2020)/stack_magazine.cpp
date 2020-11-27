@@ -136,11 +136,13 @@ int main()
 
 		bool wasFirstSlash = false;
 
+		bool isNewPatron = false;
+
 		bool wasDigit = false;
 
 		short countDigitsAfterComma = 0;
 
-		int rem;
+		int rem = number;
 
 		while (fin.get(ch) && ch != ';')
 		{
@@ -221,13 +223,18 @@ int main()
 				}
 			}*/
 
+			number = 0;
+
 			if (ch >= 48 && ch <= 57)
 			{
 				for (int i = 0; i < 3; i++)	fin.get(ch);
 
 				number = ch - '0';
 
-				for (int i = 0; i < 2; i++)	fin.get(ch);
+				for (int i = 0; i < 2; i++)
+				{
+					fin.get(ch);
+				}
 
 				if (ch >= 48 && ch <= 57)
 				{
@@ -263,7 +270,7 @@ int main()
 			else continue;
 		}*/
 
-			std::cout << number << " ";
+			std::cout << number << std::endl;
 
 			/*patronsBox1.push(number);
 			++count;
