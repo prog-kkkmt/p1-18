@@ -16,7 +16,6 @@ int main()
 	FILE *vibor = fopen("vibor.txt", "r");
 	fscanf(vibor, "%f %f", &diam_for_compaz1, &diam_for_compaz2);
 	fclose(vibor);	
-
 	fscanf(box1, "%d", &n);
 	for (i = 0; i < n; ++i)
 	{
