@@ -28,7 +28,7 @@ int main(){
 	
 	//Вывод имен форматирования
 	for (size_t i = 0; i != num__swap_files; ++i)
-		printf("%d| %s\n", i+1, swap_files[i]);
+		printf("%zu| %s\n", i+1, swap_files[i]);
 	
 	//	{---- Формируем makefile ----}
 	

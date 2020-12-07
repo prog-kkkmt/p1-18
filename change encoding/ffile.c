@@ -18,9 +18,7 @@ size_t show_dir_content(char *path){
 
 	struct dirent *dir;
 	for (len = 0; (dir = readdir(d)); ++len)
-		if (len > 1)
-			sprintf(archive_file[len-2], "%s", dir->d_name);
-	len -= 2;
+		sprintf(archive_file[len], "%s", dir->d_name);
 	
 	closedir(d); // close the directory
 	
