@@ -1,0 +1,2 @@
+strenk = input()
+print(strenk)
