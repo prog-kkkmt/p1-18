@@ -14,14 +14,21 @@ https://stepik.org/lesson/3369/step/8?unit=952
 Например, если n = 7, то программа должна вывести 1 2 2 3 3 3 4.
 '''
 
+def PartDigits(n):
+	count = 0
+	for i in range(1, n+1):
+		for j in range(i):
+			print(i, end = " ")
+			count += 1
+			if (count == n):
+				print()
+				return
+				
 
 #	{--BASIC--}
 def main():
 	n = int(input())
-	for i in range(1, n+1):
-		for j in range(i):
-			print(i, end = " ")
-	print("\n")
+	PartDigits(n)
 	
 
 if __name__ == "__main__":
