@@ -22,49 +22,43 @@ def getYear(n):
         "шести тысячного", "семи тысячного", "восьми тысячного", "девяти тысячного", "десяти тысячного"]
     
     thousands = n // 1000
-    print(thousands)
-    #result += thousandNumbers[thousands]
     
     # get hundreds
     hundredsNumbers = ["", "сто", "двести", "триста", "четыреста", "пятьсот", "шестьсот", "семьсот", "восемьсот", "девятсот"]
     lastHundreds = ["", "сотого", "двухсотого", "трехсотого", "четырехсотого", "пятисотого", "шестисотого", "семисотого", "восьмисотого", "девятсотого"]
     hundreds = n % 1000 // 100
-    print(hundreds)
-    #result += hundredsNumbers[hundreds]
     
     # get dozens and last number
     dozensNumbers = ["", "", "двадцать", "тридцать", "сорок", "пятьдесят", "шестьдесят", "семьдесят", "восемьдесят", "девяносто"]
     lastDozens = ["" ,"десятого", "двадцатого", "тридцатого", "сорокового", "пятидесятого", "шестидесятого", "семидесятого", "восьмидесятого", "девяностого"]
     dozens = n % 100 // 10
-    print(dozens)
     oneDozenNumbers = ["", "одиннадцатого", "двенадцатого", "тринадцатого", "четырнадцатого", "пятнадцатого", "шестнадцатого", "семнадцатого", 
         "восемнадцатого", "девятнадцатого"]
     lastNumber = n % 10
-    print(lastNumber)
-    lastNumbers = ["", "первого", "второго", "третьго", "четвертого", "пятого", "шестого", "седьмого", "восьмого", "девятого"]
+    lastNumbers = ["", "первого", "второго", "третьего", "четвертого", "пятого", "шестого", "седьмого", "восьмого", "девятого"]
     
     result += "года"
     
-    if lastNumber == 1:
-        result = oneDozenNumbers[lastNumber] + " " + result
-    elif lastNumber == 0:
+    if lastNumber == 0:
         result = lastDozens[dozens] + " " + result
+    elif dozens == 1:
+        result = oneDozenNumbers[lastNumber] + " " + result
     else:
         result = lastNumbers[lastNumber] + " " + result
-    
-    if dozens == 0:
-        result = lastHundreds[hundreds] + " " + result
-    else:
         result = dozensNumbers[dozens] + " " + result
      
-    if hundreds == 0:
+    if hundreds == 0 and dozens == 0 and lastNumber == 0:
         result = lastThousands[thousands] + " " + result
     else:
         result = hundredsNumbers[hundreds] + " " + result
-        
-    result = thousandNumbers[thousands] + " " + result 
+        result = thousandNumbers[thousands] + " " + result
+    
         
         
     return result
     
-print(getYear(1952))
+def getDate(d, m, y):
+    return getDay(d) + " " + getMonth(m) + " " + getYear(y)
+    
+day, month, year = map(int, input().split("."))
+print(getDate(day, month, year))
