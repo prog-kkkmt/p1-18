@@ -10,6 +10,14 @@ https://stepik.org/lesson/201702/step/5?unit=175778
 Выведите буквы введенных слов в верхнем регистре, разделяя их пробелами.
 '''
 
-a = list()
-[a.append(i.upper()) for i in iter(input, '.')]
-print(*a, sep='\n')
+a = [i.upper() for i in iter(input, '.')]
+for word in a:
+	[print(i, end=' ') for i in word]
+	print()
+	
+'''
+Python
+Котики
+Код
+.
+'''
