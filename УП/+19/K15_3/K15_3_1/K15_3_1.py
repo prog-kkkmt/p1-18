@@ -1,3 +1,15 @@
+#Выполнили: Груздев Роман, Герасимов Дмитрий
+#Группа: П1-18
+'''
+К15_3. Техника работы с модулями
+
+Модуль sys в Python.
+https://docs-python.ru/standart-library/modul-sys-python/
+
+Задание 1. Функция argv модуля sys в Python.
+https://docs-python.ru/standart-library/modul-sys-python/funktsija-argv-modulja-sys/
+'''
+
 import sys
 
 print("Количество аргументов:")

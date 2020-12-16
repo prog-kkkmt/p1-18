@@ -1,3 +1,15 @@
+#Выполнили: Груздев Роман, Герасимов Дмитрий
+#Группа: П1-18
+'''
+К15_3. Техника работы с модулями
+
+Модуль sys в Python.
+https://docs-python.ru/standart-library/modul-sys-python/
+
+Задание 2. Имя используемой OS.
+https://docs-python.ru/standart-library/modul-sys-python/imja-ispolzuemoj-os/
+'''
+
 import sys
 import os
 

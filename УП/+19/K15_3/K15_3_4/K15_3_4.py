@@ -1,3 +1,15 @@
+#Выполнили: Груздев Роман, Герасимов Дмитрий
+#Группа: П1-18
+'''
+К15_3. Техника работы с модулями
+
+Модуль sys в Python.
+https://docs-python.ru/standart-library/modul-sys-python/
+
+Задание 4. Каталоги и пути интерпретатора Python.
+https://docs-python.ru/standart-library/modul-sys-python/katalogi-puti-interpretatora/
+'''
+
 import sys
 import os
 
@@ -22,4 +34,3 @@ print(sys.base_prefix)
 print(sys.exec_prefix)
 print(sys.base_exec_prefix)
 print(sys.executable)
-#print(sys.platlibdir)

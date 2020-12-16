@@ -1,5 +1,16 @@
+#Выполнили: Груздев Роман, Герасимов Дмитрий
+#Группа: П1-18
+'''
+К15_3. Техника работы с модулями
+
+Модуль sys в Python.
+https://docs-python.ru/standart-library/modul-sys-python/
+
+Задание 5. Объекты stdin, stdout, stderr модуля sys в Python.
+https://docs-python.ru/standart-library/modul-sys-python/obekty-stdin-stdout-stderr-modulja-sys/
+'''
+
 import sys
-import time
 
 stdin = sys.stdin
 try:
@@ -12,7 +23,7 @@ finally:
 
 try:
     sys.stdin = open("text.txt", "r")
-    for i in sys.stdin:#s = input()
+    for i in sys.stdin:
         print(i, end="")
 finally:
     sys.stdin.close()
