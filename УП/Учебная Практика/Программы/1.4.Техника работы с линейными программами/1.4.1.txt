@@ -1,0 +1,23 @@
+К4. Техника работы с линейными и разветвляющимися программами
+
+Задание. Разработать программы по темам
+- input
+Функция input() в Python, ввод данных с клавиатура.
+https://docs-python.ru/tutorial/vstroennye-funktsii-interpretatora-python/funktsija-input/
+
+- print
+Функция print() в Python, печатает объект.
+https://docs-python.ru/tutorial/vstroennye-funktsii-interpretatora-python/funktsija-print/
+
+- stdin, stdout, stderr модуля sys
+Объекты stdin, stdout, stderr модуля sys в Python.
+https://docs-python.ru/standart-library/modul-sys-python/obekty-stdin-stdout-stderr-modulja-sys/
+
+- форматная строка и метод формат
+x = input('Введите ваше имя: ')
+print('Привет, {}'.format(x))
+
+import sys
+sys.stdin.read(1)
+sys.stdout.write(x)
+sys.stdout.write('\n')
