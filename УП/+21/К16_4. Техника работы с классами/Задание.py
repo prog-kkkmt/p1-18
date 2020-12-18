@@ -17,16 +17,16 @@ string = MyClass("hello!")
 print(spam / string)
 
 #Задание 2
-class MultPoint:
+class ClassHi:
     countHello = 0
     def __init__(self, name):
         self.name = name
-        MultPoint.countHello += 1
+        ClassHi.countHello += 1
     def printHi(self):
         print("Hello " + self.name)
     def printCount(self):
-        print(MultPoint.countHello)
+        print(ClassHi.countHello)
 
-sq = MultPoint("Peter")
+sq = ClassHi("Peter")
 sq.printHi()
 sq.printCount()
