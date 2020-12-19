@@ -1,0 +1,14 @@
+Прибыль по месяцам
+January 2020 0
+February 2020 0
+March 2020 0
+April 2020 0
+May 2020 5000
+June 2020 10000
+July 2020 0
+August 2020 0
+September 2020 0
+October 2020 0
+November 2020 5000
+December 2020 7000
+Всего: 27000
