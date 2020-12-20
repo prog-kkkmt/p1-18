@@ -4,10 +4,10 @@ int main()
  int n;
  std::cin >> n;
  int k = 1;
- int i = 0;
+ int i = 1;
  int steps = 0;
  
- while(i < n){
+ while(i <= n){
      if (i > 0 && !(i % 2) && 2*i <= n){
          k = k*k;
          i = 2*i;
