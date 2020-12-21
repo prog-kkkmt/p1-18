@@ -10,7 +10,7 @@ void init_matrix()
             matrix[i][j] =  ' ';
 }
 
-void monitor_matrix()
+void monitor_matrix() // рисует таблицу
 {
   int z;
   for(z = 0; z < 3; z++)
@@ -22,7 +22,7 @@ void monitor_matrix()
   printf("\n");
 }
 
-void playerX()
+void playerX() // Игрок играющий за X
 {
   int a, b;
   printf("Ходят X:");
@@ -36,7 +36,7 @@ void playerX()
   else matrix[a][b] = 'X';
 }
 
-void playerO()
+void playerO() // Игрок играющий за O
 {
   int x, y;
   printf("Ходят О:");
@@ -51,7 +51,7 @@ void playerO()
     matrix[x][y] = 'O';
 }
 
-char result()
+char result() // Каким образом можно добиться победы
 {
     int i;
     for(i = 0; i < 3; i++)
