@@ -23,35 +23,31 @@ void PrintSearch(int *mas, int *len_mas){
 			printf("Введите элемент, который нужно найти: \n");
 			printf(">> ");
 			scanf("%d", &key);
-			printf("%d", key);
-			LiSearch(mas, key, *len_mas);
+			Search(mas, key, *len_mas);
 		}
 		
 		if (n == 2){
 			printf("Введите элемент, который нужно найти: \n");
 			printf(">> ");
 			scanf("%d", &key);
-			BiSearch(mas, key, *len_mas);
+			Search(mas, key, *len_mas);
 		}
 	
 	}
 
 }
 
-void LiSearch(int *mas, int key, int len_mas){
+int LiSearch(int *mas, int key, int len_mas){
 	int flag = 0;
 	int i = 0;
 	for (i = 0; i < len_mas; i++){
 		if (mas[i] == key){      			
-			flag = 1;
-			break;
+			return printf("Заданный ключ находится на %d позиции\n", i);
 		}
 	}
 	
-	if (flag == 1)
-		printf("Заданный ключ находится на %d позиции\n", i + 1);
-	else
-		printf("Такого элемента нет!!!!\n");
+	return printf("Такого элемента нет!!!!\n");
+
 }
 
 int BiSearch(int *mas, int key, int len_mas){
@@ -72,5 +68,7 @@ int BiSearch(int *mas, int key, int len_mas){
 	return printf("Такого элемента нет!!!!\n");
 }
 
-
-
+// Указатель на функцию
+void Searching( int (*Search)(int *mas, int key, int len_mas), int *mas, int key, int len_mas){
+	Search(mas, key, len_mas);
+}

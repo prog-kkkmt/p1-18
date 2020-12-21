@@ -198,7 +198,3 @@ void fPrintMas(int *mas, int n){
 	fclose(fout);
 }
 
-
-
-
-

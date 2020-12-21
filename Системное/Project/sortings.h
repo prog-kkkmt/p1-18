@@ -15,4 +15,6 @@ void BubbleSort(int *mas, int len_mas);	//2. Пузырьковая сортир
 void ShellSort(int *mas, int len_mas);	//3. Сортировка Шелла
 void InsertionSort(int *mas, int len_mas);	//4. Сортировка вставками
 
+//Указатель на функцию
+void Sorting( void (*Sort)(int *mas, int len_mas), int *mas, int len_mas);
 #endif

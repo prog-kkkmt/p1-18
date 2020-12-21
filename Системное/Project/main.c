@@ -41,8 +41,8 @@ int main(){
 			PrintSearch(mas, &len_mas);
 		
 		//3. Инфо
-		else if (n == 3)		
-			//
+		//else if (n == 3)		
+			
 		
 		//4. Изменить массив
 		else if (n == 4)

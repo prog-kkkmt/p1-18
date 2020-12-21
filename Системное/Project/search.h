@@ -15,5 +15,6 @@ void PrintSearch(int *mas, int *len_mas);
 void LiSearch(int *mas, int key, int len_mas);	//Линейный поиск
 int BiSearch(int *mas, int key, int len_mas);		//Бинарный поиск
 
-
+// Указатель на функцию
+void Searching( int (*Search)(int *mas, int key, int len_mas), int *mas, int key, int len_mas);
 #endif
