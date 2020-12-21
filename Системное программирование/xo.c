@@ -9,11 +9,11 @@ int main(void)
   int count = 0;
   FILE *mytxt;
 
-  mytxt = fopen("text.txt", "w+");
+  mytxt = fopen("text.txt", "w+"); // попытался вывести данные в текстовый файл
   printf("Крестики нолики на C.\n");
   printf("1 координата отвечает за горизонталь, 2 за вертикаль.\n");
 
-  init_matrix();
+  init_matrix(); // инициализация матрицы
 
   do{
     count++;
@@ -41,6 +41,6 @@ int main(void)
   else
     printf("O победили!\n");
   monitor_matrix();
-  fprintf(mytxt, "%s %s", playerX(), playerO());
+  fprintf(mytxt, "%s %s", playerX(), playerO()); // Попытался вывести в текстовый файл ходы игроков
   fclose(mytxt);
 } 
