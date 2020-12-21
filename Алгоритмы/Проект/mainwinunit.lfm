@@ -1,0 +1,161 @@
+object Form1: TForm1
+  Left = 342
+  Height = 542
+  Top = 30
+  Width = 613
+  BorderStyle = bsSingle
+  Caption = 'Camera Demo'
+  ClientHeight = 542
+  ClientWidth = 613
+  OnCreate = FormCreate
+  OnKeyDown = FormKeyDown
+  object GLBox: TOpenGLControl
+    Left = 0
+    Height = 445
+    Top = 0
+    Width = 452
+    Align = alClient
+    OnPaint = GLBoxPaint
+    OnResize = GLBoxResize
+  end
+  object Memo1: TMemo
+    Left = 452
+    Height = 445
+    Top = 0
+    Width = 161
+    Align = alRight
+    Anchors = [akRight, akBottom]
+    Enabled = False
+    ReadOnly = True
+    ScrollBars = ssAutoBoth
+    TabOrder = 1
+  end
+  object Panel1: TPanel
+    Left = 0
+    Height = 97
+    Top = 445
+    Width = 613
+    Align = alBottom
+    ClientHeight = 97
+    ClientWidth = 613
+    TabOrder = 2
+    object Label1: TLabel
+      Left = 96
+      Height = 18
+      Top = 0
+      Width = 47
+      Caption = 'Ходьба'
+      ParentColor = False
+    end
+    object Label2: TLabel
+      Left = 312
+      Height = 18
+      Top = 0
+      Width = 110
+      Caption = 'Поворот камеры'
+      ParentColor = False
+    end
+    object LabelRotateInfo: TLabel
+      Left = 331
+      Height = 24
+      Top = 40
+      Width = 67
+      AutoSize = False
+      Font.Height = 18
+      ParentColor = False
+      ParentFont = False
+      OptimalFill = True
+    end
+    object LabelPosInfo: TLabel
+      Left = 83
+      Height = 24
+      Top = 40
+      Width = 69
+      AutoSize = False
+      Font.Height = 18
+      ParentColor = False
+      ParentFont = False
+      OptimalFill = True
+    end
+    object ButtonWalkForward: TSpeedButton
+      Left = 80
+      Height = 25
+      Top = 16
+      Width = 75
+      Caption = 'Вперед'
+      OnClick = ButtonWalkForwardClick
+    end
+    object ButtonWalkLeft: TSpeedButton
+      Left = 8
+      Height = 25
+      Top = 40
+      Width = 75
+      Caption = 'Влево'
+      OnClick = ButtonWalkLeftClick
+    end
+    object ButtonWalkRight: TSpeedButton
+      Left = 152
+      Height = 25
+      Top = 40
+      Width = 75
+      Caption = 'Вправо'
+      OnClick = ButtonWalkRightClick
+    end
+    object ButtonLookLeft: TSpeedButton
+      Left = 256
+      Height = 25
+      Top = 40
+      Width = 75
+      Caption = 'Влево'
+      OnClick = ButtonLookLeftClick
+    end
+    object ButtonWalkBackward: TSpeedButton
+      Left = 80
+      Height = 25
+      Top = 64
+      Width = 75
+      Caption = 'Назад'
+      OnClick = ButtonWalkBackwardClick
+    end
+    object ButtonLookUp: TSpeedButton
+      Left = 328
+      Height = 25
+      Top = 16
+      Width = 75
+      Caption = 'Вверх'
+      OnClick = ButtonLookUpClick
+    end
+    object ButtonLookRight: TSpeedButton
+      Left = 400
+      Height = 25
+      Top = 40
+      Width = 75
+      Caption = 'Вправо'
+      OnClick = ButtonLookRightClick
+    end
+    object ButtonLookDown: TSpeedButton
+      Left = 328
+      Height = 25
+      Top = 64
+      Width = 75
+      Caption = 'Вниз'
+      OnClick = ButtonLookDownClick
+    end
+    object ButtonWalkUpward: TSpeedButton
+      Left = 504
+      Height = 25
+      Top = 16
+      Width = 75
+      Caption = 'Вверх'
+      OnClick = ButtonWalkUpwardClick
+    end
+    object ButtonWalkDownward: TSpeedButton
+      Left = 504
+      Height = 25
+      Top = 59
+      Width = 75
+      Caption = 'Вниз'
+      OnClick = ButtonWalkDownwardClick
+    end
+  end
+end
