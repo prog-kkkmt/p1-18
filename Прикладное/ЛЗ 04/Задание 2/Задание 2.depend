@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1614325782 source:c:\users\p1-18\desktop\Задание 2\main.cpp
+	"workWithArr.h"
+
+1614325758 source:c:\users\p1-18\desktop\Задание 2\workwitharr.cpp
+	"workWithArr.h"
+
+1614325608 c:\users\p1-18\desktop\Задание 2\workwitharr.h
+	<iostream>
+
