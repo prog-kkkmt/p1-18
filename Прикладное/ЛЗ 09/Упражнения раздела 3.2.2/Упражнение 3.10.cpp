@@ -1,26 +1,28 @@
 #include <iostream>
 
 /**
-Íàïèøèòå ïðîãðàììó ïîèñêà â ñòðîêå çíàêîâ ïóíêòóàöèè.
-Ïðîãðàììà äîëæíà ïîçâîëèòü ââåñòè ñèìâîëüíóþ ñòðîêó, ñîäåðæàùóþ çíàêè ïóíêòóàöèè,
-è âûâåñòè òó æå ñòðîêó, íî óæå áåç çíàêîâ ïóíêòóàöèè.
+ÐÐ°Ð¿Ð¸ÑˆÐ¸Ñ‚Ðµ Ð¿Ñ€Ð¾Ð³Ñ€Ð°Ð¼Ð¼Ñƒ Ð¿Ð¾Ð¸ÑÐºÐ° Ð² ÑÑ‚Ñ€Ð¾ÐºÐµ Ð·Ð½Ð°ÐºÐ¾Ð² Ð¿ÑƒÐ½ÐºÑ‚ÑƒÐ°Ñ†Ð¸Ð¸.
+ÐŸÑ€Ð¾Ð³Ñ€Ð°Ð¼Ð¼Ð° Ð´Ð¾Ð»Ð¶Ð½Ð° Ð¿Ð¾Ð·Ð²Ð¾Ð»Ð¸Ñ‚ÑŒ Ð²Ð²ÐµÑÑ‚Ð¸ ÑÐ¸Ð¼Ð²Ð¾Ð»ÑŒÐ½ÑƒÑŽ ÑÑ‚Ñ€Ð¾ÐºÑƒ, ÑÐ¾Ð´ÐµÑ€Ð¶Ð°Ñ‰ÑƒÑŽ Ð·Ð½Ð°ÐºÐ¸ Ð¿ÑƒÐ½ÐºÑ‚ÑƒÐ°Ñ†Ð¸Ð¸,
+Ð¸ Ð²Ñ‹Ð²ÐµÑÑ‚Ð¸ Ñ‚Ñƒ Ð¶Ðµ ÑÑ‚Ñ€Ð¾ÐºÑƒ, Ð½Ð¾ ÑƒÐ¶Ðµ Ð±ÐµÐ· Ð·Ð½Ð°ÐºÐ¾Ð² Ð¿ÑƒÐ½ÐºÑ‚ÑƒÐ°Ñ†Ð¸Ð¸.
 */
 
 int main()
 {
-    int index_punct = 0, index_notpunct = 0;
     std::string str, punctmark, notpunctmark;
-    std::cin >> str;
+    while (std::cin >> str)
+    {
         for (int i = 0; i < str.length(); ++i)
         {
             if ((str[i] <= '/' && str[i] >= '!') || (str[i] >= '{' && str[i] <= '~') || (str[i] >= '[' && str[i] <= '`') || str[i] == '?' || str[i] == ':' || str[i] == ';') {
-                punctmark[index_punct++] = str[i];
+                punctmark += str[i];
             }
             else {
-                notpunctmark[index_notpunct++] = str[i];
+                notpunctmark += str[i];
             }
         }
-    std::cout << punctmark << std::endl;
-    std::cout << notpunctmark << std::endl;
+        std::cout << punctmark << std::endl;
+        std::cout << notpunctmark << std::endl;
+        punctmark = ""; notpunctmark = "";
+    }
     return 0;
 }
