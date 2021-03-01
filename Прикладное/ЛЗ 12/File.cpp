@@ -1,10 +1,9 @@
 #include <iostream>
-#include <cstddef> // size_t
-#include <cstring> // strlen, strcpy
+#include <cstddef>
+#include <cstring>
 
 struct String {
 
-    /* Реализуйте этот конструктор */
 	explicit String(size_t n, char c) {
         char *s = new char[n+1];
         int i;
@@ -15,7 +14,6 @@ struct String {
         str_size = n;
         this->str = s;
     }
-    /* и деструктор */
 	~String() {
          delete [] str;
      }
