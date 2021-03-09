@@ -9,10 +9,10 @@ class Deal:
     """Класс для работы с данными поступающими кассиру"""
 
     # Принять документ и деньги
-    def __init__(self, doc, money, payment):
+    def __init__(self, doc, money, payment_method):
         self.doc = doc
         self.money = float(money)
-        self.payment = payment
+        self.payment_method = payment_method
         self.data_doc = self.getDataDoc()
     
     def __str__(self):

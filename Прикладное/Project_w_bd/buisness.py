@@ -34,12 +34,11 @@ class Program:
 
     def menuPaymentDoc(self):
         print("==={ Меню для работы с квитанцией }===")
-        print("0. Назад")
+        print("0. Завершить работу с заказом")
         print("1. Создать квитанцию об оплате")
         print("2. Вывести на экран квитанцию об оплате")
         print("3. Вернуть квитанцию об оплате")
         print("4. Получить отчет кассира")
-        # print("5. Отмена заказа")
 
     def workWithDocuments(self, deal, cashier):
         answer = -1
@@ -48,7 +47,7 @@ class Program:
             print('>> ', end='')
             answer = int(input())
             print()
-
+                
             # 1. Создать квитанцию об оплате
             if answer == 1:
                 deal.setPaymentDoc()
@@ -70,11 +69,12 @@ class Program:
             elif answer == 4:
                 cashier.printReport()
 
-            # Что-то не понятное
+            # Что-то непонятное
             elif answer != 0:
                 print("Такой функции не существует")
             
         print('----------------')
+        return is_cancelled
 
     def menuPrintReport(self):
         print("0. Назад")
@@ -141,9 +141,13 @@ def main():
                 cashier.add(money, payment) # Добавляем деньги в отчет
 
                 d_fio = deal.getFIO()
-                if db.clientExists(d_fio['lastname'], d_fio['name'], d_fio['patronymic']) == False:
-                    db.addClient(d_fio['lastname'], d_fio['name'], d_fio['patronymic'])
-                user.workWithDocuments(deal, cashier) # Работа с документом
+                client_id = db.getIdClient(d_fio)
+                if db.clientExists(d_fio) == False:
+                    print("DB return: ", db.addClient(d_fio))
+                db.addMoneyToTheClient(client_id, money)
+                # Работа с документом
+                user.workWithDocuments(deal, cashier):
+                
         
         # 2. Получить отчет кассира
         elif answer == 2:
