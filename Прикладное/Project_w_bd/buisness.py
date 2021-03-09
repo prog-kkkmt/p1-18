@@ -19,7 +19,7 @@ class Program:
         print("Введите имя документа: ", end='')
         doc = input()
         print("Оплата клиента: ", end='')
-        money = int(input())
+        money = float(input())
         print("нал/безнал: ", end='')
         payment = input()
         if (payment == '1') or (payment.lower()[0] == 'н'):
@@ -68,13 +68,13 @@ class Program:
             # 4. Получить отчет кассира
             elif answer == 4:
                 cashier.printReport()
+                print()
 
             # Что-то непонятное
             elif answer != 0:
                 print("Такой функции не существует")
             
         print('----------------')
-        return is_cancelled
 
     def menuPrintReport(self):
         print("0. Назад")
@@ -125,9 +125,9 @@ def main():
             # data = user.inputData(deal)
             # deal = Deal(data['doc'], data['money'], data['payment'])
             doc = 'doc.txt'
-            money = 6000
-            payment = 'нал'
-            deal = Deal(doc, money, payment)
+            money = 6000.0
+            payment_method = 'нал'
+            deal = Deal(doc, money, payment_method)
 
             # Если не хватило денег
             if deal.enoughMoney() == False:
@@ -137,21 +137,38 @@ def main():
             else:
                 print()
                 print("Докумет принят")
-                print()
-                cashier.add(money, payment) # Добавляем деньги в отчет
+                cashier.add(money, payment_method) # Добавляем деньги в отчет
 
-                d_fio = deal.getFIO()
-                client_id = db.getIdClient(d_fio)
+                d_fio = deal.getFIO()   # Получаем ФИО клиента
+                # Если его нет в бд с клиентами, добавляем
                 if db.clientExists(d_fio) == False:
-                    print("DB return: ", db.addClient(d_fio))
-                db.addMoneyToTheClient(client_id, money)
-                # Работа с документом
-                user.workWithDocuments(deal, cashier):
+                    db.addClient(d_fio, deal.getPhoneNumber())
+                    s = ''
+                    for key in d_fio:
+                        s += d_fio[key] + ' '
+                    print("Добавлен новый клиент: ", s)
                 
+                client_id = db.getIdClient(d_fio)
+                db.addMoneyToTheClient(client_id, money) # Добавляем деньги в общий список покупок клиента
+
+                # Добавляем в реестр заказов новый заказ
+                d = deal.getDataProduct()
+                date, time = str(datetime.today()).split()
+                db.addOrderToRegister(d['product'], d['number'], d['total_price'],\
+                    deal.getPaymentMethod(), client_id, date, time)
+                data = [d['product'], d['number'], d['total_price'], deal.getPaymentMethod(), client_id, date, time]
+                s = str(db.getLastId('registry')) + ' | '
+                for x in data:
+                    s += str(x) + ' | '
+
+                print("Добавлен в реестр: ", s)
+                print()
+                # Работа с поступившем документом
+                user.workWithDocuments(deal, cashier)            
         
         # 2. Получить отчет кассира
         elif answer == 2:
-            user.workingPrintReport()
+            cashier.printReport()
             
         # Что-то не понятное
         elif answer != 0:

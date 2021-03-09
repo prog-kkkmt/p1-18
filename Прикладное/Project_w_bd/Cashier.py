@@ -33,15 +33,17 @@ class Deal:
             # Удаление '\n' с конца
             if s[-1] == '\n':
                 s = s[:-1]
-            # 
+            # Если строка не пустая
             if s != '':
+                # Если нам поступило новое имя
                 if (s[0] != '\t') and (s[-1] == ':'):
                     name = s[:-1]
                 else:
                     if name != '':
+                        # Если словаря с таким именем не существует, создаем
                         if d_data.get(name, None) == None:
                             d_data[name] = {}
-                        l = [x.strip() for x in s.split(':')]
+                        l = [x.strip() for x in s.split(':')]   # Удаляем ['\t', '\n', ' '] и делим по ':'
                         if len(l) > 1:
                             if s[0] == '\t':
                                 d_data[name][l[0]] = l[1]
@@ -50,11 +52,31 @@ class Deal:
         return d_data
 
     def getFIO(self):
+        """Вернет ФИО пользователя"""
         return {
             'lastname': self.data_doc['Контакты']['Фамилия'],
             'name': self.data_doc['Контакты']['Имя'],
             'patronymic': self.data_doc['Контакты']['Отчество']
         }
+    
+    def getPhoneNumber(self):
+        """Вернет номер телефона"""
+        return self.data_doc['Контакты']['Номер телефона']
+
+    def getPaymentMethod(self):
+        """Вернет тип оплаты (нал/безнал)"""
+        return self.payment_method
+
+    def getDataProduct(self, *args):
+        """Вернет данные о товаре"""
+        if (len(args) == 0) or (args[0] == dict):
+            d = dict()
+            d['product'], d['number'], d['unit_price'], d['total_price'] = self.data_doc['О товаре'].values()
+            return d
+        elif args[0] == list:
+            return list(self.data_doc['О товаре'].values())
+
+
 
     # Хватает ли денег
     def enoughMoney(self):
@@ -140,7 +162,7 @@ class Report:
         else:
             self.money_non_cash += money
     
-    def pop(self, money, payment):
+    def difference(self, money, payment):
         """Минус от денег"""
         if payment == 'нал':
             self.money_cash -= money
