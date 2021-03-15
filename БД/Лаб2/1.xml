@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ibe_sql_queries>
+    <queryset>
+        <caption>MQ==</caption>
+        <query>
+            <caption>MS4x</caption>
+            <source>U2VsZWN0ICoNCkZyb20gc2FsZXNwZW9wbGUNCg==</source>
+        </query>
+        <query>
+            <caption>MS4y</caption>
+            <source>U2VsZWN0IHNuYW1lLCBjaXR5LCBzbnVtDQpGcm9tIHNhbGVzcGVvcGxlDQo=</source>
+        </query>
+        <query>
+            <caption>MS4z</caption>
+            <source>U2VsZWN0IE9OVU0sIEFNVA0KRnJvbSBvcmRlcnMNCm9yZGVyIGJ5IE9OVU0NCg==</source>
+        </query>
+        <query>
+            <caption>MS40</caption>
+            <source>c2VsZWN0IFNOQU1FLCBDSVRZDQpmcm9tIHNhbGVzcGVvcGxlDQpvcmRlciBieSBTTkFNRSBERVND
+DQo=</source>
+        </query>
+    </queryset>
+</ibe_sql_queries>
