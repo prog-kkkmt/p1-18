@@ -12,7 +12,7 @@ class MyWindow:
         height = 500
         x = 700
         y = 300
-        self.root.geometry(f"{width}x{height}+{x}+{y}")
+        self.root.geometry("500x500")
         self.root.iconbitmap("pero.ico")
         self.label = Label(self.root, text="I'm a label", bg="#ef56ab", relief=GROOVE, wraplength=50, font="Calibri 15") #TimesNewRoman
         self.label.pack(anchor=N)
