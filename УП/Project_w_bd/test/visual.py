@@ -2,7 +2,9 @@ from tkinter import *
 from tkinter import messagebox
 import tkinter as tk
 
+from datetime import datetime
 from Cashier import Deal, Report
+from sqlighter import SQLigter
 
 
 class About(tk.Toplevel):
@@ -13,6 +15,41 @@ class About(tk.Toplevel):
 		
 		self.label.pack(padx=20, pady=20)
 		self.button.pack(pady=5, ipadx=2, ipady=2)
+
+class DocumentWorker(tk.Toplevel):
+
+	def __init__(self, parent):
+		super().__init__(parent)
+		
+		self.title("Мини-ауф")
+		# self.geometry('450x500')
+		
+		# Верхний отступ
+		tk.Label(self, text='').pack(pady=5)
+		
+		# Текст окна
+		tk.Label(self, text='Ваш мини-кассир', font=(80), pady=20).pack(pady=7)
+		
+		# Кнопки в окне
+		self.btn_accept = tk.Button(self, text='Принять документ и деньги', command=self.help_cashier_window)
+		self.btn_report = tk.Button(self, text='Получить отчет кассира', command=self.open_window)
+		self.btn_close = tk.Button(self, text='Выход', command=self.destroy)
+		
+		# Позиционирование кнопок
+		self.btn_accept.pack(padx=30, ipadx=10)
+		self.btn_report.pack(ipadx=24)
+		self.btn_close.pack(ipadx=87)
+		
+		# Нижний отступ
+		tk.Label(self, text='').pack(pady=50)
+	
+	def open_window(self):
+		about = About(self)
+		about.grab_set()
+	
+	def help_cashier_window(self):
+		help_cashier = HelpCashier(self)
+		help_cashier.grab_set()
 
 
 class HelpCashier(tk.Toplevel):
@@ -43,12 +80,56 @@ class HelpCashier(tk.Toplevel):
 		
     
 	def accept_data(self):
-		self.data = {
-			"doc": self.doc.get(), 
-			"money": self.money.get(), 
+		data = {
+			"doc": self.doc.get(),
+			"money": self.money.get(),
 			"payment": self.payment.get()
 		}
-		self.destroy()
+		try:
+			deal = Deal(data['doc'], data['money'], data['payment'])
+		except:
+			print("Error")
+			messagebox.showinfo("Error", "Ошибка")
+		# Если не хватило денег
+		if deal.enoughMoney() == False:
+			print()
+			print("Недостаточно")
+			messagebox.showinfo("Error", "Недостаточно средств")
+		# Денег хватает
+		else:
+			print()
+			print("Докумет принят")
+			self.destroy()
+			cashier.add(data['money'], data['payment']) # Добавляем деньги в отчет
+
+			d_fio = deal.getFIO()   # Получаем ФИО клиента
+			# Если его нет в бд с клиентами, добавляем
+			if db.clientExists(d_fio) == False:
+				db.addClient(d_fio, deal.getPhoneNumber())
+				s = ''
+				for key in d_fio:
+					s += d_fio[key] + ' '
+				print("Добавлен новый клиент: ", s)
+            
+			client_id = db.getIdClient(d_fio)
+			db.addMoneyToTheClient(client_id, data['money']) # Добавляем деньги в общий список покупок клиента
+
+			# Добавляем в реестр заказов новый заказ
+			d = deal.getDataProduct()
+			date, time = str(datetime.today()).split()
+			db.addOrderToRegister(d['product'], d['number'], d['total_price'],\
+				deal.getPaymentMethod(), client_id, date, time)
+			data = [d['product'], d['number'], d['total_price'], deal.getPaymentMethod(), client_id, date, time]
+			s = str(db.getLastId('registry')) + ' | '
+			for x in data:
+				s += str(x) + ' | '
+
+			print("Добавлен в реестр: ", s)
+			print()
+			# Работа с поступившем документом
+			#user.workWithDocuments(deal, cashier)
+			doc_work = DocumentWorker(self)
+			doc_work.grab_set()
 	    
 
 class App(tk.Tk):
@@ -56,7 +137,7 @@ class App(tk.Tk):
 	def __init__(self):
 		super().__init__()
 		
-		self.title("Помошник кассира")
+		self.title("Мини-кассир")
 		# self.geometry('450x500')
 		
 		# Верхний отступ
@@ -85,7 +166,6 @@ class App(tk.Tk):
 	def help_cashier_window(self):
 		help_cashier = HelpCashier(self)
 		help_cashier.grab_set()
-		print(tk.data)
 	
 
 '''
@@ -109,6 +189,10 @@ def __init__(self):
 #btn = Button(window, text='Touch me', bg='black', fg='white')
 #btn.grid(column=0, row=1)
 
+
+cashier = Report(0, 0)
+#user = Program()
+db = SQLigter("bd")
 
 if __name__ == '__main__':
         app = App()
