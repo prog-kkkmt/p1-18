@@ -61,7 +61,7 @@ class Program:
             
             # 3. Вернуть квитанцию об оплате
             elif answer == 3:
-                print("Квитанция об оплате в файле: ", deal.getPaymentDoc())
+                print("Квитанция об оплате в файле: ", deal.printFilePaymentDoc())
                 print()
             
             # 4. Получить отчет кассира

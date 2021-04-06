@@ -22,7 +22,8 @@ class SQLigter:
 		"""Вернет последний индекс"""
 		with self.connection:
 			try:
-				return self.cursor.execute(f"SELECT `id` FROM `{table}` ORDER BY `id` DESC LIMIT 1").fetchall()[0][0]
+				#return self.cursor.execute(f"SELECT `id` FROM `{table}` ORDER BY `id` DESC LIMIT 1").fetchall()[0][0]
+				return self.cursor.execute("SELECT `id` FROM `" + table + "` ORDER BY `id` DESC LIMIT 1").fetchall()[0][0]
 			except Exception:
 				return 0
 
@@ -33,7 +34,7 @@ class SQLigter:
 		with self.connection:
 			lastname, name, patronymic = self.translateData(fio)
 			need_id = self.getLastId('clients')+1
-			result = self.cursor.execute("INSERT INTO `clients` (`id`, `lastname`, `name`, `patronymic`, `phone_number`, `amount_of_purchases`) VALUES (?,?,?,?,?,?)", (need_id, lastname, name, patronymic, phone_number, 0)).fetchall()
+			result = self.cursor.execute("INSERT INTO `clients` (`id`, `lastname`, `name`, `patronymic`, `phone_number`, `amount_of_purchases`) VALUES (?,?,?,?,?,?)", (need_id, lastname, name, patronymic, phone_number, 0.0)).fetchall()
 			self.connection.commit()
 			return result
 
@@ -59,7 +60,13 @@ class SQLigter:
 		"""Существует ли клиент"""
 		with self.connection:
 			lastname, name, patronymic = self.translateData(args)
-			result = self.cursor.execute("SELECT * FROM `clients` WHERE `lastname` = ? AND `name` = ? AND `patronymic` = ?", (lastname, name, patronymic)).fetchall()
+			try:
+				result = self.cursor.execute(\
+					"SELECT * FROM `clients` WHERE `lastname` = ? AND `name` = ? AND `patronymic` = ?", \
+					(lastname, name, patronymic)\
+				).fetchall()
+			except:
+				result = ''
 			return bool(len(result))
 
 	# ! Работа с таблицей реестра заказов `registry`
