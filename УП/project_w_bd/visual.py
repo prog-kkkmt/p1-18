@@ -25,18 +25,18 @@ class DocumentWorker(tk.Toplevel):
 		tk.Label(root, text=text, font=(80), pady=20).pack(pady=7)
 		
 		# Кнопки в окне
-		self.btn_print_payment_doc = tk.Button(root, text='Вывести на экран квитанцию об оплате', command=self.print_payment_doc)
-		self.btn_file_payment_doc = tk.Button(root, text='Напечатать квитанцию об оплате', command=self.print_file_payment_doc)
-		self.btn_print_report = tk.Button(root, text='Вывести на экран отчет кассира', command=self.print_report)
-		self.btn_file_report = tk.Button(root, text='Напечатать отчет кассира', command=self.print_file_report)
+		self.btn_print_payment_doc = tk.Button(root, text='Квитанция об оплате', command=self.print_payment_doc)
+		self.btn_file_payment_doc = tk.Button(root, text='Печатать квитанции об оплате', command=self.print_file_payment_doc)
+		self.btn_print_report = tk.Button(root, text='Отчет кассира', command=self.print_report)
+		self.btn_file_report = tk.Button(root, text='Печатать отчета кассира', command=self.print_file_report)
 		self.btn_close = tk.Button(root, text='Закрыть', command=root.destroy)
 		
 		# Позиционирование кнопок
-		self.btn_print_payment_doc.pack(padx=30, ipadx=16)
-		self.btn_file_payment_doc.pack(ipadx=37)
-		self.btn_print_report.pack(ipadx=43)
-		self.btn_file_report.pack(ipadx=64)
-		self.btn_close.pack(ipadx=128)
+		self.btn_print_payment_doc.pack(padx=30, ipadx=51)
+		self.btn_file_payment_doc.pack(ipadx=20)
+		self.btn_print_report.pack(ipadx=72)
+		self.btn_file_report.pack(ipadx=39)
+		self.btn_close.pack(ipadx=92)
 		
 		# Нижний отступ
 		tk.Label(root, text='').pack(pady=50)
@@ -90,23 +90,23 @@ class HelpCashier(tk.Toplevel):
 		btn_canel = tk.Button(self, text='Отменить', bg='red', command=self.destroy).grid(row=3, column=2, pady=10)
 		btn_submit = tk.Button(self, text='Принять', bg='lightgreen', command=self.accept_data).grid(row=3, column=3, padx=10)
 		
-		self.doc = 'doc.txt'
-		self.money = 7000
-		self.payment = 'нал'
+		# self.doc = 'doc.txt'
+		# self.money = 7000
+		# self.payment = 'нал'
 		#mainloop()
 		
     
 	def accept_data(self):
-		# data = {
-		# 	"doc": self.doc.get(),
-		# 	"money": self.money.get(),
-		# 	"payment": self.payment.get()
-		# }
 		data = {
-			"doc": self.doc,
-			"money": self.money,
-			"payment": self.payment
+			"doc": self.doc.get(),
+			"money": self.money.get(),
+			"payment": self.payment.get()
 		}
+		# data = {
+		# 	"doc": 'doc.txt',
+		# 	"money": 7000,
+		# 	"payment": 'нал'
+		# }
 		try:
 			global deal
 			deal = Deal(data['doc'], data['money'], data['payment'])
@@ -120,6 +120,8 @@ class HelpCashier(tk.Toplevel):
 				print()
 				print("Докумет принят")
 				self.destroy()
+				deal.updateMoney()  # Обновляем сумму денег на стоимость товара
+				data['money'] = deal.money
 				cashier.add(data['money'], data['payment']) # Добавляем деньги в отчет
 
 				d_fio = deal.getFIO()   # Получаем ФИО клиента
@@ -130,15 +132,22 @@ class HelpCashier(tk.Toplevel):
 					for key in d_fio:
 						s += d_fio[key] + ' '
 					print("Добавлен новый клиент: ", s)
-				
+			
 				client_id = db.getIdClient(d_fio)
 				db.addMoneyToTheClient(client_id, data['money']) # Добавляем деньги в общий список покупок клиента
 
 				# Добавляем в реестр заказов новый заказ
 				d = deal.getDataProduct()
 				date, time = str(datetime.today()).split()
-				db.addOrderToRegister(d['product'], d['number'], d['total_price'],\
-					deal.getPaymentMethod(), client_id, date, time)
+				db.addOrderToRegister(\
+					product_name=d['product'], \
+					product_number=d['number'], \
+					product_amount=d['total_price'], \
+					payment_method=deal.getPaymentMethod(), \
+					client_id=client_id, \
+					date=date, \
+					time=time
+				)
 				data = [d['product'], d['number'], d['total_price'], deal.getPaymentMethod(), client_id, date, time]
 				s = str(db.getLastId('registry')) + ' | '
 				for x in data:
@@ -172,27 +181,35 @@ class App(tk.Tk):
 		
 		# Кнопки в окне
 		self.btn_accept = tk.Button(self, text='Принять документ и деньги', command=self.help_cashier_window)
-		self.btn_report = tk.Button(self, text='Получить отчет кассира', command=self.print_report)
+		self.btn_report = tk.Button(self, text='Отчет кассира', command=self.print_report)
+		self.btn_file_report = tk.Button(self, text='Печатать отчета кассира', command=self.print_file_report)
 		self.btn_close = tk.Button(self, text='Выход', command=self.destroy)
 		
 		# Позиционирование кнопок
-		self.btn_accept.pack(padx=30, ipadx=10)
-		self.btn_report.pack(ipadx=24)
-		self.btn_close.pack(ipadx=87)
+		self.btn_accept.pack(padx=30, ipadx=11)
+		self.btn_report.pack(ipadx=54)
+		self.btn_file_report.pack(ipadx=20)
+		self.btn_close.pack(ipadx=80)
 
 		self.is_accept = False
 		
 		# Нижний отступ
 		tk.Label(self, text='').pack(pady=50)
+
+	def help_cashier_window(self):
+		help_cashier = HelpCashier(self)
+		help_cashier.grab_set()
 	
 	def print_report(self):
 		messagebox.showinfo("Отчет кассира", cashier.getFormReport())
 		cashier.printReport()
 		print()
 	
-	def help_cashier_window(self):
-		help_cashier = HelpCashier(self)
-		help_cashier.grab_set()
+	def print_file_report(self):
+		name_file = cashier.createNameFile()
+		messagebox.showinfo("Имя квитанции", name_file)
+		print("Отчет в файле: ", name_file)
+		print()
 
 
 cashier = Report(0, 0)

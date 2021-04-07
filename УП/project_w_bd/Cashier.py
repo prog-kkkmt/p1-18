@@ -70,12 +70,17 @@ class Deal:
     def getDataProduct(self, *args):
         """Вернет данные о товаре"""
         if (len(args) == 0) or (args[0] == dict):
-            d = dict()
-            d['product'], d['number'], d['unit_price'], d['total_price'] = self.data_doc['О товаре'].values()
+            #d = dict()
+            print(self.data_doc['О товаре'])
+            d = {
+            	'product': self.data_doc['О товаре']['Товар'],
+            	'number': self.data_doc['О товаре']['Количество'],
+            	'unit_price': self.data_doc['О товаре']['Цена за единицу'],
+            	'total_price': self.data_doc['О товаре']['Итоговая цена'],
+            }
             return d
         elif args[0] == list:
             return list(self.data_doc['О товаре'].values())
-
 
 
     # Хватает ли денег
@@ -83,6 +88,10 @@ class Deal:
         if (self.money >= float(self.data_doc['О товаре']['Итоговая цена'].split()[0])):
             return True
         return False
+    
+    # Обновляет сумму денег
+    def updateMoney(self):
+        self.money = float(self.data_doc['О товаре']['Итоговая цена'].split()[0])
     
     # Создать квитанцию
     def setPaymentDoc(self):
@@ -92,8 +101,7 @@ class Deal:
         self.data_doc['Дата оплаты'] = today
         self.data_doc['Статус'] = "ОПЛАЧЕНО"
 
-    # Печатает на экран данные квитанции
-    def printPaymentDoc(self, *args):
+    def setInfoPaymentDoc(self):
         #! Заполняем квитанцию
         message = "Квитанция об оплате\n" +\
             '\n' +\
@@ -117,40 +125,51 @@ class Deal:
         
         message += '\n' +\
             "Дата оплаты: " + self.data_doc['Дата оплаты']
-        
+        self.info = message
+
+    # Печатает на экран данные квитанции
+    def printPaymentDoc(self, *args):
+        info = self.getInfoPaymentDoc()        
         #! Вывод на экран
         if len(args) == 0:
-            print(message)
+            print(info)
         #! Вывод в файл(-ы)
         else:
             for name_f in args:
                 f = open(name_f, 'w')
-                f.write(message)
+                f.write(info)
 
     # Вернет квитанцию об оплате. Печать документу поставлена
-    def getPaymentDoc(self):
+    def printFilePaymentDoc(self, **kwargs):
         """Вернет квитанцию об оплате"""
 
-        #! Создаем имя документа 
-        name_payment_doc = "Квитанция " + \
-            self.data_doc['Контакты']['Фамилия'] + '.' +\
-            self.data_doc['Контакты']['Имя'][0] + '.' +\
-            self.data_doc['Контакты']['Отчество'][0] + ' ' +\
-            '[' + self.data_doc['Дата оплаты'] + ']' +\
-            ".txt"
-        # Проверка на существование такого файла
-        count = 1
-        while(Path(name_payment_doc).is_file()):
-            index_end = name_payment_doc.index('.txt')
-            if (name_payment_doc[-5] == ')'):
-                index_end = name_payment_doc.index(']')+1
-            #name_payment_doc = name_payment_doc[:index_end] + f'({count}).txt'
-            name_payment_doc = name_payment_doc[:index_end] + "(" + str(count) + ").txt"
-            count += 1
+        if kwargs.get(name) == None:
+            #! Создаем имя документа 
+            name_payment_doc = "Квитанция " + \
+                self.data_doc['Контакты']['Фамилия'] + '.' +\
+                self.data_doc['Контакты']['Имя'][0] + '.' +\
+                self.data_doc['Контакты']['Отчество'][0] + ' ' +\
+                '[' + self.data_doc['Дата оплаты'] + ']' +\
+                ".txt"
+            # Проверка на существование такого файла
+            count = 1
+            while(Path(name_payment_doc).is_file()):
+                index_end = name_payment_doc.index('.txt')
+                if (name_payment_doc[-5] == ')'):
+                    index_end = name_payment_doc.index(']')+1
+                #name_payment_doc = name_payment_doc[:index_end] + f'({count}).txt'
+                name_payment_doc = name_payment_doc[:index_end] + "(" + str(count) + ").txt"
+                count += 1
+        else:
+            name_payment_doc = kwargs['name']
         # Печатаем в файл
         self.printPaymentDoc(name_payment_doc)
-        return(name_payment_doc)
+        return name_payment_doc
     
+    def getInfoPaymentDoc(self):
+        if not hasattr(self, 'info'):
+            self.setInfoPaymentDoc()
+        return self.info
 
 
 class Report:
@@ -198,8 +217,7 @@ class Report:
         self.printReport(name_payment_doc)
         return name_payment_doc
 
-    def printReport(self, *args):
-        """Вывод отчета на экран или в файл"""
+    def getFormReport(self):
         day = str(datetime.today()).split()
         message = "Отчет продавца:\n" +\
             "Дата: " + day[0] + '\n' +\
@@ -207,14 +225,20 @@ class Report:
             "Денег наличными: " + str(self.money_cash) + '\n' +\
             "Денег безналичными: " +  str(self.money_non_cash) + '\n' +\
             "Общее количество: " + str(self.money_cash + self.money_non_cash)
+        return message
+
+    def printReport(self, *args):
+        """Вывод отчета на экран или в файл"""
+        info = self.getFormReport()
+
         #! Вывод на экран
         if len(args) == 0:
-            print(message)
+            print(info)
         #! Вывод в файл(-ы)
         else:
             for name_f in args:
                 f = open(name_f, 'w')
-                f.write(message)
+                f.write(info)
 
 
 # deal = Deal('doc.txt', 123)

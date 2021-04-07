@@ -248,9 +248,9 @@ def Update(display, map_size, heroes):
                 operating_speed = -1
         for hero in heroes:
         	if operating_speed == 1:
-        	    hero.add_speed(100)
+        	    hero.add_speed(1)
         	elif operating_speed == -1:
-        	    hero.sub_speed(100)
+        	    hero.sub_speed(1)
         	hero.navigation()
         	hero.draw(display)
     if operating_speed != 0:

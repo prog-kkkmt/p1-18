@@ -32,17 +32,21 @@ class SQLigter:
 	def addClient(self, fio, phone_number):
 		"""Добавляем нового пользователя в базу"""
 		with self.connection:
-			lastname, name, patronymic = self.translateData(fio)
+			#lastname, name, patronymic = self.translateData(fio)
 			need_id = self.getLastId('clients')+1
-			result = self.cursor.execute("INSERT INTO `clients` (`id`, `lastname`, `name`, `patronymic`, `phone_number`, `amount_of_purchases`) VALUES (?,?,?,?,?,?)", (need_id, lastname, name, patronymic, phone_number, 0.0)).fetchall()
+			print(fio)
+			result = self.cursor.execute("INSERT INTO `clients` (`id`, `lastname`, `name`, `patronymic`, `phone_number`, `amount_of_purchases`) VALUES (?,?,?,?,?,?)", (need_id, fio['lastname'], fio['name'], fio['patronymic'], phone_number, 0.0)).fetchall()
 			self.connection.commit()
 			return result
 
-	def getIdClient(self, *args):
+	def getIdClient(self, kwargs):
 		"""Вернет id клиента"""
-		lastname, name, patronymic = self.translateData(args)
+		#lastname, name, patronymic = self.translateData(args)
 		with self.connection:
-			return self.cursor.execute("SELECT * FROM `clients` WHERE `lastname` = ? AND `name` = ? AND `patronymic` = ?", (lastname, name, patronymic)).fetchall()[0][0]
+			return self.cursor.execute(\
+				"SELECT * FROM `clients` WHERE `lastname` = ? AND `name` = ? AND `patronymic` = ?", \
+				(kwargs['lastname'], kwargs['name'], kwargs['patronymic'])\
+			).fetchall()[0][0]
 			
 	def getClientMoney(self, id_client):
 		"""Вернет сумму денег клиента из таблицы `clients`"""
@@ -56,14 +60,13 @@ class SQLigter:
 			self.connection.execute("UPDATE `clients` SET `amount_of_purchases` = ?", (amount_summ,))
 			return amount_summ
 
-	def clientExists(self, *args):
+	def clientExists(self, fio):
 		"""Существует ли клиент"""
 		with self.connection:
-			lastname, name, patronymic = self.translateData(args)
 			try:
 				result = self.cursor.execute(\
 					"SELECT * FROM `clients` WHERE `lastname` = ? AND `name` = ? AND `patronymic` = ?", \
-					(lastname, name, patronymic)\
+					(fio['lastname'], fio['name'], fio['patronymic'])\
 				).fetchall()
 			except:
 				result = ''
@@ -71,14 +74,20 @@ class SQLigter:
 
 	# ! Работа с таблицей реестра заказов `registry`
 
-	def addOrderToRegister(self, *args):
+	def addOrderToRegister(self, **kwargs):
 		"""Добавляем в реестр заказов новый заказ"""
 		with self.connection:
 			# product_name, product_number, product_amount, payment_method, client_id, date, time
 			need_id = self.getLastId('registry') + 1
-			data_for_add = [need_id]
-			[data_for_add.append(x) for x in self.translateData(args)]
-			result = self.cursor.execute("INSERT INTO `registry` (`id`, `product_name`, `product_number`, `product_amount`, `payment_method`, `client_id`, `date`, `time`) VALUES (?,?,?,?,?,?,?,?)", ([x for x in data_for_add])).fetchall()
+			# [data_for_add.append(x) for x in self.translateData(args)]
+			kwargs['id'] = need_id
+			result = self.cursor.execute(\
+				"INSERT INTO `registry` (\
+				`id`, `product_name`, `product_number`, `product_amount`, `payment_method`, `client_id`, `date`, `time`\
+				) VALUES (?,?,?,?,?,?,?,?)", \
+				(kwargs['id'], kwargs['product_name'], kwargs['product_number'], kwargs['product_amount'], kwargs['payment_method'], \
+				kwargs['client_id'], kwargs['date'], kwargs['time'])\
+			).fetchall()
 			self.connection.commit()
 			return result
 
