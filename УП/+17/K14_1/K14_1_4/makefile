@@ -1,2 +1,2 @@
 all:
-	python3 n4.py
+	python3 K14_1_4.py
