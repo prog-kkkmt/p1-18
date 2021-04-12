@@ -1,2 +1,2 @@
 all:
-	python3 prog.py
+	python3 K8_1_2.py
