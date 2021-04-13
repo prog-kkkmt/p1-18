@@ -1,4 +1,3 @@
-#Задание 1
 print("Задание 1")
 class Parant:
     a = 10
@@ -27,7 +26,6 @@ c.parent_method()
 c.set_attr(4)
 c.get_attr()
 
-#Задание 2
 print("\nЗадание 2")
 class Parant:
     a = 10
@@ -39,13 +37,12 @@ class Parant:
 class Child(Parant):
     def power(self, x, y): #Задание 2
         print(x ** y)
-    def method(self): #Задание 2
+    def method(self):
         print("HELLO")
 
 c.power(10, 4)
 c.method()
 
-#Задание 3
 print("\nЗадание 3")
 class ClassName:
     def __init__(self, x, y):
@@ -62,7 +59,6 @@ v1 = ClassName(3, 10)
 v2 = ClassName(5, 5)
 print(v1 * v2)
 
-#Задание 4
 print("\nЗадание 4")
 class Counter:
     sec_count = 0
