@@ -10,12 +10,11 @@
 '''
 
 def SortInc3(a):
-	n = 3
+	n = len(a)
 	for i in range(n):
-		for j in range(n-1):
-			if (a[i] < a[j]):
+		for j in range(i+1,n):
+			if (a[i] > a[j]):
 				a[i], a[j] = a[j], a[i]
-	return None
 	
 print("Введите массив X:")
 x = [float(i) for i in input().split()]
