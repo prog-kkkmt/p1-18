@@ -12,7 +12,8 @@ Text44. Дан текстовый файл, каждая строка котор
 with open("file.txt","r") as fin:
     list = [line.split() for line in fin]
 
-sum, count = 0, 0
+sum = 0
+count = 0
 for i in range(len(list)):
     sum += (int(*list[i]))
     count += 1
