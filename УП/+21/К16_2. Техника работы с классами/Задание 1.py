@@ -1,4 +1,3 @@
-#Задание 1
 print("Задание 1")
 class Class_Wolf:
     count_wolf = 0
@@ -13,10 +12,8 @@ class Class_Wolf:
     def how_much_wolf(self):
         print("Воет {0} волк(ов)".format(Class_Wolf.count_wolf))
 
-#Задание 2
 wolf = Class_Wolf(10)
 
-#Задание 3
 print("\nЗадание 3")
 Class_Wolf.holw()
 wolf.how_much_wolf()
@@ -32,7 +29,6 @@ print("Значение отребута: %s", getattr(wolf, atr))
 setattr(wolf, atr, 10)
 print(getattr(wolf, atr))
 
-#Задание 4
 print("\nЗадание 4")
 
 print("doc: ", Class_Wolf.__doc__)
@@ -41,7 +37,6 @@ print("module: ", Class_Wolf.__module__)
 print("bases: ", Class_Wolf.__bases__)
 print("dict: ", Class_Wolf.__dict__)
 
-#Задание 5
 print("\nЗадание 5")
 
 wolf1 = Class_Wolf(10)
