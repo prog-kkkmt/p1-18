@@ -1,10 +1,8 @@
 import modul
 
-#Задание 4
 rect = modul.ClassSize(17, 28)
 print(rect.width)
 
-#Задание 1
 class MyClass:
     def __init__(self, cont):
         self.cont = cont
@@ -16,7 +14,6 @@ spam = MyClass("spam")
 string = MyClass("hello!")
 print(spam / string)
 
-#Задание 2
 class ClassHi:
     countHello = 0
     def __init__(self, name):
