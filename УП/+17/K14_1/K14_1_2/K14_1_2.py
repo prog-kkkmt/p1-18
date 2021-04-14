@@ -9,12 +9,12 @@ Text12. Дана строка S и текстовый файл. Заменить
 import os
 
 fin = open("file.txt", "r")
-list = fin.readlines()
+list_ = fin.readlines()
 fin.close()
 os.remove("./file.txt")
 s = input()
 fout = open("file.txt","w")
-for i in list:
+for i in list_:
     for j in range(len(i)):
         if(i[j-1] == '\n' and i[j] == '\n'):
             fout.write(s+'\n')
