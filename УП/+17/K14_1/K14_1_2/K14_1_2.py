@@ -12,12 +12,12 @@ fin = open("file.txt", "r")
 list = fin.readlines()
 fin.close()
 os.remove("./file.txt")
-str = input()
+s = input()
 fout = open("file.txt","w")
 for i in list:
     for j in range(len(i)):
         if(i[j-1] == '\n' and i[j] == '\n'):
-            fout.write((str)+'\n')
+            fout.write(s+'\n')
         else:
             fout.write(i[j])
 
