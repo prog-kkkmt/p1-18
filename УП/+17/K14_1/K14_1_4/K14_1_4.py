@@ -10,14 +10,14 @@ Text44. Дан текстовый файл, каждая строка котор
 
 
 with open("file.txt","r") as fin:
-    list = [line.split() for line in fin]
+    list_ = [line.split() for line in fin]
 
 sum = 0
 count = 0
-for i in range(len(list)):
-    sum += (int(*list[i]))
+for i in range(len(list_)):
+    sum += (int(*list_[i]))
     count += 1
-    print(*list[i])
+    print(*list_[i])
 
 print("sum =",sum)
 print("count =", count)
