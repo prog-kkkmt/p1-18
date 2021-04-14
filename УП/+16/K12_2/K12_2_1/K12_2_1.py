@@ -16,14 +16,14 @@
 count = int(input())
 words = set()
 for i in range(count):
-    str = input().lower()
-    words.add(str)
+    s = input().lower()
+    words.add(s)
 
 errors = set()
 l = int(input())
 for i in range(l):
     str = input().lower().split()
-    for j in str:
+    for j in s:
         if(j not in words and j not in errors):
             errors.add(j)
 print('\n'.join(errors))
