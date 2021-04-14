@@ -23,8 +23,8 @@ M строках указан запрос вида Операция Файл. �
 
 d = dict()
 for i in range(int(input())):
-    list = input().split()
-    d[list[0]] = list[1:]
+    list_ = input().split()
+    d[list_[0]] = list_[1:]
 
 for i in range(int(input())):
     command, name = input().split()
