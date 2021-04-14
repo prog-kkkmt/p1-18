@@ -28,10 +28,10 @@
 file1 = open("session.txt", "r")
 file2 = open("disc.txt", "r")
 
-list = file1.readlines()
-session = [i.strip().split('; ') for i in list]
-list = file2.readlines()
-disc = [i.strip() for i in list]
+list_ = file1.readlines()
+session = [i.strip().split('; ') for i in list_]
+list_ = file2.readlines()
+disc = [i.strip() for i in list_]
 file1.close()
 file2.close()
 names = []
