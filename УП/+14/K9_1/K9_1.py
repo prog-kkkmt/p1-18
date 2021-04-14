@@ -42,9 +42,9 @@ def prof(mtrx,mas):             # Проверка на "подходит ли �
     return False
 
 #---------1--------------------
-list = file.readlines()
+list_ = file.readlines()
 
-out = [i.strip().split() for i in list]
+out = [i.strip().split() for i in list_]
 for i in range(len(out)):
     print(f'{out[i][1]}: {out[i][0]} | {out[i][2]}')
 print()
