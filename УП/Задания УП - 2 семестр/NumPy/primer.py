@@ -9,8 +9,8 @@ def main():
         num = int(input())
         if(num == 1):
             print("Введите функцию(-, +, *, /):")
-            str = input()
-            function_1(str)
+            s = input()
+            function_1(s)
             print("\n")
         elif(num == 2):
             function_2()
@@ -38,22 +38,22 @@ def menu():
     print("0. Выход")
 
 # Функция function_1 выводит в консоль пример сложения/вычитания/деления/умножения матриц
-def function_1(str):
+def function_1(s):
     A = numpy.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
     B = A.copy()[::-1, ::-1]
-    if(str == "+"):
+    if(s == "+"):
         print("A\n", A)
         print("B\n", B)
         print("A + B\n", A + B)
-    elif(str == "-"):
+    elif(s == "-"):
         print("A\n", A)
         print("B\n", B)
         print("A - B\n", A - B)
-    elif(str == "*"):
+    elif(s == "*"):
         print("A\n", A)
         print("B\n", B)
         print("A * B\n", A * B)
-    elif(str == "/"):
+    elif(s == "/"):
         print("A\n", A)
         print("B\n", B)
         print("A / B\n", A // B)
