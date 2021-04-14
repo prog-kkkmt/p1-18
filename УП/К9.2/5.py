@@ -1,3 +1,9 @@
+'''
+Задача №5.  Арбамян Matrix56. 
+Дана матрица размера M x N (N — четное число). Поменять местами 
+левую и правую половины матрицы.
+'''
+
 from random import randint as rnd
 n,m = int(input('n:\n')),int(input('m:\n'))
 upr = []
