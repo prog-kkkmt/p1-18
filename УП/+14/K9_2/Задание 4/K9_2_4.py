@@ -17,9 +17,9 @@ a = [randint(1, 10) for i in range(m)]
 print(a)
 mtrx1 = []
 for i in range(m):
-    list = []
+    list_ = []
     for j in range(n):
-        list.append(a[i])
-    mtrx1.append(list)
+        list_.append(a[i])
+    mtrx1.append(list_)
 
 [print(' '.join([str(j) for j in i])) for i in mtrx1]
