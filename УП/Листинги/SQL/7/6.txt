@@ -1,0 +1,18 @@
+SELECT title, name_author, name_genre, price, amount
+FROM book b INNER JOIN author a
+    ON b.author_id = a.author_id
+    INNER JOIN genre g
+    ON b.genre_id = g.genre_id
+WHERE b.genre_id IN (
+    SELECT genres_sums.genre_id
+    FROM (SELECT genre_id, SUM(amount) sum_amount
+     FROM book
+     GROUP BY genre_id) genres_sums
+    INNER JOIN 
+    (SELECT genre_id, SUM(amount) sum_amount
+     FROM book
+     GROUP BY genre_id
+     ORDER BY sum_amount DESC 
+     LIMIT 1) max_genre_amount
+    ON genres_sums.sum_amount = max_genre_amount.sum_amount)
+ORDER BY title;

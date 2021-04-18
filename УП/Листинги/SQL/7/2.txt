@@ -1,0 +1,4 @@
+SELECT name_genre
+FROM book b RIGHT OUTER JOIN genre g
+ON b.genre_id = g.genre_id
+WHERE title IS NULL;

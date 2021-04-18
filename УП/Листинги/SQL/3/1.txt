@@ -1,0 +1,3 @@
+SELECT author, SUM(amount)
+FROM book
+GROUP BY author;

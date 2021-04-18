@@ -1,0 +1,10 @@
+SELECT name_author
+FROM author
+WHERE name_author IN (
+    SELECT name_author
+    FROM book b INNER JOIN author a
+        ON b.author_id = a.author_id
+        INNER JOIN genre g
+        ON b.genre_id = g.genre_id
+    GROUP BY name_author
+    HAVING COUNT(DISTINCT name_genre) = 1);

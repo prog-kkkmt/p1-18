@@ -1,0 +1,6 @@
+SELECT name_author, SUM(amount) Количество
+FROM book b RIGHT OUTER JOIN author a
+ON b.author_id = a.author_id
+GROUP BY name_author
+HAVING Количество < 10 OR COUNT(title) = 0
+ORDER BY Количество;

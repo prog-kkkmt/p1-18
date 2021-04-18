@@ -1,0 +1,5 @@
+SELECT b.title Название, name_author Автор, (s.amount + b.amount) Ко-личество
+FROM book b INNER JOIN author a
+    USING(author_id)
+    INNER JOIN supply s ON s.title = b.title
+                AND s.price = b.price;

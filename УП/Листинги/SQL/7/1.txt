@@ -1,0 +1,5 @@
+SELECT title, name_genre, price
+FROM book b INNER JOIN genre g
+ON b.genre_id = g.genre_id
+WHERE amount > 8
+ORDER BY price DESC;

@@ -1,0 +1,5 @@
+SELECT SUM(amount) AS Количество, 
+    SUM(price * amount) AS Стоимость
+FROM book;
+
+
