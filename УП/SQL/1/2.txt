@@ -1,2 +1,0 @@
-INSERT INTO book (book_id, title, author, price, amount)
-    VALUES (null, "Мастер и Маргарита", "Булгаков М.А.", 670.99, 3);
