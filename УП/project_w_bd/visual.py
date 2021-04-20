@@ -190,8 +190,6 @@ class App(tk.Tk):
 		self.btn_report.pack(ipadx=54)
 		self.btn_file_report.pack(ipadx=20)
 		self.btn_close.pack(ipadx=80)
-
-		self.is_accept = False
 		
 		# Нижний отступ
 		tk.Label(self, text='').pack(pady=50)
