@@ -29,7 +29,7 @@ class DocumentWorker(tk.Toplevel):
 		self.btn_file_payment_doc = tk.Button(root, text='Печатать квитанции об оплате', command=self.print_file_payment_doc)
 		self.btn_print_report = tk.Button(root, text='Отчет кассира', command=self.print_report)
 		self.btn_file_report = tk.Button(root, text='Печатать отчета кассира', command=self.print_file_report)
-		self.btn_close = tk.Button(root, text='Закрыть', command=root.destroy)
+		self.btn_close = tk.Button(root, text='Закрыть окно', command=root.destroy)
 		
 		# Позиционирование кнопок
 		self.btn_print_payment_doc.pack(padx=30, ipadx=51)
