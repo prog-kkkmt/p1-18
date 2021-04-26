@@ -1,0 +1,62 @@
+﻿<Window x:Class="Calculator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Calculator"
+        mc:Ignorable="d"
+		Background="Black"
+        Title="Калькулятор" Height="480" Width="480">
+
+	<Grid x:Name="grid1" RenderTransformOrigin="0.5,0.5">
+		<Grid.RowDefinitions>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition/>
+			<ColumnDefinition/>
+			<ColumnDefinition/>
+			<ColumnDefinition/>
+		</Grid.ColumnDefinitions>
+
+		<TextBox x:Name="textBox"  FontSize="60" FontWeight="Bold" Grid.Column="0" Grid.ColumnSpan="5" FontFamily="Ubuntu Mono" Foreground="White" BorderBrush="{x:Null}" VerticalAlignment="Center" Background="{x:Null}" BorderThickness="0" KeyDown="TextBox_KeyDown"/>
+		<!--KeyDown="TextBox_KeyDown"-->
+		<!--<TextBlock x:Name="txtBlock" KeyDown="TextBox_KeyDown" FontSize="60" FontWeight="Bold" Grid.Column="0" Grid.ColumnSpan="5" FontFamily="Century Gothic" Background="Black" Foreground="White" TextAlignment="Justify"/>-->
+
+		<Button x:Name="Button1"        Content="1"     Grid.Column="0" Grid.Row="1"    FontFamily="Ubuntu Mono" FontSize="50"  Background="Black"		Foreground="White" BorderBrush="White" BorderThickness="5,5,5,5" SnapsToDevicePixels="True" Cursor="Hand" Click="NumberButtons_Click" FontWeight="Bold" Focusable="False"/>
+		<Button x:Name="Button2"        Content="2"     Grid.Column="1" Grid.Row="1"    FontFamily="Ubuntu Mono" FontSize="50"  Background="Black"		Foreground="White" BorderBrush="White" BorderThickness="5,5,5,5" SnapsToDevicePixels="True" Cursor="Hand" Click="NumberButtons_Click" FontWeight="Bold" Focusable="False"/>
+		<Button x:Name="Button3"        Content="3"     Grid.Column="2" Grid.Row="1"    FontFamily="Ubuntu Mono" FontSize="50"  Background="Black"		Foreground="White" BorderBrush="White" BorderThickness="5,5,5,5" SnapsToDevicePixels="True" Cursor="Hand" Click="NumberButtons_Click" FontWeight="Bold" Focusable="False"/>
+		<Button x:Name="Button4"        Content="4"     Grid.Column="0" Grid.Row="2"    FontFamily="Ubuntu Mono" FontSize="50"  Background="Black"		Foreground="White" BorderBrush="White" BorderThickness="5,5,5,5" SnapsToDevicePixels="True" Cursor="Hand" Click="NumberButtons_Click" FontWeight="Bold" Focusable="False"/>
+		<Button x:Name="Button5"        Content="5"     Grid.Column="1" Grid.Row="2"    FontFamily="Ubuntu Mono" FontSize="50"  Background="Black"		Foreground="White" BorderBrush="White" BorderThickness="5,5,5,5" SnapsToDevicePixels="True" Cursor="Hand" Click="NumberButtons_Click" FontWeight="Bold" Focusable="False"/>
+		<Button x:Name="Button6"        Content="6"     Grid.Column="2" Grid.Row="2"    FontFamily="Ubuntu Mono" FontSize="50"  Background="Black"		Foreground="White" BorderBrush="White" BorderThickness="5,5,5,5" SnapsToDevicePixels="True" Cursor="Hand" Click="NumberButtons_Click" FontWeight="Bold" Focusable="False"/>
+		<Button x:Name="Button7"        Content="7"     Grid.Column="0" Grid.Row="3"    FontFamily="Ubuntu Mono" FontSize="50"  Background="Black"		Foreground="White" BorderBrush="White" BorderThickness="5,5,5,5" SnapsToDevicePixels="True" Cursor="Hand" Click="NumberButtons_Click" FontWeight="Bold" Focusable="False"/>
+		<Button x:Name="Button8"        Content="8"     Grid.Column="1" Grid.Row="3"    FontFamily="Ubuntu Mono" FontSize="50"  Background="Black"		Foreground="White" BorderBrush="White" BorderThickness="5,5,5,5" SnapsToDevicePixels="True" Cursor="Hand" Click="NumberButtons_Click" FontWeight="Bold" Focusable="False"/>
+		<Button x:Name="Button9"        Content="9"     Grid.Column="2" Grid.Row="3"    FontFamily="Ubuntu Mono" FontSize="50"  Background="Black"		Foreground="White" BorderBrush="White" BorderThickness="5,5,5,5" SnapsToDevicePixels="True" Cursor="Hand" Click="NumberButtons_Click" FontWeight="Bold" Focusable="False"/>
+		<Button x:Name="Button0"        Content="0"     Grid.Column="1" Grid.Row="4"    FontFamily="Ubuntu Mono" FontSize="50"  Background="Black"		Foreground="White" BorderBrush="White" BorderThickness="5,5,5,5" SnapsToDevicePixels="True" Cursor="Hand" Click="NumberButtons_Click" FontWeight="Bold" Focusable="False"/>
+
+		<Button x:Name="AssignButton"   Content="="     Grid.Column="2" Grid.Row="4"    FontFamily="Ubuntu Mono" FontSize="50"  Background="Black"		Foreground="White" BorderBrush="White" BorderThickness="5,5,5,5" SnapsToDevicePixels="True" Cursor="Hand" Click="ButtonAssign_Click" FontWeight="Bold" Focusable="False"/>
+
+		<Button x:Name="ClearButton"    Content="AC"    Grid.Column="0" Grid.Row="4"    FontFamily="Ubuntu Mono" FontSize="50"  Background="Black"		Foreground="White" BorderBrush="White" BorderThickness="5,5,5,5" SnapsToDevicePixels="True" Cursor="Hand" Click="ClearButton_Click" FontWeight="Bold" Focusable="False"/>
+
+		<Button x:Name="PowerButton"    Content="?"     Grid.Column="4" Grid.Row="1"    FontFamily="Ubuntu Mono" FontSize="50"  Background="Black"		Foreground="White" BorderBrush="White" BorderThickness="5,5,5,5" SnapsToDevicePixels="True" Cursor="Hand" FontWeight="Bold" Focusable="False"/>
+		<Button x:Name="SqrtButton"     Content="?"     Grid.Column="4" Grid.Row="2"    FontFamily="Ubuntu Mono" FontSize="50"  Background="Black"		Foreground="White" BorderBrush="White" BorderThickness="5,5,5,5" SnapsToDevicePixels="True" Cursor="Hand" FontWeight="Bold" Focusable="False"/>
+		<Button x:Name="RodButton"      Content="?"     Grid.Column="4" Grid.Row="3"    FontFamily="Ubuntu Mono" FontSize="50"  Background="Black"		Foreground="White" BorderBrush="White" BorderThickness="5,5,5,5" SnapsToDevicePixels="True" Cursor="Hand" FontWeight="Bold" Focusable="False"/>
+		<Button x:Name="ProcentButton"  Content="?"     Grid.Column="4" Grid.Row="4"    FontFamily="Ubuntu Mono" FontSize="50"  Background="Black"		Foreground="White" BorderBrush="White" BorderThickness="5,5,5,5" SnapsToDevicePixels="True" Cursor="Hand" FontWeight="Bold" Focusable="False"/>
+
+		<Button x:Name="PlusButton"     Content="+"     Grid.Column="3" Grid.Row="1"    FontFamily="Ubuntu Mono" FontSize="50"  Background="Black"		Foreground="White" BorderBrush="White" BorderThickness="5,5,5,5" SnapsToDevicePixels="True" Cursor="Hand" Click="OperationButtons_Click"  FontWeight="Bold" Focusable="False"/>
+		<Button x:Name="MinusButton"    Content="-"     Grid.Column="3" Grid.Row="2"    FontFamily="Ubuntu Mono" FontSize="50"  Background="Black"		Foreground="White" BorderBrush="White" BorderThickness="5,5,5,5" SnapsToDevicePixels="True" Cursor="Hand" Click="OperationButtons_Click"  FontWeight="Bold" Focusable="False"/>
+		<Button x:Name="MultButton"     Content="*"     Grid.Column="3" Grid.Row="3"    FontFamily="Ubuntu Mono" FontSize="50"  Background="Black"		Foreground="White" BorderBrush="White" BorderThickness="5,5,5,5" SnapsToDevicePixels="True" Cursor="Hand" Click="OperationButtons_Click"  FontWeight="Bold" Focusable="False"/>
+		<Button x:Name="DevideButton"   Content="/"     Grid.Column="3" Grid.Row="4"    FontFamily="Ubuntu Mono" FontSize="50"  Background="Black"		Foreground="White" BorderBrush="White" BorderThickness="5,5,5,5" SnapsToDevicePixels="True" Cursor="Hand" Click="OperationButtons_Click"  FontWeight="Bold" Focusable="False"/>
+
+		<Button x:Name="ButtonMore"     Content="more"  Grid.Column="4"                 FontFamily="Ubuntu Mono" FontSize="16" Background="Black"		Foreground="White" BorderBrush="White" BorderThickness="5,5,5,5" SnapsToDevicePixels="True" Cursor="Hand" Click="ButtonMore_Pressed" FontWeight="Bold" Focusable="False" VerticalAlignment="Top" HorizontalAlignment="Right"/>
+	</Grid>
+</Window>
+
+<!--Content="^"         Click="Operations_Button"-->
+<!--Content="√"     Click="Operations_Button"-->
+<!--Content="ROD"   Click="Operations_Button"-->
+<!--Content="%"     Click="Operations_Button"-->
