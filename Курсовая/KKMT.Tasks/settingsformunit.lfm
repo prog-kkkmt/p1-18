@@ -1,0 +1,55 @@
+object SettingsForm: TSettingsForm
+  Left = 241
+  Height = 135
+  Top = 250
+  Width = 450
+  BorderStyle = bsDialog
+  Caption = 'Настройки'
+  ClientHeight = 135
+  ClientWidth = 450
+  OnCreate = FormCreate
+  object LabeledEdit1: TLabeledEdit
+    Left = 8
+    Height = 26
+    Top = 24
+    Width = 432
+    Anchors = [akTop, akLeft, akRight]
+    EditLabel.Height = 17
+    EditLabel.Width = 432
+    EditLabel.Caption = 'Имя пользователя на GitHub'
+    EditLabel.ParentColor = False
+    TabOrder = 0
+  end
+  object Button1: TButton
+    Left = 280
+    Height = 25
+    Top = 104
+    Width = 75
+    Anchors = [akRight, akBottom]
+    Caption = 'Сохранить'
+    OnClick = Button1Click
+    TabOrder = 1
+  end
+  object Button2: TButton
+    Left = 365
+    Height = 25
+    Top = 104
+    Width = 75
+    Anchors = [akRight, akBottom]
+    Caption = 'Отмена'
+    OnClick = Button2Click
+    TabOrder = 2
+  end
+  object LabeledEdit2: TLabeledEdit
+    Left = 8
+    Height = 26
+    Top = 72
+    Width = 432
+    Anchors = [akTop, akLeft, akRight]
+    EditLabel.Height = 17
+    EditLabel.Width = 432
+    EditLabel.Caption = 'Приватный токен GitHub'
+    EditLabel.ParentColor = False
+    TabOrder = 3
+  end
+end
