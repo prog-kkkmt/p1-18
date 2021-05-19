@@ -9,18 +9,27 @@ uses
 
 type
 
-  { TSettingsForm }
+ { TSettingsForm }
 
   TSettingsForm = class(TForm)
+    // Кнопка сохранения
     Button1: TButton;
+    // Кнопка отмены
     Button2: TButton;
+    // Поле с именем пользователя GitHub
     LabeledEdit1: TLabeledEdit;
+    // Поле с токеном пользователя GitHub
     LabeledEdit2: TLabeledEdit;
+    // Нажатие на кнопку сохранения
     procedure Button1Click(Sender: TObject);
+    // Нажатие на кнопку отмены
     procedure Button2Click(Sender: TObject);
+    // Создания формы
     procedure FormCreate(Sender: TObject);
   private
+    // Сохранение настроек в конфиг
     procedure LoadConfig;
+    // Загрузка настроек из конфига
     procedure SaveConfig;
   public
 

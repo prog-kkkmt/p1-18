@@ -8,6 +8,7 @@ uses
   Classes, SysUtils, Dialogs, fpjson, fphttpclient, Forms;
 
 type
+  // Класс инкапсуляции объекта Integer
   TIntObj = class
    private
       FI: Integer;
@@ -15,9 +16,11 @@ type
       property I: Integer Read FI;
       constructor Create(IValue: Integer);
    end;
-
-  function CreateGitHubHTTP: TFPHttpClient;
-  procedure OpenDialog(FormClass: TFormClass);
+  
+// Создание и подготовка HttpClient для работы с GitHub API
+function CreateGitHubHTTP: TFPHttpClient;
+// Функция быстрого открытия модального окна
+procedure OpenDialog(FormClass: TFormClass);
 
 implementation
 

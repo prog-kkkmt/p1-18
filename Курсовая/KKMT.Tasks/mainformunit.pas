@@ -13,21 +13,30 @@ uses
 
 type
 
-  { TMainForm }
+ { TMainForm }
 
+  // Класс главной формы
   TMainForm = class(TForm)
+    // Кнопка добавления группы
     AddGroupButton: TBitBtn;
+    // Кнопока добавления группы
     AddTaskList: TBitBtn;
+    // Кнопка удаления группы
     DeleteGroupButton: TBitBtn;
+    // Кнопка удаления таска
     DeleteTaskButton: TBitBtn;
+    // Кнопка редактирования группы
     EditGroupButton: TBitBtn;
+    // Группа редактирования таска
     EditTaskButton: TBitBtn;
-		IconList: TImageList;
+    IconList: TImageList;
     Panel3: TPanel;
+    // Кнопка сохранения репорта
     SaveStatusReportButton: TBitBtn;
     Panel1: TPanel;
     Panel2: TPanel;
     ProgressBar1: TProgressBar;
+    // Кнопка настроек
     SettingsButton: TBitBtn;
     Splitter1: TSplitter;
     Splitter2: TSplitter;
@@ -37,38 +46,64 @@ type
     Label4: TLabel;
     Label5: TLabel;
     Label6: TLabel;
+    // Лист групп
     GroupsList: TListBox;
-		StaticText1: TStaticText;
-		StaticText2: TStaticText;
+    StaticText1: TStaticText;
+    StaticText2: TStaticText;
+    // Лист тасков
     TasksList: TListBox;
+    // Главный лист с статусом выполнения заданий
     ListView1: TListView;
     TasksPanel: TPanel;
     GroupsPanel: TPanel;
+    // Кнопка обновления репорта
     UpdateStatusButton: TBitBtn;
+    // Нажатие на кнопку добавления группы
     procedure AddGroupButtonClick(Sender: TObject);
+    // Нажатие на кнопку добавления таска
     procedure AddTaskListClick(Sender: TObject);
+    // Нажатие лист групп
     procedure GroupsListClick(Sender: TObject);
+    // Двойное нажатие на лист с статусами заданий
     procedure ListView1DblClick(Sender: TObject);
+    // Нажатие на кнопку сохранения репорта
     procedure SaveStatusReportButtonClick(Sender: TObject);
+    // Нажатие на кнопку настроек
     procedure SettingsButtonClick(Sender: TObject);
+    // Нажатие на лист тасков
     procedure TasksListClick(Sender: TObject);
+    // Нажатие на кнопку обновления статусов заданий
     procedure UpdateStatusButtonClick(Sender: TObject);
+    // Нажатие на кнопку удаления группы
     procedure DeleteGroupButtonClick(Sender: TObject);
+    // Нажатие на кнопку удаления таска
     procedure DeleteTaskButtonClick(Sender: TObject);
+    // Нажатие на кнопку редактирования группы
     procedure EditGroupButtonClick(Sender: TObject);
+    // Нажатие на кнопку редактирования таска
     procedure EditTaskButtonClick(Sender: TObject);
+    // Создание формы
     procedure FormCreate(Sender: TObject);
+    // Функция обновления листа
     procedure UpdateList(TableName: String; UpdatingList: TListBox);
+    // 
     procedure UpdateCurrentGroup;
+    // 
     procedure UpdateCurrentTask;
+    // Toggle блокировку формы
     procedure ChangeFormBlock(AEnabled: Boolean);
   private
+    // Айди выбранной группы
     SelectedGroup: Integer;
+    // Айди выбранного таска
     SelectedTask: Integer;
+    // Айди загруженной группы
     LoadedGroup: Integer;
+    // Айди загруженного таска
     LoadedTask: Integer;
   public
-		NowUpdating: Boolean;
+    // Обновляется ли сейчас статус задания
+    NowUpdating: Boolean;
   end;
 
 var
@@ -84,25 +119,39 @@ type
 
   TReportUpdateThread = class(TThread)
   private
+    // Нужна ли остановка обновления
     FStop: Boolean;
+    // Количество веток для проверки
     FMax: Integer;
+    // Уже проверено веток
     FProgress: Integer;
+    // Айди выбранной группы
     FSelectedGroup: Integer;
+    // Айди выбранного таска
     FSelectedTask: Integer;
+    // Лист итемов для добавления в вывод
     FListItemToAdd: TListItem;
+    // Изменить прогресс бар
     procedure ChangeProgressBar;
+    // Обновить прогресс
     procedure UpdateProgress;
+    // Проверка была выполнена успешно
     procedure SuccessfulExecute;
   protected
+    // Главная функция потока
     procedure Execute; override;
+    // Вызовится в любом случае после завершения работы
     procedure AfterExecute(Sender: TObject);
   public
     constructor Create(CreateSuspended: Boolean; SelectedGroup, SelectedTask: Integer);
+    // Запуск проверки
     procedure Start;
+    // Остановка проверки
     procedure StopUpdating;
   end;
 
 var
+  // Поток проверки заданий
   Thread: TReportUpdateThread;
 
 { TMainForm }

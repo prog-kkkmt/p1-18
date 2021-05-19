@@ -14,17 +14,25 @@ type
   { TGroupForm }
 
   TGroupForm = class(TForm)
+    // OK кнопка
     Button1: TButton;
+    // Кнопка отмены
     Button2: TButton;
+    // Поле имени группы
     LabeledEdit1: TLabeledEdit;
+    // Поле айди репозитория группы
     LabeledEdit2: TLabeledEdit;
+    // Нажатие на ОК кнопку
     procedure Button1Click(Sender: TObject);
+    // Нажатие на кнопку отмены
     procedure Button2Click(Sender: TObject);
   private
+    // Айди группы для режима реадктирования
     EditId: Integer;
   public
     constructor Create(TheOwner: TComponent);
     constructor Create(TheOwner: TComponent; GroupForEditing: Integer); overload;
+    // Изменить дизайн формы для редактирования группы
     procedure MakeForEdit(GroupId: Integer);
   end;
 

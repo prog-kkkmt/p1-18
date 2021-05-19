@@ -6,26 +6,39 @@ uses
   fpjson, sqldb, db, SQLite3Conn, sysutils, Generics.Collections, fgl, Variants, SQLite3;
 
 type
+  // SQL параметр вы виде пары имя-значение
   TParamPair = specialize TPair<String, Variant, String>;
+  // Динамический массив параметров
   TParamsArray = Array of TParamPair;
-
+  
+  // Строка таблицы
   TRow = specialize TFPGMap<String, Variant>;
+  // Таблица
   TTable = specialize TList<TRow>;
 
+  // Класс базы данных приложения
   TAppDatabase = class (TInterfacedObject)
+    // Объект соединения с базой данных
     Connection: TSQLite3Connection;
+    // Объект транзакции
     Transaction: TSQLTransaction;
+    // Объект запроса
     Query: TSQLQuery;
 
+    // Выполнить SQL запрос с параметрами без возврата результата
     procedure Exec(AQuery: String; AParams: TParamsArray);
+    // Выполнить SQL запрос без параметров и без возврата результата
     procedure Exec(AQuery: String);
+    // Выполнить SQL запрос с параметрами и с возвратом результата
     function ExecOut(AQuery: String; AParams: TParamsArray): TTable;
+    // Выполнить SQL запрос без параметров с возвратом результата
     function ExecOut(AQuery: String): TTable;
 
     constructor Create;
     destructor Free;
   end;
 
+// Функция для упрощенного создания объекта TParamPair
 function par(AName: String; AValue: Variant): TParamPair;
 
 

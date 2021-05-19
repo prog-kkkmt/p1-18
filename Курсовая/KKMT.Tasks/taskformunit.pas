@@ -13,27 +13,42 @@ type
   { TTaskForm }
 
   TTaskForm = class(TForm)
+    // ОК кнопка
     Button1: TButton;
+    // Кнопка отмены
     Button2: TButton;
+    // Кнопка добавления дочерней ноды имени файла
     Button3: TBitBtn;
+    // Кнопка удаления ноды имени файла
     Button4: TBitBtn;
     Label1: TLabel;
+    // Имя таска
     LabeledEdit1: TLabeledEdit;
     Panel1: TPanel;
+    // Дерево файлов
     TreeView1: TTreeView;
+    // Нажатие на кнопку сохранения
     procedure Button1Click(Sender: TObject);
+    // Нажатие на кнопку отмены
     procedure Button2Click(Sender: TObject);
+    // Нажатие на кнопку добавления ноды
     procedure Button3Click(Sender: TObject);
+    // Нажатие на кнопку удаления ноды
     procedure Button4Click(Sender: TObject);
+    // Выделение ноды
     procedure TreeView1MouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
   private
+    // Айди таска для режима редактирования
     EditId: Integer;
+    // Создание массива путей для каждого файла
     function TreeToPathsGenerator(Tree: TTreeNodes): TStringList;
+    // Создание дерева из массива путей
     function TreeFromPathsGenerator(Paths: TStringList): TTreeNodes;
   public
     constructor Create(TheOwner: TComponent);
     constructor Create(TheOwner: TComponent; TaskForEditing: Integer); overload;
+    // Изменить дизайн формы для режима редактирования
     procedure MakeForEdit(TaskId: Integer);
   end;
 

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <Compiler Value="C:\Lazarus\fpc\3.2.0\bin\x86_64-win64\fpc.exe" Date="1357350767"/>
+  <Params Value=" -Twin64 -MObjFPC -Scghi -O3 -WG -l -vewnhibq -FiC:\Users\admin\Desktop\KKMT.Tasks-master\precompile\x86_64-win64 -FuC:\Users\admin\Desktop\KKMT.Tasks-master\lib\libgit2pas -FuC:\Lazarus\lcl\units\x86_64-win64\win32 -FuC:\Lazarus\lcl\units\x86_64-win64 -FuC:\Lazarus\components\lazutils\lib\x86_64-win64 -FuC:\Lazarus\packager\units\x86_64-win64 -FuC:\Users\admin\Desktop\KKMT.Tasks-master\ -FUC:\Users\admin\Desktop\KKMT.Tasks-master\precompile\x86_64-win64\ -FEC:\Users\admin\Desktop\KKMT.Tasks-master\build\x86_64-win64-Windows64-Release\ -oC:\Users\admin\Desktop\KKMT.Tasks-master\build\x86_64-win64-Windows64-Release\KkmtTesting.exe -dLCL -dLCLwin32 -dUSE_SEMICOLON_BEFORE_DEPRECATED -dSTATICLOAD_OPENSSL KkmtTesting.lpr"/>
+</CONFIG>
