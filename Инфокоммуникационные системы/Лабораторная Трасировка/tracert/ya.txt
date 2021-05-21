@@ -1,0 +1,12 @@
+Трассировка маршрута к ya.ru [87.250.250.242]
+с максимальным числом прыжков 30:
+
+  1     1 ms    <1 мс    <1 мс  192.168.1.1
+  2     1 ms     1 ms     1 ms  gw.pool44.poig.lan [10.173.44.254]
+  3     1 ms     1 ms     7 ms  host-110.pool0.poig.lan [10.173.0.110]
+  4     4 ms     7 ms     8 ms  prng-br.poig.ru [178.173.0.2]
+  5     1 ms     1 ms     1 ms  poig4-gw.fiord.net [80.77.167.10]
+  6     1 ms     1 ms     1 ms  yandex-gw.fiord.net [62.140.245.218]
+  7     9 ms     8 ms     9 ms  ya.ru [87.250.250.242]
+
+Трассировка завершена.
