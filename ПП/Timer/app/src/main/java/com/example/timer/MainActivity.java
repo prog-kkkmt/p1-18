@@ -77,9 +77,9 @@ public class MainActivity extends Activity {
                 mode.setText("Pause");
 
                 // Убираем возможность изменять
-                TextViewVisible(hours, hoursText);
-                TextViewVisible(minutes, minutesText);
-                TextViewVisible(seconds, secondsText);
+                MainActivityHelper.TextViewVisible(hours, hoursText);
+                MainActivityHelper.TextViewVisible(minutes, minutesText);
+                MainActivityHelper.TextViewVisible(seconds, secondsText);
             }
         }
 
@@ -128,9 +128,9 @@ public class MainActivity extends Activity {
         start.setVisibility(View.VISIBLE);
 
         // Даем возможность редактирования пользователю
-        EditTextVisible(hours, hoursText);
-        EditTextVisible(minutes, minutesText);
-        EditTextVisible(seconds, secondsText);
+        MainActivityHelper.EditTextVisible(hours, hoursText);
+        MainActivityHelper.EditTextVisible(minutes, minutesText);
+        MainActivityHelper.EditTextVisible(seconds, secondsText);
 
         hoursText.setText("");
         minutesText.setText("");
@@ -142,9 +142,9 @@ public class MainActivity extends Activity {
     }
 
     public void onClickStart(View view) {
-        boolean isHoursZero = isZero(hours);
-        boolean isMinutesZero = isZero(minutes);
-        boolean isSecondsZero = isZero(seconds);
+        boolean isHoursZero = MainActivityHelper.isZero(hours);
+        boolean isMinutesZero = MainActivityHelper.isZero(minutes);
+        boolean isSecondsZero = MainActivityHelper.isZero(seconds);
         System.out.println("[" + isHoursZero + " " + isMinutesZero + " " + isSecondsZero + "]");
 
         if (isHoursZero || isMinutesZero || isSecondsZero) {
@@ -155,14 +155,14 @@ public class MainActivity extends Activity {
             mode.setText("Pause");
 
             // Убираем возможность изменять
-            TextViewVisible(hours, hoursText);
-            TextViewVisible(minutes, minutesText);
-            TextViewVisible(seconds, secondsText);
+            MainActivityHelper.TextViewVisible(hours, hoursText);
+            MainActivityHelper.TextViewVisible(minutes, minutesText);
+            MainActivityHelper.TextViewVisible(seconds, secondsText);
 
             // Получаем введенные данные
-            int hoursValue = getInt(hours);
-            int minutesValue = getInt(minutes);
-            int secondsValue = getInt(seconds);
+            int hoursValue = MainActivityHelper.getInt(hours);
+            int minutesValue = MainActivityHelper.getInt(minutes);
+            int secondsValue = MainActivityHelper.getInt(seconds);
 
             // Приводим в правильный вид
             if (secondsValue > 59) {
@@ -194,18 +194,21 @@ public class MainActivity extends Activity {
             mode.setText("Resume");
         }
     }
+}
 
-    private void TextViewVisible(EditText et, TextView tv) {
+class MainActivityHelper {
+
+    public static void TextViewVisible(EditText et, TextView tv) {
         et.setVisibility(View.GONE);
         tv.setVisibility(View.VISIBLE);
     }
 
-    private void EditTextVisible(EditText et, TextView tv) {
+    public static void EditTextVisible(EditText et, TextView tv) {
         et.setVisibility(View.VISIBLE);
         tv.setVisibility(View.GONE);
     }
 
-    private int getInt(EditText et) {
+    public static int getInt(EditText et) {
         String text = et.getText().toString();
         if (text.equals("")) {
             return 0;
@@ -215,7 +218,7 @@ public class MainActivity extends Activity {
         return Integer.parseInt(text);
     }
 
-    private boolean isZero(EditText et) {
+    public static boolean isZero(EditText et) {
         boolean state = true;
         if (et.getText().length() == 0
                 || et.getText().equals("00")
@@ -225,7 +228,6 @@ public class MainActivity extends Activity {
         return state;
     }
 }
-
 
 class TimeHelper {
 
