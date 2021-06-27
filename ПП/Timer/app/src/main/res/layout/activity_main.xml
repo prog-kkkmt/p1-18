@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:padding="16dp"
     android:gravity="center"
-    android:screenOrientation="portrait"
     tools:context=".MainActivity">
 
     <LinearLayout

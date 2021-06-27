@@ -1,5 +1,6 @@
 package com.example.timer;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -57,7 +58,47 @@ public class MainActivity extends Activity {
 
         timeHelper = new TimeHelper(hoursText, minutesText, secondsText);
 
+        if (savedInstanceState != null) {
+            running = savedInstanceState.getBoolean("running");
+
+            hours.setText(savedInstanceState.getString("hours"));
+            minutes.setText(savedInstanceState.getString("minutes"));
+            seconds.setText(savedInstanceState.getString("seconds"));
+
+            hoursText.setText(savedInstanceState.getString("hoursText"));
+            minutesText.setText(savedInstanceState.getString("minutesText"));
+            secondsText.setText(savedInstanceState.getString("secondsText"));
+
+            // Если был запущен код
+            if (running || secondsText.getText().length() != 0) {
+                start.setVisibility(View.GONE);
+                cancel.setVisibility(View.VISIBLE);
+                mode.setVisibility(View.VISIBLE);
+                mode.setText("Pause");
+
+                // Убираем возможность изменять
+                TextViewVisible(hours, hoursText);
+                TextViewVisible(minutes, minutesText);
+                TextViewVisible(seconds, secondsText);
+            }
+        }
+
         runTimer();
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putBoolean("running", running);
+
+        outState.putString("hours", hours.getText().toString());
+        outState.putString("minutes", minutes.getText().toString());
+        outState.putString("seconds", seconds.getText().toString());
+
+        outState.putString("hoursText", hoursText.getText().toString());
+        outState.putString("minutesText", minutesText.getText().toString());
+        outState.putString("secondsText", secondsText.getText().toString());
+
     }
 
     private void runTimer() {
@@ -90,6 +131,10 @@ public class MainActivity extends Activity {
         EditTextVisible(hours, hoursText);
         EditTextVisible(minutes, minutesText);
         EditTextVisible(seconds, secondsText);
+
+        hoursText.setText("");
+        minutesText.setText("");
+        secondsText.setText("");
     }
 
     private void soundPlay() {
