@@ -1,0 +1,3 @@
+sos сасовичи writer c++
+sas сасовичи coder pascal
+sis сосисовичи tester golang
