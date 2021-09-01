@@ -1,0 +1,5 @@
+$265 stul 150
+$139 stol 378
+$90 zanaveska 300
+$28 taburet 432
+$9021 reka 250
