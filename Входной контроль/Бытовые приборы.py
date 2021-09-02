@@ -5,7 +5,7 @@ DBcursor = DBconnect.cursor()
 
 def print_table(name):
     print('                    '+name)
-    table = DBcursor.execute('SELECT * FROM '+name+';')
+    table = DBcursor.execute('SELECT * FROM '+name)
     for x in list(map(lambda x: x[0], DBcursor.description)):
         print("%23s" % x, end='')
     print()
@@ -19,8 +19,9 @@ print_table('repair_categories')
 print_table('repairs')
 print_table('types_of_appliances')
 
-t = DBcursor.execute('SELECT * FROM repairs WHERE date_of_execution IS NULL ;').fetchone()
-print(t)
+# 1 задание
+z = DBcursor.execute('SELECT * FROM repairs WHERE date_of_execution IS NULL ;').fetchone()
+print(z)
 
 
 
