@@ -1,0 +1,12 @@
+C:\Users\relay\OneDrive\Рабочий стол\DataBase\BaseData\BaseData\bin\Debug\Database1.mdf
+C:\Users\relay\OneDrive\Рабочий стол\DataBase\BaseData\BaseData\bin\Debug\Database1_log.ldf
+C:\Users\relay\OneDrive\Рабочий стол\DataBase\BaseData\BaseData\bin\Debug\BaseData.exe.config
+C:\Users\relay\OneDrive\Рабочий стол\DataBase\BaseData\BaseData\bin\Debug\BaseData.exe
+C:\Users\relay\OneDrive\Рабочий стол\DataBase\BaseData\BaseData\bin\Debug\BaseData.pdb
+C:\Users\relay\OneDrive\Рабочий стол\DataBase\BaseData\BaseData\obj\Debug\BaseData.csprojAssemblyReference.cache
+C:\Users\relay\OneDrive\Рабочий стол\DataBase\BaseData\BaseData\obj\Debug\BaseData.frmMain.resources
+C:\Users\relay\OneDrive\Рабочий стол\DataBase\BaseData\BaseData\obj\Debug\BaseData.Properties.Resources.resources
+C:\Users\relay\OneDrive\Рабочий стол\DataBase\BaseData\BaseData\obj\Debug\BaseData.csproj.GenerateResource.cache
+C:\Users\relay\OneDrive\Рабочий стол\DataBase\BaseData\BaseData\obj\Debug\BaseData.csproj.CoreCompileInputs.cache
+C:\Users\relay\OneDrive\Рабочий стол\DataBase\BaseData\BaseData\obj\Debug\BaseData.exe
+C:\Users\relay\OneDrive\Рабочий стол\DataBase\BaseData\BaseData\obj\Debug\BaseData.pdb
