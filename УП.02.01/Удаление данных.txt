@@ -1,2 +1,2 @@
-﻿DELETE FROM "students"
-WHERE "name" LIKE 'Батраков%';
+﻿DELETE FROM "tasks"
+WHERE "files" = 'файл 5';
