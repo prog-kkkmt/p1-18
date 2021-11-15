@@ -1,2 +1,0 @@
-﻿DELETE FROM "tasks"
-WHERE "files" = 'файл 5';
