@@ -1,19 +1,8 @@
 C:.
 │   Аттестационный лист по практике.docx
 │   Задание на практику ПП.02.02.docx
-│   Отчет ПП Герасимов.docx
 │   Отчет ПП.02.02 Герасимов.docx
 │   Презентация ПП.02.02.pptx
-│
-├───.idea
-│   │   .gitignore
-│   │   Fuji-documents.iml
-│   │   misc.xml
-│   │   modules.xml
-│   │
-│   └───inspectionProfiles
-│           profiles_settings.xml
-│           Project_Default.xml
 │
 └───Схемы
     ├───db
