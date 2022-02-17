@@ -104,4 +104,99 @@ public class Task {
         {
             System.out.println("Не найдено");
         }
+    }
+    public static void task9()
+    {
+        Scanner scan = new Scanner(System.in);
+        int a = scan.nextInt(), b = scan.nextInt(), prois = 1;
+        for (int i = a; i <= b; ++i) {
+            prois *= i;
+        }
+        System.out.println(prois);
+    }
+    public static void task10()
+    {
+        Scanner scan = new Scanner(System.in);
+        int a = scan.nextInt(), b = scan.nextInt();
+        for (int i = b; i >= a; i-=2) {
+            System.out.println(i);
+        }
+    }
+    public static void task11()
+    {
+        Scanner scan = new Scanner(System.in);
+        int nArr1 = scan.nextInt();
+        int[] arr1 = fillArray(nArr1);
+
+        int nArr2 = scan.nextInt();
+        int[] arr2 = fillArray(nArr2);
+
+        int a = scan.nextInt();
+        int b = scan.nextInt();
+
+        int tmp = arr1[a];
+        arr1[a] = arr2[b];
+        arr2[b] = tmp;
+
+        print(arr1);
+        print(arr2);
+    }
+    public static int[] fillArray(int n) {
+        Scanner scan = new Scanner(System.in);
+        int[] arr = new int[n];
+        for (int i = 0; i < n ; ++i) {
+            arr[i] = scan.nextInt();
+        }
+        return arr;
+    }
+    public static int[][] fillMatrix(int n, int m) {
+        Scanner scan = new Scanner(System.in);
+        int [][] matrix = new int[n][m];
+        for (int i = 0; i < n ; ++i)
+        {
+            for (int j = 0; j < n ; ++j) {
+                matrix[i][j] = scan.nextInt();
+            }
+        }
+        return matrix;
+    }
+    private static void print(int[] arr) {
+        System.out.println(Arrays.toString(arr));
+    }
+    private static void task12()
+    {
+        Scanner scan = new Scanner(System.in);
+        int n = scan.nextInt();
+        int[] arr = fillArray(n);
+        for (int i = 1; i < n; ++i) {
+            System.out.println(arr[i - 1] + arr[i]);
+        }
+    }
+    private static void task13()
+    {
+        Scanner scan = new Scanner(System.in);
+        int n = scan.nextInt(), m = scan.nextInt();
+        int [][] matrix = fillMatrix(n, m);
+        int minIndi = 0, minIndj = 0;
+        for (int i = 0; i < n; ++i)
+        {
+            for (int j = 0; j < m; ++j)
+            {
+                if (matrix[i][j] < matrix[minIndi][minIndj]) {
+                    minIndi = i;
+                    minIndj = j;
+                }
+            }
+        }
+        System.out.print(minIndi + " " + minIndj);
+    }
+    private static void task14()
+    {
+        Scanner scan = new Scanner(System.in);
+        int n = scan.nextInt();
+        int[] arr = fillArray(n);
+        for (int i = 0; i < n; i+=2) {
+            System.out.println(arr[i]);
+        }
+    }
 }
