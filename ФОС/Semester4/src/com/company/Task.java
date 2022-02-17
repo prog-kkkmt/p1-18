@@ -84,21 +84,24 @@ public class Task {
     }
     public static void task8()
     {
-        int prois = 1, num;
+        boolean found = false;
+        int prois = 1, num = -1;
         Scanner scan = new Scanner(System.in);
-        while (true) {
-            if (scan.hasNextInt()) {
-                num = scan.nextInt();
-                if (num != 0)
-                    prois *= num;
+        String str; // = scan.nextLine();
+        while (!((str = scan.nextLine()).equals("СТОП")))
+        {
+            num = Integer.parseInt(str);
+            if (num != 0) {
+                prois *= num;
+                found = true;
             }
-            else if (scan.hasNextLine()) {
-                String str = scan.nextLine();
-                if (str.equals("СТОП")) {
-                    break;
-                }
-            }
+            // str = scan.nextLine();
         }
-        System.out.println(prois);
-    }
+        if (found) {
+            System.out.println(prois);
+        }
+        else
+        {
+            System.out.println("Не найдено");
+        }
 }
