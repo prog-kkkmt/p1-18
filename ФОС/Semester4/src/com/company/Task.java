@@ -199,4 +199,23 @@ public class Task {
             System.out.println(arr[i]);
         }
     }
+     private static void task15()
+    {
+        String str = scan.nextLine();
+        String num = scan.nextLine();
+        for (int i = 0; i < str.length(); ++i) {
+            if (str.charAt(i) == num.charAt(0)) {
+
+            }
+        }
+    }
+    private static boolean srcNum(String str, String num, int index)
+    {
+        for (; index < str.length(); ++index) {
+            if (str.charAt(index) != num.charAt(index)) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
